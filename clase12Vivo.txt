@@ -1,0 +1,26 @@
+A mi archivo html le puedoo poner estilos
+de tres formas.
+En linea, es el estilo que se pone en la etiqueta
+Scrip dentro de la pagina y armar dentro de ese script, por ej, a todas las 
+etiquetas p ponele tal formato 
+o con un archivo externo. Esta se recomienda
+Armar un archivo externo, una hoja de estilo
+y asociarla con mi documento html
+Y decirle que a todas las etiquetas de cada tipo le ponga un determinado formato
+
+Ver la documentacion. 
+La primer forma de usar css es en linea
+Es ir a la etiqueta y enviarle un modificador. Escribirle style
+Automaticamente me aparecen todas las cosas que acepta style
+Es importante el ;
+
+Tratar de usar fuentes sin serigrafias
+Que no tengan muchos dibujos
+
+Usar galerias de imagenes sin copyright
+
+Si quieo cambiarle el color solo a un parrafo lo puedo hacer con id
+
+En buenas practicas, en el archivoo css 
+las llaves deberian ir en orden alfabetico
+
