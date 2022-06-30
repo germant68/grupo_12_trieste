@@ -1,0 +1,15 @@
+body{
+    background-color: rgba(236, 229, 229, 0.834);
+    font-family: 'Staatliches', cursive;
+    font-size: 22px;
+    text-align: start;
+    opacity: 0.9;
+
+}
+
+footer{
+    font-family: 'Staatliches', cursive;
+    font-size: 14px;
+    text-align: justify;
+}
+
