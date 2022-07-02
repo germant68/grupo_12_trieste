@@ -1,3 +1,4 @@
+
 # -- Trieste Record Store --
 
 ### Retrospectiva Sprint n°1:
@@ -21,4 +22,3 @@ A continuación presentamos las conclusiones luego del Sprint n° 1.
 
 <u><h5>Dejar de Hacer:</h5></u>
 - Por el momento no observamos una conducta de este estilo. 
-
