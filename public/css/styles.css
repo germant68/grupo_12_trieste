@@ -77,11 +77,47 @@ flex-wrap: wrap;
 h2 {
     text-align: center;
 }
+
 footer {
     background-color: white;
-    /*font-family: 'Staatliches', cursive;*/
+    font-family: 'Staatliches', cursive;
     font-family: 'Jost', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     text-align: justify;
+    width: 100%;
+    padding: 50px 0px;
 }
+
+.footer_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer_box{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
+.footer_box .logo img {
+    width: 200px;
+}
+
+.footer_box h2{
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.footer_box a{
+    margin-top: 10px;
+    font-weight: 600;
+
+}
+
+.footer_box a:hover{
+    opacity: 0.8;
+}
+
 
