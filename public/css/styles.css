@@ -78,6 +78,7 @@ h2 {
     text-align: center;
 }
 
+
 h2, section {
     text-align: center;
 }
@@ -135,6 +136,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
 
 .footer_box{
@@ -143,6 +145,17 @@ footer {
     padding: 40px;
     text-align: center;
 }
+
+=======
+}
+
+.footer_box{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
 
 .footer_box .logo img {
     width: 200px;
