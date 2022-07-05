@@ -20,43 +20,45 @@
 
 </head>
 <body>
-    <header > 
-        <div class="header_top_container">
-            <img src="./images/logo.jpg" alt="">
+    <%- include('./partials/header') %>
+    <main>
+        <section>
             <div>
-                <input type="text" placeholder="Busca tu vinilo...">
-                <i class="fa fa-search"></i>
-            </div>             
-            <div class="header_top_right">
-                <p><a href="/registro">CREAR CUENTA</a></p>
-                <p><a href="login">INICIAR SESIÓN</a>
-                <p><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></p>
+                <h2>MI CUENTA</h2><img src="./images/music_icon.png" id="disco" alt="music_icon">
             </div>
-        </div>
-        <div class="header_bottom_container">
             <div>
-                <ul class="nav_bar">
-                <li><a href="/ofertas">Ofertas</a></li> 
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Búsqueda Avanzada</a></li>
-                <li><a href="#">Contacto</a></li> 
-                <li><a href="#">Quienes Somos</a></li> 
-            </ul>
+                <br>
+                <form action="" method="POST" class="form_reg">
+                    <label for="usuario_reg">Usuario*</label>
+                    <input type="text" name="usuario_reg" minlength=8 required>
+                    <br>
+                    <label for="">Dirección de correo electrónico*</label>
+                    <input type="email" name="email_reg" required>
+                    <br>
+                    <label for="">Nombre y Apellido*</label>
+                    <input type="text" name="nombreApellido_reg" required>
+                    <br>
+                    <label for="pwd_reg">Contraseña</label>
+                    <input type="password" name="pwd_reg" id="pwd_reg" minlength="8" required> 
+                    <br>
+                    <label for="pwdrepeat">Repita su Contraseña</label>
+                    <input type="password" name="pwdrepeat" id="pwdrepeat" required> 
+                    <br>
+                    <div>
+                    <input type="checkbox" name="newsletter"><label> Suscribite a nuestra newsletter para recibir novedades</label>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" value="Enviar" name="submit_reg">
+                        <input type="reset" value="Borrar" name="reset_reg">
+                    </div>
+                </form>
             </div>
-        </div>
-    </header>
-    <h2>Esto es la pagina de registr de usuario</h2>
+        <br>
+        </section>
+        
+    </main>
 
-    <footer>
-        <ul> 
-        <li>Aceptamos tarjeta o en efectivo</li>
-        <li>Envio gratis desde $3.500</li>
-        <p>Podes comprar en cuotas, sin usar tu tarjeta de credito</p>
-
-        <li>Copyright © 2015-2020 Trieste S.R.L. </li>
-
-    </ul>
-
- </footer>
+    <%- include('./partials/footer') %>
 </body>
 </html>

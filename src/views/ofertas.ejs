@@ -20,43 +20,9 @@
 
 </head>
 <body>
-    <header > 
-        <div class="header_top_container">
-            <img src="./images/logo.jpg" alt="">
-            <div>
-                <input type="text" placeholder="Busca tu vinilo...">
-                <i class="fa fa-search"></i>
-            </div>             
-            <div class="header_top_right">
-                <p><a href="/registro">CREAR CUENTA</a></p>
-                <p><a href="login">INICIAR SESIÓN</a>
-                <p><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></p>
-            </div>
-        </div>
-        <div class="header_bottom_container">
-            <div>
-                <ul class="nav_bar">
-                <li><a href="/ofertas">Ofertas</a></li> 
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Búsqueda Avanzada</a></li>
-                <li><a href="#">Contacto</a></li> 
-                <li><a href="#">Quienes Somos</a></li> 
-            </ul>
-            </div>
-        </div>
-    </header>
+    <%- include('./partials/header') %>
     <h2>Estas son las ofertas</h2>
 
-    <footer>
-        <ul> 
-        <li>Aceptamos tarjeta o en efectivo</li>
-        <li>Envio gratis desde $3.500</li>
-        <p>Podes comprar en cuotas, sin usar tu tarjeta de credito</p>
-
-        <li>Copyright © 2015-2020 Trieste S.R.L. </li>
-
-    </ul>
-
- </footer>
+    <%- include('./partials/footer') %>
 </body>
 </html>
