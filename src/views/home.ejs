@@ -1,52 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('./partials/head') %>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4b6f922cb1.js" crossorigin="anonymous"></script>
-     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
-    
-    <link href="./css/normalize.css" rel="stylesheet">
-    <link href="./css/styles.css" rel="stylesheet">
-    <title>Trieste Records</title>
-
-</head>
 <body>
-    
-    <header > 
-        <div class="header_top_container">
-            <img src="./images/logo.jpg" alt="">
-            <div>
-                <input type="text" placeholder="Busca tu vinilo...">
-                <i class="fa fa-search"></i>
-            </div>             
-            <div class="header_top_right">
-                <p><a href="/registro">CREAR CUENTA</a></p>
-                <p><a href="login">INICIAR SESIÓN</a>
-                <p><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></p>
-            </div>
-        </div>
-        <div class="header_bottom_container">
-            <div>
-                <ul class="nav_bar">
-                <li><a href="/ofertas">Ofertas</a></li> 
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Búsqueda Avanzada</a></li>
-                <li><a href="#">Contacto</a></li> 
-                <li><a href="#">Quienes Somos</a></li> 
-            </ul>
-            </div>
-        </div>
-    </header>
-
+    <%- include('./partials/header') %>
     <br>
     <main> 
         <h2>Destacados</h2>
@@ -151,39 +106,8 @@
         </div>
     </main>
 <br>
-    <footer>       
-        <div class="footer_container">
-        <div class="footer_box">
-        <div class="logo">
-            <img src="./images/logo.jpg" alt="">
-            <div>
-                <hr>
-                <p>Copyright © 2022 Trieste S.R.L.</p>
-            </div>
-        </div>
-        </div>
-        <div class="footer_box">
-            <h2>CONTACTO</h2>
-            <a href="#"><i class="fa-solid fa-envelope"></i>e-mail: trieste.records@gmail.com</a>
-            <a href="#">Tel: (5411) 3034-1040</a>
-        </div>
-        <div class="footer_box">
-            <h2>PREGUNTAS FRECUENTES</h2>
-            <a href="#">Formas de envio</a>
-            <a href="#">Politicas de devolución</a>
-        </div>
-        <div class="footer_box">
-            <h2>MEDIOS DE PAGO</h2>
-            <a href=""><i class="fa-brands fa-cc-visa"></i>Tarjetas de credito </a>
-            <a href=""><i class="fa-solid fa-building-columns"></i>Tranferencia Bancaria</a>
-            <a href=""><i class="fa-solid fa-dollar-sign"></i></i></i>Efectivo</a>
-        </div>
-        <div class="footer_box">
-            <h2>REDES SOCIALES</h2>
-            <a href=""><i class="fa-brands fa-facebook"> </i>FACEBOOK</a>
-            <a href=""><i class="fa-brands fa-instagram"> </i>INSTAGRAM</a>
-            <a href=""><i class="fa-brands fa-twitter"> </i>TWITTER</a>
-        </div>
- </footer>
+
+<%- include('./partials/footer') %>
+
 </body>
 </html>

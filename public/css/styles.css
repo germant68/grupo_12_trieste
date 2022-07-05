@@ -78,6 +78,50 @@ h2 {
     text-align: center;
 }
 
+
+h2, section {
+    text-align: center;
+}
+
+.form_reg {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.form_reg input[name=usuario_reg],
+.form_reg input[name=nombreApellido_reg],
+.form_reg input[name=email_reg],
+.form_reg input[name=pwd_reg],
+.form_reg input[name=pwdrepeat] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+.form_reg input[name=reset_reg],
+.form_reg input[name=submit_reg] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_reg input[name=reset_reg]:hover,
+.form_reg input[name=submit_reg]:hover {
+    background-color:dimgray;
+    color: white;
+}
+
+
+#disco {
+    font-size: 30px;
+}
+
+
 footer {
     background-color: white;
     font-family: 'Staatliches', cursive;
@@ -92,6 +136,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
 
 .footer_box{
@@ -100,6 +145,17 @@ footer {
     padding: 40px;
     text-align: center;
 }
+
+=======
+}
+
+.footer_box{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
 
 .footer_box .logo img {
     width: 200px;
