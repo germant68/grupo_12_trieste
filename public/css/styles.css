@@ -9,8 +9,6 @@ body{
     font-size: 22px;
     text-align: start;
     opacity: 0.9;
-    
-
 }
 
 header {
@@ -122,6 +120,9 @@ h2, section {
 }
 
 
+/* Footer */
+
+
 footer {
     background-color: white;
     font-family: 'Staatliches', cursive;
@@ -136,7 +137,6 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
 }
 
 .footer_box{
@@ -146,8 +146,6 @@ footer {
     text-align: center;
 }
 
-=======
-}
 
 .footer_box{
     display: flex;
@@ -169,11 +167,129 @@ footer {
 .footer_box a{
     margin-top: 10px;
     font-weight: 600;
-
 }
 
 .footer_box a:hover{
     opacity: 0.8;
 }
+
+
+/* Formulario de login */
+
+
+.contenedor_login{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.contenedor_login input[name=usuario_log],
+.contenedor_login input[name=password_log] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+.contenedor_login input[name=submit_login]{
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+#disco {
+    font-size: 30px;
+}
+
+
+/* Detalle de producto */
+
+
+
+.productodetalle {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.producto_detalle {
+    max-width: 800px;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 25px;
+    align-items: center;
+    min-height: 60vh;
+    background-color: white;
+    
+}
+
+.producto_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.producto_box .producto_img{
+    min-width: 300px;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.producto_box .producto_img img{
+    width: 85%;
+}
+
+.producto_box .detalle_p {
+    position: relative;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.producto_box .detalle_p .producto_titulo h6{
+    font-weight: 200;
+    font-size: 0.8em;
+}
+
+.producto_box .detalle_p h4 {
+    font-size: 0.8em;
+
+}
+
+.producto_box .detalle_p p {
+    font-size: 0.8em;
+    font-weight: 200;
+    
+}
+.producto_box .detalle_p .producto_comprar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.producto_box .detalle_p .producto_comprar .precio{
+    font-size: 1.5em;
+}
+
+.producto_box .detalle_p .producto_comprar .product_boton{
+    padding: 0.5em 0.8em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+}
+
+
+
 
 

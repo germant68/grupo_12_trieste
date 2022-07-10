@@ -1,27 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4b6f922cb1.js" crossorigin="anonymous"></script>
-     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
-    
-    <link href="./css/normalize.css" rel="stylesheet">
-    <link href="./css/styles.css" rel="stylesheet">
-    <title>Trieste Records</title>
-
-</head>
+<%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <h2>Esto es el login</h2>
+    <main>
+        <section>
+            <div>
+                <h2>INGRESA</h2><img src="./images/music_icon.png" id="disco" alt="music_icon">
+            </div>
+            <div> 
+                <form action="" method="POST" class="contenedor_login">
+                        <label for="usuario_log">Nombre de usuario</label>
+                        <input type="text" name="usuario_log"> 
+                        <br>
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password_log">
+                        <br>    
+                            <div>
+                                <input  type="submit" value="Enviar" name="submit_login">
+                            </div>
+                        <br>
+                        <br>
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                        <br>
+                            <a href="#">Registrate</a>
+                </form>    
+            </div> 
+        </section>
+    </main>
 
     <%- include('./partials/footer') %>
 
