@@ -162,11 +162,15 @@ table, td, tr, th{
     width: 250px;
 }
 
-
+.ancho-celda-carrito {
+    object-fit: cover;
+}
 
 /* Footer */
 
-
+.footer-link {
+    text-decoration: none;
+}
 footer {
     background-color: white;
     font-family: 'Staatliches', cursive;
