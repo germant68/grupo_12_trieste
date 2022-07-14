@@ -12,16 +12,25 @@ const controller = {
     },
 
     login: (req, res) => {
-        res.render(path.join(__dirname, '../views/login'));
+        res.render(path.join(__dirname, '../views/users/login.ejs'));
     },
 
     registro: (req, res) => {
-        res.render(path.join(__dirname, '../views/registro'));
+        res.render(path.join(__dirname, '../views/users/registro.ejs'));
     },
 
     ofertas: (req, res) => {
         res.render(path.join(__dirname, '../views/ofertas'));
+    },
+
+    carrito: (req, res) => {
+        res.render(path.join(__dirname, '../views/carrito'));
+    },
+
+    productos: (req, res) => {
+        res.render(path.join(__dirname, '../views/products/productos'));
     }
+
 };
 
 // Finalizamos devolviendo el objeto

@@ -1,0 +1,65 @@
+<%- include('./partials/head') %>
+
+<body>
+    <%- include('./partials/header') %>
+    <br>
+    <main> 
+        <h2>Carrito de compras</h2>
+    <br>
+    <table class="tabla-carrito" cellspacing="10" cellpadding="20">
+        <tr>
+          <th class="celda-primera-carrito "></th>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td class="ancho-celda-carrito"><img src="./images/u2_pop.jpg" class="icono-foto-carrito"></td>
+            <td>U2 - Pop</td>
+            <td>$35.00</td>
+            <td>1</td>
+            <td>$35.00</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td class="ancho-celda-carrito"><img src="./images/kiss_rnrover.jpg" class="icono-foto-carrito"></td>
+            <td>Kiss - Greatest Hits</td>
+            <td>$25.00</td>
+            <td>1</td>
+            <td>$25.00</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td class="ancho-celda-carrito"><img src="./images/queen_greatesthits.jpg" class="icono-foto-carrito"></td>
+            <td>Queen - Greatest Hits</td>
+            <td>$40.00</td>
+            <td>1</td>
+            <td>$40.00</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td class="ancho-celda-carrito"><img src="./images/abba_gold.jpg" class="icono-foto-carrito"></td>
+            <td>ABBA - Gold</td>
+            <td>$25.00</td>
+            <td>1</td>
+            <td>$25.00</td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <div class="subtotal-carrito">
+        <h3>Total del Carrito</h3>
+        <h3>Subtotal</h3>
+      </div>
+      <div class="button-div-carrito">
+        <button type="submit" class="button-carrito">Finalizar la Compra</button>
+        <button type="submit" class="button-carrito">Cancelar</button>
+      </div>
+    </main>
+<br>
+<%- include('./partials/footer') %>
+</body>
+</html>
