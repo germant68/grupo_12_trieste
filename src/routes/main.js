@@ -18,6 +18,9 @@ router.get('/carrito', mainController.carrito);
 
 router.get('/productos', mainController.productos);
 
+router.get('/faq', mainController.faq);
+
+router.get('/contacto', mainController.contacto);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

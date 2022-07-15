@@ -29,7 +29,17 @@ const controller = {
 
     productos: (req, res) => {
         res.render(path.join(__dirname, '../views/products/productos'));
-    }
+    },
+
+    faq: (req, res) => {
+        res.render(path.join(__dirname, '../views/faq'));
+    },
+
+    contacto: (req, res) => {
+        res.render(path.join(__dirname, '../views/contacto'));
+    },
+
+    
 
 };
 
