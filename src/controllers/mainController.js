@@ -27,10 +27,6 @@ const controller = {
         res.render(path.join(__dirname, '../views/carrito'));
     },
 
-    productos: (req, res) => {
-        res.render(path.join(__dirname, '../views/products/productos'));
-    },
-
     faq: (req, res) => {
         res.render(path.join(__dirname, '../views/faq'));
     },
