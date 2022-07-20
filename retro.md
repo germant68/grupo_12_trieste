@@ -1,24 +1,22 @@
 
 # -- Trieste Record Store --
 
-### Retrospectiva Sprint n°1:
-A continuación presentamos las conclusiones luego del Sprint n° 1.
+### Retrospectiva Sprint n°4:
+A continuación presentamos las conclusiones luego del Sprint n° 4.
 
-<u><h5>Comenzar a hacer:</h5></u>
-- Organizar reuniones para ir chequeando los avances del proyecto.
-- Definir estilo para todas las páginas
-- Organizar tareas con el equipo.
-
-<u><h5>Hacer más:</h5></u>
-- Poner en practica mas conceptos de la clase en el Proyecto Integrador
-- Si bien creamos el tablero trello, hacer un uso más intensivo del mismo, ya que es una herramienta útil 
+<u><h5>Hacer Más:</h5></u>
+- Ser ordenados en el código para que sea entendible e interpretativo
+- Juntarnos al menos una vez a la semana
+- Organizar de antemano qué va a modifcar cada uno.
 
 <u><h5>Continuar Haciendo:</h5></u>
-- Hablar diariamente, por wsp o slack para resolver inquietudes que vayan surgiendo sobre el proyecto.
-- Organizandonos con mi nuevo compañero
+- Mantener actualizado el tablero de trabajo, seguir comunicados por slack o por whatsapp para resolver dudas que nos surjan o para implementar nuevas ideas que se nos ocurran al proyecto.
+- Realizar reuniones de corto tiempo para poder hablar sobre el proyecto en caso de ser necesarias
+- Poner en practica mas conceptos de la clase en el Proyecto Integrador
+- Comentar más el código
 
 <u><h5>Hacer Menos:</h5></u>
-- Evitar trabajar sobre lo mismo para no generar inconvenientes
+- No trabajar sobre los mismos archivos para no generar conflictos.
 
 <u><h5>Dejar de Hacer:</h5></u>
 - Por el momento no observamos una conducta de este estilo. 
