@@ -7,6 +7,8 @@ const path = require('path');
 //definimos el objeto Controller
 const controller = {
     home: (req, res) => {
+
+        //Traemos algunos productos 
         res.render(path.join(__dirname, '../views/home'));
         
     },

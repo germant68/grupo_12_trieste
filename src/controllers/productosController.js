@@ -21,7 +21,6 @@ const listadoDiscos = json.map(e => {
     }
   }) 
 
-  console.log(listadoDiscos[1]);
 //definimos el objeto Controller
 const controller = {
     productos: (req, res) => {
