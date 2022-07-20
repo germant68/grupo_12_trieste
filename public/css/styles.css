@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: rgba(236, 229, 229, 0.834);
     /*font-family: 'Staatliches', cursive;*/
     font-family: 'Jost', sans-serif;
@@ -193,6 +193,7 @@ header {
     text-align: center;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .header_top_right{
@@ -352,18 +353,19 @@ table, td, tr, th{
 }
 footer {
     background-color: white;
-    font-family: 'Staatliches', cursive;
     font-family: 'Jost', sans-serif;
     font-size: 15px;
     text-align: justify;
     width: 100%;
-    padding: 50px 0px;
+    padding-top: 50px;
+    
 }
 
 .footer_container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
 
 .footer_box{
@@ -372,15 +374,6 @@ footer {
     padding: 40px;
     text-align: center;
 }
-
-
-.footer_box{
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-    text-align: center;
-}
-
 
 .footer_box .logo img {
     width: 200px;
@@ -462,6 +455,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
     
 }
 
@@ -475,7 +469,7 @@ footer {
 }
 
 .producto_box .producto_img img{
-    width: 85%;
+    width: 65%;
 }
 
 .producto_box .detalle_p {
@@ -522,6 +516,37 @@ footer {
 }
 
 
+/* Detalle de producto ECV*/
 
+.producto_box_ecv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 430px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: transparent;
+}
 
+.producto_box_ecv .producto_card_ecv{
+    width: 250px;
+    height: 420px;
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    text-align: center;
+    background-color: white;
+    
+}
 
+.producto_box_ecv .producto_img_ecv{
+    width: 50%;
+    padding: 5px;
+}
+
+.producto_box_ecv .producto_card_ecv .listadoDiscos-informacion {
+    font-size: 16px;
+}
