@@ -2,38 +2,27 @@
 <body class="productodetalle">
     <%- include('../partials/header') %>
     <br>
-    <main class="producto_detalle">
-        <div class="producto_box">
-            <div class="producto_img">
-            <img src="./images/71tVF6HDV5L._SY355_.jpg" alt="vinilo"></div>
-
-            <div class="detalle_p">
-                <div class="producto_titulo">
-                    <h3>Electronic Music Antology <br>
-                        <h6>The box set</h6>
-                    </h3>
-                </div>
-                <div class="producto_descripcion">
-                    <h4>Descripción</h4>
-                    <p>Artistas...</p>
-                </div>
-                <div class="producto_genero">
-                    <h4>House music</h4>
-                <div class="producto_comprar">
-                    <div class="precio">
-                        <sup>$</sup>
-                        <span>6000</span>
-                    </div>
-                    <div class="product_boton">
-                        <a href="·">Comprar</a>
-                    </div>
-                </div>
-            </div> 
+    <main>
+        <!-- <main class="producto_detalle"></main>--> 
+        <h2>Listado de Discos Vinilos</h2>
+        <br>
+        <div class="producto_box_ecv">
+        <% for (let i=0; i< listadoDiscos.length; i++) {%>
+            <div class="producto_card_ecv">
+                    <img src= <%= listadoDiscos[i].img %> alt="vinilo" class="producto_img_ecv">
+                
+                        <p class="listadoDiscos-informacion"><%= listadoDiscos[i].nombreArtista %></p>
+                        <p class="listadoDiscos-informacion"><%= listadoDiscos[i].nombreDisco %></p>    
+                        <p class="listadoDiscos-informacion">Categoría: <%= listadoDiscos[i].categoria %></p> 
+                        <p class="listadoDiscos-informacion">SKU: <%= listadoDiscos[i].sku %></p>     
+                        <p class="listadoDiscos-informacion">Cantidad: <%= listadoDiscos[i].stock %></p>    
+                        <p class="listadoDiscos-informacion">Precio: $<%= listadoDiscos[i].precio %></p>    
+                        <p class="listadoDiscos-informacion"><a href="·">Comprar</a></p>
+            </div>
+        <%}%>
         </div>
     </main>
     <br>
-
     <%- include('../partials/footer') %>
-
 </body>
 </html>
