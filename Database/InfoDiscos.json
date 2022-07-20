@@ -1,0 +1,84 @@
+[
+    {
+    "id": 1,
+    "nombreArtista": "ABBA",
+    "nombreDisco": "Gold",
+    "precio": 4.56,
+    "stock": 20,
+    "sku": "123QWE456QWE",
+    "categoria": "Pop",
+    "img": "./images/abba_gold.jpg"
+    },
+    
+    {
+    "id": 2,
+    "nombreArtista": "MICHAEL JACKSON",
+    "nombreDisco": "Bad",
+    "precio": 5.00,
+    "stock": 20,
+    "sku": "456QWE789QWE",
+    "categoria": "Pop, Rock",
+    "img": "./images/michaeljackson_bad.jpg"
+    },
+    
+    {
+    
+    "id": 3,
+    "nombreArtista": "QUEEN",
+    "nombreDisco": "Greatest Hits",
+    "precio": 7.25,
+    "stock": 0,
+    "sku": "123QWE789QWE",
+    "categoria": "Pop, Rock",
+    "img": "./images/queen_greatesthits.jpg"
+    },
+    
+    {
+    
+    "id": 4,
+    "nombreArtista": "U2",
+    "nombreDisco": "Pop",
+    "precio": 6.50,
+    "stock": 9,
+    "sku": "234QWE789QWE",
+    "categoria": "Pop, Rock",
+    "img": "./images/u2_pop.jpg"
+    },
+    
+    {
+    
+    "id": 5,
+    "nombreArtista": "MILES DAVIES",
+    "nombreDisco": "Kind of Blues",
+    "precio": 4.00,
+    "stock": 4,
+    "sku": "989QWE99789QWE",
+    "categoria": "Jazz",
+    "img": "./images/milesdavies_kindofblue.jpg"
+    },
+    
+    {
+    
+    "id": 6,
+    "nombreArtista": "JOHN COLTRANE",
+    "nombreDisco": "Coltrane",
+    "precio": 105,
+    "stock": 4,
+    "sku": "456QWE789ZXC",
+    "categoria": "Jazz",
+    "img": "./images/johncoltrane_coltrane.jpg"
+    },
+    
+    {
+    
+    "id": 7,
+    "nombreArtista": "AC/DC",
+    "nombreDisco": "Let There Be Rock",
+    "precio": 5.56,
+    "stock": 17,
+    "sku": "456QWE124EDS",
+    "categoria": "Rock" ,
+    "img": "./images/acdc_letthereberock.jpg"
+    }
+    
+]
