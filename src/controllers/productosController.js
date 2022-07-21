@@ -16,6 +16,8 @@ const listadoDiscos = json.map(e => {
       stock: e.stock,
       sku: e.sku,
       categoria: e.categoria,
+      vendidos: e.vendidos,
+      recomendado: e.recomendado,
       img: e.img,
 
     }
