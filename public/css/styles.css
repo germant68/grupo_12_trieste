@@ -130,7 +130,6 @@ body {
 /* ESTILOS DE PRODUCTOS HOME */
 
 
-
 .container-productos{
     display: flex;
 }
@@ -260,7 +259,8 @@ h2, section {
 }
 
 .form_reg input[name=usuario_reg],
-.form_reg input[name=nombreApellido_reg],
+.form_reg input[name=nombre_reg],
+.form_reg input[name=apellido_reg],
 .form_reg input[name=email_reg],
 .form_reg input[name=pwd_reg],
 .form_reg input[name=pwdrepeat] {

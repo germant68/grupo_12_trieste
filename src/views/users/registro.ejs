@@ -8,24 +8,28 @@
             </div>
             <div>
                 <br>
-                <form action="" method="POST" class="form_reg">
+                <form action="/registro" method="POST" class="form_reg">
                     <label for="usuario_reg">Usuario*</label>
-                    <input type="text" name="usuario_reg" minlength=8 required>
+                    <input type="text" name="usuario_reg" minlength=4 required>
                     <br>
                     <label for="">Dirección de correo electrónico*</label>
                     <input type="email" name="email_reg" required>
                     <br>
-                    <label for="">Nombre y Apellido*</label>
-                    <input type="text" name="nombreApellido_reg" required>
+                    <label for="">Nombre*</label>
+                    <input type="text" name="nombre_reg" required>
+                    <br>
+                    <label for="">Apellido*</label>
+                    <input type="text" name="apellido_reg" required>
                     <br>
                     <label for="pwd_reg">Contraseña</label>
-                    <input type="password" name="pwd_reg" id="pwd_reg" minlength="8" required> 
+                    <input type="password" name="pwd_reg" id="pwd_reg" minlength="2" required> 
                     <br>
                     <label for="pwdrepeat">Repita su Contraseña</label>
                     <input type="password" name="pwdrepeat" id="pwdrepeat" required> 
                     <br>
                     <div>
                     <input type="checkbox" name="newsletter"><label> Suscribite a nuestra newsletter para recibir novedades</label>
+                    <h6>* - Campos Requeridos</h6>
                     </div>
                     <br>
                     <div>
@@ -33,6 +37,11 @@
                         <input type="reset" value="Borrar" name="reset_reg">
                     </div>
                 </form>
+            </div>
+            <div>
+                <% if(msje) { %>
+                    <p><%= msje %></p>
+                <%}%>
             </div>
         <br>
         </section>

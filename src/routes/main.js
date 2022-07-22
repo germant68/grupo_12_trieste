@@ -9,6 +9,7 @@ const productosController = require('../controllers/productosController');
 
 const router = express.Router();         //Definimos la variable router quien nos va a rutear los pedidos al controlados
 
+// Rutas GET
 router.get('/', mainController.home);
 
 router.get('/login', mainController.login);
@@ -24,6 +25,9 @@ router.get('/productos', productosController.productos);
 router.get('/faq', mainController.faq);
 
 router.get('/contacto', mainController.contacto);
+
+// Rutas POST
+router.post('/registro', mainController.postRegistro);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

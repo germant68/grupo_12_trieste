@@ -1,0 +1,20 @@
+[
+ {
+  "id": 1,
+  "nombre_reg": "Ernesto",
+  "apellido_reg": "Caballero",
+  "usuario_reg": "ecaballero",
+  "email_reg": "elmono007@gmail.com",
+  "pwd_reg": "1234"
+ },
+ {
+  "id": 2,
+  "usuario_reg": "ernesto1245",
+  "email_reg": "monete@hotmail.com",
+  "nombre_reg": "Ernesto",
+  "apellido_reg": "Cavallero",
+  "pwd_reg": "$2a$10$R0a.Qcq/GamnpuJlC.Qtlub6prXQm9xZ.gjLy/CIbDRvfrUbj4xtC",
+  "pwdrepeat": "123",
+  "submit_reg": "Enviar"
+ }
+]
