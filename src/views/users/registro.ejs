@@ -10,13 +10,13 @@
                 <br>
                 <form action="/registro" method="POST" class="form_reg">
                     <label for="usuario_reg">Usuario*</label>
-                    <input type="text" name="usuario_reg" minlength=4 required>
+                    <input type="text" name="usuario_reg" minlength=8 required>
                     <br>
                     <label for="">Dirección de correo electrónico*</label>
                     <input type="email" name="email_reg" required>
                     <br>
                     <label for="">Nombre*</label>
-                    <input type="text" name="nombre_reg" required>
+                    <input type="text" name="nombre_reg" value="<%= locals.prev && prev.name ? prev.name : '' %>" required>
                     <br>
                     <label for="">Apellido*</label>
                     <input type="text" name="apellido_reg" required>
@@ -39,9 +39,13 @@
                 </form>
             </div>
             <div>
-                <% if(msje) { %>
-                    <p><%= msje %></p>
+                <!--
+                <% if(locals.errors){
+                    errors.forEach((err) => {%>
+                        <p><%= err.msg %></p>
+                    <%})%>
                 <%}%>
+                -->
             </div>
         <br>
         </section>

@@ -84,6 +84,7 @@ const controller = {
             console.log(email_reg);
             const userLogin = modelUser.findByField('email_reg', email_reg)
             console.log(userLogin);
+
             if(userLogin){
                 const msjeError = 'El susuario ya se encuentra registrado';
                 res.render(path.join(__dirname, '../views/users/registro'), {'msje': msjeError });
