@@ -31,8 +31,12 @@ const controller = {
     },
 
     altaProducto: (req, res) => {
-      
+
       res.render(path.join(__dirname, '../views/products/altaProducto'));
+    },
+
+    productoDetalle: (req, res) => {
+      res.render(path.join(__dirname, '../views/products/productoDetalle'));
     }
 }
 

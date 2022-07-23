@@ -51,7 +51,7 @@
             <!-- lo dejamos en 6 para que se vea mejor -->
             <% for (let i=0; i< 6; i++) { %>   
                 <div class="producto">
-                    <a href="#"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
+                    <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
                     <div class="product__decription">
                         <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
                         <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
@@ -82,49 +82,51 @@
 
 <br>
 <%- include('./partials/footer') %>
-<script>
-// const slider = document.querySelector("#slider");
-// let sliderSection = document.querySelectorAll(".slider__section");
-// let sliderSectionLast = sliderSection[sliderSection.length -1];
 
-// const btnLeft = document.querySelector("#btn-left");
-// const btnRight = document.querySelector("#btn-right");
+<script src="../../public/js/scripts.js"></script>
+<!--
+const slider = document.querySelector("#slider");
+let sliderSection = document.querySelectorAll(".slider__section");
+let sliderSectionLast = sliderSection[sliderSection.length -1];
 
-// slider.insertAdjacentElement('afterbegin', sliderSectionLast);
+const btnLeft = document.querySelector("#btn-left");
+const btnRight = document.querySelector("#btn-right");
 
-// function Next() {
-//     let sliderSectionFirst = document.querySelectorAll(".slider__section")[0]
-//     slider.style.marginLeft = "-200%"
-//     slider.style.transition = "all 0.5s"
-//     setTimeout(function(){
-//         slider.style.transition = "none"
-//         slider.insertAdjacentElement('beforeend', sliderSectionFirst)
-//         slider.style.marginLeft = "-100%"
-//     }, 500);
-// }
-// function Prev() {
-//     let sliderSection = document.querySelectorAll(".slider__section");
-//     let sliderSectionLast = sliderSection[sliderSection.length -1];
-//     slider.style.marginLeft = "0"
-//     slider.style.transition = "all 0.5s"
-//     setTimeout(function(){
-//         slider.style.transition = "none"
-//         slider.insertAdjacentElement('afterbegin', sliderSectionLast);
-//         slider.style.marginLeft = "-100%"
-//     }, 500);
-// }
+slider.insertAdjacentElement('afterbegin', sliderSectionLast);
 
-// btnRight.addEventListener('click', function(){
-//     Next();
-// });
+function Next() {
+    let sliderSectionFirst = document.querySelectorAll(".slider__section")[0]
+    slider.style.marginLeft = "-200%"
+    slider.style.transition = "all 0.5s"
+    setTimeout(function(){
+        slider.style.transition = "none"
+        slider.insertAdjacentElement('beforeend', sliderSectionFirst)
+        slider.style.marginLeft = "-100%"
+    }, 500);
+}
+function Prev() {
+    let sliderSection = document.querySelectorAll(".slider__section");
+    let sliderSectionLast = sliderSection[sliderSection.length -1];
+    slider.style.marginLeft = "0"
+    slider.style.transition = "all 0.5s"
+    setTimeout(function(){
+        slider.style.transition = "none"
+        slider.insertAdjacentElement('afterbegin', sliderSectionLast);
+        slider.style.marginLeft = "-100%"
+    }, 500);
+}
 
-// btnLeft.addEventListener('click', function(){
-//     Prev();
-// });
+btnRight.addEventListener('click', function(){
+    Next();
+});
 
-// setInterval(function(){
-//     Next();
-// }, 5000);
-</script>
+btnLeft.addEventListener('click', function(){
+    Prev();
+});
+
+setInterval(function(){
+    Next();
+}, 5000); 
+</script>-->
 </body>
 </html>
