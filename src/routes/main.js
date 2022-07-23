@@ -39,6 +39,8 @@ router.get('/faq', mainController.faq);
 
 router.get('/contacto', mainController.contacto);
 
+router.get('/altaProducto', productosController.altaProducto);
+
 // Rutas POST
 router.post('/registro', validacionesRegistro, mainController.postRegistro);
 

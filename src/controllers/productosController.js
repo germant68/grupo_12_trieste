@@ -29,6 +29,11 @@ const controller = {
 
         res.render(path.join(__dirname, '../views/products/productos'), {'listadoDiscos': listadoDiscos});
     },
+
+    altaProducto: (req, res) => {
+      
+      res.render(path.join(__dirname, '../views/products/altaProducto'));
+    }
 }
 
 // Finalizamos devolviendo el objeto

@@ -252,6 +252,9 @@ h2, section {
     text-align: center;
 }
 
+
+/* Formulario de Registracio */
+
 .form_reg {
     display: flex;
     flex-direction: column;
@@ -286,6 +289,43 @@ h2, section {
     color: white;
 }
 
+/* Formulario de Alta de Producto */
+
+.form_reg_alta_producto {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.form_reg_alta_producto input[name=nombreArtista_alta],
+.form_reg_alta_producto input[name=nombreDisco_alta],
+.form_reg_alta_producto input[name=stock_alta],
+.form_reg_alta_producto input[name=precio_alta],
+.form_reg_alta_producto input[name=sku_alta],
+.form_reg_alta_producto input[name=imagen_alta],
+.form_reg_alta_producto input[name=categoria_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+.form_reg_alta_producto input[name=reset_alta],
+.form_reg_alta_producto input[name=submit_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_reg_alta_producto input[name=reset_alta]:hover,
+.form_reg_alta_producto input[name=submit_alta]:hover {
+    background-color:dimgray;
+    color: white;
+}
+/* Fin Estilos Formulario Alta Producto*/
 
 #disco {
     font-size: 30px;

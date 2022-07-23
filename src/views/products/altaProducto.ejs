@@ -1,0 +1,68 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section>
+            <div>
+                <h2>ALTA DE PRODUCTO</h2>
+            </div>
+            <div>
+                <br>
+                <!--
+                <% if (locals.errores) { %>
+                    <% errores.forEach(e => { %>
+                        <p><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                    <% } )%>
+                <% }%>
+                <% if (locals.msje) { %>
+                     <%= locals.msje %></p>
+                <% }%>
+
+                -->
+                <form action="/altaProducto" method="POST" class="form_reg_alta_producto">
+                    <label for="nombreArtista_alta">Nombre Artista*</label>
+                    <input type="text" name="nombreArtista_alta" value="<%= locals.prev && prev.nombreArtista_alta ? prev.nombreArtista_alta: '' %>" required>
+                    <br>
+                    <label for="nombreDisco_alta">Nombre del Disco*</label>
+                    <input type="text" name="nombreDisco_alta" value="<%= locals.prev && prev.nombreDisco_alta ? prev.nombreDisco_alta: '' %>" required>
+                    <br>
+                    <label for="">Categoría*</label>
+                    <select name="categoria_alta">
+                        <option value="Rock">Rock</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Blues">Blues</option>
+                        <option value="Electronica">Electrónica</option>
+                        <option value="Tango">Tango</option>
+                    </select>
+                    <br>
+                    <label for="">Precio*</label>
+                    <input type="text" name="precio_alta" value="<%= locals.prev && prev.precio_alta ? prev.precio_alta : '' %>" required>
+                    <br>
+                    <label for="">Stock*</label>
+                    <input type="text" name="stock_alta" value="<%= locals.prev && prev.stock_alta ? prev.stock_alta: '' %>" required>
+                    <br>
+                    <label for="">SKU*</label>
+                    <input type="text" name="sku_alta" value="<%= locals.prev && prev.sku_alta ? prev.sku_alta: '' %>" required>
+                    <br>
+                    <label for="">Recomendado*</label>
+                    <input type="checkbox" name="recomendado_alta" value="<%= locals.prev && prev.recomendado_alta ? prev.recomendado_alta: '' %>" required>
+                    <br>
+                    <label for="">Imagen*</label>
+                    <input type="text" name="imagen_alta" value="<%= locals.prev && prev.imagen_alta ? prev.imagen_alta: '' %>" required>
+                    <br>
+                    <div>
+                        <input type="submit" value="Grabar" name="submit_alta">
+                        <input type="reset" value="Borrar" name="reset_alta">
+                    </div>
+                </form>
+            </div>
+
+        <br>
+        </section>
+        
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
