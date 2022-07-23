@@ -28,7 +28,11 @@ const usuario = {
         const allUsers = usuario.getAllUsuarios();
         const obj = {
             id: usuario.newId(),
-            ...data,
+            email_reg: data.email_reg,
+            nombre_reg: data.nombre_reg,
+            apellido_reg: data.apellido_reg,
+            usuario_reg: data.usuario_reg,
+            pwd_reg: data.pwd_reg,
         }
 
         allUsers.push(obj);

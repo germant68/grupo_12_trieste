@@ -8,27 +8,36 @@
             </div>
             <div>
                 <br>
+                <% if (locals.errores) { %>
+                    <% errores.forEach(e => { %>
+                        <p><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                    <% } )%>
+                <% }%>
+                <% if (locals.msje) { %>
+                     <%= locals.msje %></p>
+                <% }%>
+
                 <form action="/registro" method="POST" class="form_reg">
                     <label for="usuario_reg">Usuario*</label>
-                    <input type="text" name="usuario_reg" minlength=8 required>
+                    <input type="text" name="usuario_reg" value="<%= locals.prev && prev.usuario_reg ? prev.usuario_reg: '' %>" required>
                     <br>
                     <label for="">Dirección de correo electrónico*</label>
-                    <input type="email" name="email_reg" required>
+                    <input type="email" name="email_reg" value="<%= locals.prev && prev.email_reg ? prev.email_reg: '' %>" required>
                     <br>
                     <label for="">Nombre*</label>
-                    <input type="text" name="nombre_reg" value="<%= locals.prev && prev.name ? prev.name : '' %>" required>
+                    <input type="text" name="nombre_reg" value="<%= locals.prev && prev.nombre_reg ? prev.nombre_reg : '' %>" required>
                     <br>
                     <label for="">Apellido*</label>
-                    <input type="text" name="apellido_reg" required>
+                    <input type="text" name="apellido_reg" value="<%= locals.prev && prev.apellido_reg ? prev.apellido_reg: '' %>" required>
                     <br>
                     <label for="pwd_reg">Contraseña</label>
-                    <input type="password" name="pwd_reg" id="pwd_reg" minlength="2" required> 
+                    <input type="password" name="pwd_reg" id="pwd_reg" required> 
                     <br>
                     <label for="pwdrepeat">Repita su Contraseña</label>
                     <input type="password" name="pwdrepeat" id="pwdrepeat" required> 
                     <br>
                     <div>
-                    <input type="checkbox" name="newsletter"><label> Suscribite a nuestra newsletter para recibir novedades</label>
+                    <input type="checkbox" name="newsletter" value="<%= locals.prev && prev.newsletter ? prev.newsletter: '' %>"> <label> Suscribite a nuestra newsletter para recibir novedades</label>
                     <h6>* - Campos Requeridos</h6>
                     </div>
                     <br>
@@ -38,15 +47,7 @@
                     </div>
                 </form>
             </div>
-            <div>
-                <!--
-                <% if(locals.errors){
-                    errors.forEach((err) => {%>
-                        <p><%= err.msg %></p>
-                    <%})%>
-                <%}%>
-                -->
-            </div>
+
         <br>
         </section>
         
