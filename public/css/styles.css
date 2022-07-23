@@ -303,7 +303,7 @@ h2, section {
 .form_reg_alta_producto input[name=precio_alta],
 .form_reg_alta_producto input[name=sku_alta],
 .form_reg_alta_producto input[name=imagen_alta],
-.form_reg_alta_producto input[name=categoria_alta] {
+.form_reg_alta_producto select[name=categoria_alta] {
     padding: 12px 20px;
     border-radius: 8px;
     width: 20%;
