@@ -32,5 +32,13 @@
   "apellido_reg": "Pepe",
   "usuario_reg": "Sapo3456",
   "pwd_reg": "$2a$10$hI.Zh.wnihOOm4EenJBps.7Vkf2EcGYaUUYgzR3ez.UW6vUZE4TZS"
+ },
+ {
+  "id": 5,
+  "email_reg": "elmono0071@gmail.com",
+  "nombre_reg": "Monete",
+  "apellido_reg": "Sarlanga",
+  "usuario_reg": "ecaballerosss",
+  "pwd_reg": "$2a$10$EvP9Ct7XbjRqAmRlrEt0t.i/v8KepyZNByZyHTb8eTeEeAT9uI45m"
  }
 ]

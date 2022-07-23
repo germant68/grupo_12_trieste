@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Guardamos el resultado de las validaciones para devolverlas en 
-// el Front
+// el Front y una variable global para el mensaje de error del contenido del form
 const {validationResult} = require('express-validator');
 
 // Declaro la variable para la encriptacion
@@ -90,33 +90,50 @@ const controller = {
             pwd_reg
         }=req.body;
     
-        //Traemos las validaciones del 
+        //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);
     
         if(errores.isEmpty()){
             
-            //Buscamos el usuario por email. Si Existe no puede darse de alta
-            const userLogin = modelUser.findByField('email_reg', email_reg);
+            //ahora validamos que el usuario no exista.
+            const userId = modelUser.findByField('usuario_reg', usuario_reg);
 
-            if(userLogin){
+            if(userId){
 
-                const msjeError = 'El susuario ya se encuentra registrado';
-                res.render(path.join(__dirname, '../views/users/registro'), {'msje': msjeError });
+                const msjeError = 'El usuario ya se encuentra registrado';
+                res.render(path.join(__dirname, '../views/users/registro'), {
+                    'msje': msjeError, 
+                    'errores':errores.array(),
+                    'prev': req.body });
             
             }else{
-                
-                //creamos el objeto con los valores que paso del Body y 
-                //hacemos un HASH sobre la contraseña.
-                const obj = {
-                    ...req.body,
-                    pwd_reg: bcryptjs.hashSync(pwd_reg, 10),
-                };
-                //res.send(obj);
-                //Llamamos al metodo de Model que da de alta el usuario
-                modelUser.create(obj);
-                const msjeExito = 'Usuario Creado Satisfactoriamente';
-                res.render(path.join(__dirname, '../views/users/registro'), {'msje': msjeExito });
+
+                //Buscamos el usuario por email. Si Existe no puede darse de alta
+                const userLogin = modelUser.findByField('email_reg', email_reg);
+
+                if(userLogin) {
+                    
+                    const msjeError = 'El mail ya se encuentra registrado';
+                    res.render(path.join(__dirname, '../views/users/registro'), {
+                        'msje': msjeError, 
+                        'errores':errores.array(),
+                        'prev': req.body });
+                }else{
+
+                    //creamos el objeto con los valores que paso del Body y 
+                    //hacemos un HASH sobre la contraseña.
+                    const obj = {
+                        ...req.body,
+                        pwd_reg: bcryptjs.hashSync(pwd_reg, 10),
+                    };
+                    //res.send(obj);
+                    //Llamamos al metodo de Model que da de alta el usuario
+                    modelUser.create(obj);
+                    const msjeExito = 'Usuario Creado Satisfactoriamente';
+                    res.render(path.join(__dirname, '../views/users/registro'), {'msje': msjeExito });
+                }
             }
+            
         }else{
             
             // Acá sí hubo errores en alguno de los campos de los formularios.
