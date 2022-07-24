@@ -35,7 +35,7 @@ router.get('/login', mainController.login);
 
 router.get('/registro', mainController.registro);
 
-router.get('/ofertas', mainController.ofertas);
+router.get('/ofertas', productosController.ofertas);
 
 router.get('/carrito', mainController.carrito);
 
@@ -54,7 +54,7 @@ router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 // Rutas POST
 router.post('/registro', validacionesRegistro, mainController.postRegistro);
 
-router.post('/login', validateLogin, mainController.login);
+router.post('/login', validateLogin, mainController.loginPost);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

@@ -49,7 +49,10 @@ const controller = {
 
     //LOGIN
     login: (req, res) => {
-
+        res.render(path.join(__dirname, '../views/users/login.ejs'));
+    },
+        
+    loginPost: (req, res) => {
         //Creamos primero el objeto con los valores del formulario.
         const{
             usuario_log,
@@ -79,26 +82,18 @@ const controller = {
             }else{
                 res.send("ERROR! No se encontro el usuario");
             };
+
         } else {
             res.render('login',{
                 'errores':errors.array(),
                 'prev': req.body
             })
         }
-
-
-        //primero validamos que el mail sea mail y pwd no este vacio
-        res.render(path.join(__dirname, '../views/users/login.ejs'));
     },
 
     //REGISTRO DE USUARIO
     registro: (req, res) => {
         res.render(path.join(__dirname, '../views/users/registro.ejs'));
-    },
-
-    //OFERTAS
-    ofertas: (req, res) => {
-        res.render(path.join(__dirname, '../views/ofertas'));
     },
 
     //CARRITO

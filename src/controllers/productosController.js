@@ -46,7 +46,12 @@ const controller = {
 
     busquedaAvanzada: (req, res) => {
       res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {'alfabeto': alfabeto});
-    }
+    },
+
+    //OFERTAS
+    ofertas: (req, res) => {
+      res.render(path.join(__dirname, '../views/ofertas'), {'listadoDiscos': listadoDiscos});
+      },
 }
 
 // Finalizamos devolviendo el objeto
