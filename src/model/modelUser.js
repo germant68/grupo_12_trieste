@@ -50,7 +50,7 @@ const usuario = {
     },
 
     findByField: (field, text) => {
-        console.log('findbyfield');
+        
         return usuario.getAllUsuarios().find((element) => element[field] == text);
     }
 }

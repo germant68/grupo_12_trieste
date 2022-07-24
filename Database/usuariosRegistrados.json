@@ -1,44 +1,10 @@
 [
  {
   "id": 1,
+  "email_reg": "elmono007@gmail.com",
   "nombre_reg": "Ernesto",
   "apellido_reg": "Caballero",
-  "usuario_reg": "ecaballero",
-  "email_reg": "elmono007@gmail.com",
-  "pwd_reg": "1234"
- },
- {
-  "id": 2,
-  "usuario_reg": "ernesto1245",
-  "email_reg": "monete@hotmail.com",
-  "nombre_reg": "Ernesto",
-  "apellido_reg": "Cavallero",
-  "pwd_reg": "$2a$10$R0a.Qcq/GamnpuJlC.Qtlub6prXQm9xZ.gjLy/CIbDRvfrUbj4xtC",
-  "pwdrepeat": "123",
-  "submit_reg": "Enviar"
- },
- {
-  "id": 3,
-  "email_reg": "lmessi@hotmail.com",
-  "nombre_reg": "Lionel",
-  "apellido_reg": "Messi",
-  "usuario_reg": "lionelmessi",
-  "pwd_reg": "$2a$10$YXmF4xz2/QEH/s96zYFmE.mUv/1DoKkN7VHG8RxfCT7ezho2pJb16"
- },
- {
-  "id": 4,
-  "email_reg": "sapo@mail.com",
-  "nombre_reg": "Sapo",
-  "apellido_reg": "Pepe",
-  "usuario_reg": "Sapo3456",
-  "pwd_reg": "$2a$10$hI.Zh.wnihOOm4EenJBps.7Vkf2EcGYaUUYgzR3ez.UW6vUZE4TZS"
- },
- {
-  "id": 5,
-  "email_reg": "elmono0071@gmail.com",
-  "nombre_reg": "Monete",
-  "apellido_reg": "Sarlanga",
-  "usuario_reg": "ecaballerosss",
-  "pwd_reg": "$2a$10$EvP9Ct7XbjRqAmRlrEt0t.i/v8KepyZNByZyHTb8eTeEeAT9uI45m"
+  "usuario_reg": "elmono007",
+  "pwd_reg": "$2a$10$th8.5fM5fokWD3AUgZXARe23ZAwYYeVVxHkqgLBFjglUK64tN.0oK"
  }
 ]

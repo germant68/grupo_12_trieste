@@ -54,21 +54,21 @@ const controller = {
         
     loginPost: (req, res) => {
         //Creamos primero el objeto con los valores del formulario.
-        const{
-            usuario_log,
-            pwd_log
-        }=req.body;
+        //uso usuario_reg y pwd_reg para igualar a los campos del archivo
+        //y que funcione el findByField
+        const usuario_reg = req.body.usuario_log;
+        const pwd_reg = req.body.password_log;
     
         //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);
 
         if (errores.isEmpty) {
             //ahora validamos que el usuario exista.
-            const userLogin = modelUser.findByField('usuario_log', usuario_log);
+            const userLogin = modelUser.findByField('usuario_reg', usuario_reg);
 
             if (userLogin) {
                 //debemos chequear la contraseña
-                const pwd = bcryptjs.compareSync(pwd_log,userLogin.pwd_reg);
+                const pwd = bcryptjs.compareSync(pwd_reg,userLogin.pwd_reg);
                 
                 if (pwd) {
                     // creamos la sesion
