@@ -49,6 +49,45 @@ const controller = {
 
     //LOGIN
     login: (req, res) => {
+
+        //Creamos primero el objeto con los valores del formulario.
+        const{
+            usuario_log,
+            pwd_log
+        }=req.body;
+    
+        //Traemos las validaciones del Formulario de Registro
+        const errores = validationResult(req);
+
+        if (errores.isEmpty) {
+            //ahora validamos que el usuario exista.
+            const userLogin = modelUser.findByField('usuario_log', usuario_log);
+
+            if (userLogin) {
+                //debemos chequear la contraseña
+                const pwd = bcryptjs.compareSync(pwd_log,userLogin.pwd_reg);
+                
+                if (pwd) {
+                    // creamos la sesion
+                    req.session.userLogged = userLogin;
+                    return res.send("Bienvenido" + userLogin.usuario_reg);
+                }else{
+                    return res.send("Contraseña incorrecta");
+
+                }
+
+            }else{
+                res.send("ERROR! No se encontro el usuario");
+            };
+        } else {
+            res.render('login',{
+                'errores':errors.array(),
+                'prev': req.body
+            })
+        }
+
+
+        //primero validamos que el mail sea mail y pwd no este vacio
         res.render(path.join(__dirname, '../views/users/login.ejs'));
     },
 

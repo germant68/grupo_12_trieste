@@ -21,7 +21,12 @@ const listadoDiscos = json.map(e => {
       img: e.img,
 
     }
-  }) 
+  });
+
+// Generamos un array con todas las letras que vamos a usar para la busqueda avanzada.
+const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const alfabeto = alpha.map((x) => String.fromCharCode(x));
+
 
 //definimos el objeto Controller
 const controller = {
@@ -37,6 +42,10 @@ const controller = {
 
     productoDetalle: (req, res) => {
       res.render(path.join(__dirname, '../views/products/productoDetalle'));
+    },
+
+    busquedaAvanzada: (req, res) => {
+      res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {'alfabeto': alfabeto});
     }
 }
 

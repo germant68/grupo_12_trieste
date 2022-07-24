@@ -22,6 +22,12 @@ const validacionesRegistro = [
     body('pwd_reg').isLength({ min: 8}).withMessage('La contraseña debe tener mínimo 8 caracteres'),
 ];
 
+//Validaciones Login
+const validateLogin = [
+    body('usuario_log').isEmpty().withMessage('Debe ingresar su usuario'),
+    body('password_log').notEmpty().withMessage('Debe ingresar su password')
+];
+
 // Rutas GET
 router.get('/', mainController.home);
 
@@ -43,8 +49,12 @@ router.get('/productoDetalle', productosController.productoDetalle);
 
 router.get('/altaProducto', productosController.altaProducto);
 
+router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
+
 // Rutas POST
 router.post('/registro', validacionesRegistro, mainController.postRegistro);
+
+router.post('/login', validateLogin, mainController.login);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

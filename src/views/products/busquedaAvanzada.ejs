@@ -1,0 +1,12 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+        <h2 class="main-title">Búsqueda Avanzada</h2>
+        <div class="container-alfabeto">
+            <% for(let i=0; i < alfabeto.length ; i++) {%>
+                <p class="item-alfabeto"><a href="#" class="href-alfabeto"><%= alfabeto[i]%></a></p>
+            <% }%>
+        </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>

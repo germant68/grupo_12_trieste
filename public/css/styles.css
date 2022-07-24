@@ -590,3 +590,27 @@ footer {
 .producto_box_ecv .producto_card_ecv .listadoDiscos-informacion {
     font-size: 16px;
 }
+
+/* CONTAINER ALFABETO */
+.container-alfabeto {
+    display: flex;
+    justify-content: center;
+
+}
+
+.item-alfabeto {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 2px;
+    width: 30px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+.href-alfabeto {
+    background-color: transparent;
+    text-decoration: none;
+}
