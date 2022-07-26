@@ -28,6 +28,16 @@ const validateLogin = [
     body('password_log').notEmpty().withMessage('Debe ingresar su password')
 ];
 
+//Validaciones AltaProducto
+const validateAltaProducto = [
+    body('nombreArtista').notEmpty().withMessage('Debe ingresar el nombre del Artista'),
+    body('nombreDisco').notEmpty().withMessage('Debe ingresar el nombre del Disco'),
+    body('precio').notEmpty().withMessage('Debe ingresar el precio del producto'),
+    body('precio').isNumeric().withMessage('El precio debe ser numérico'),
+    body('stock').isNumeric().withMessage('El stock debe ser numérico'),
+
+];
+
 // Rutas GET
 router.get('/', mainController.home);
 
@@ -55,6 +65,8 @@ router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 router.post('/registro', validacionesRegistro, mainController.postRegistro);
 
 router.post('/login', validateLogin, mainController.loginPost);
+
+router.post('/altaProducto', validateAltaProducto, productosController.altaProductoPost);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

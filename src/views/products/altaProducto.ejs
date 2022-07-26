@@ -8,26 +8,26 @@
             </div>
             <div>
                 <br>
-                <!--
+                
                 <% if (locals.errores) { %>
                     <% errores.forEach(e => { %>
-                        <p><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
                     <% } )%>
                 <% }%>
-                <% if (locals.msje) { %>
-                     <%= locals.msje %></p>
-                <% }%>
 
-                -->
+                <% if (locals.msje) { %>
+                    <p><%= locals.msje %></p>
+               <% }%>
+
                 <form action="/altaProducto" method="POST" class="form_reg_alta_producto">
-                    <label for="nombreArtista_alta">Nombre Artista*</label>
-                    <input type="text" name="nombreArtista_alta" value="<%= locals.prev && prev.nombreArtista_alta ? prev.nombreArtista_alta: '' %>" required>
+                    <label for="nombreArtista">Nombre Artista*</label>
+                    <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
                     <br>
-                    <label for="nombreDisco_alta">Nombre del Disco*</label>
-                    <input type="text" name="nombreDisco_alta" value="<%= locals.prev && prev.nombreDisco_alta ? prev.nombreDisco_alta: '' %>" required>
+                    <label for="nombreDisco">Nombre del Disco*</label>
+                    <input type="text" name="nombreDisco" value="<%= locals.prev && prev.nombreDisco ? prev.nombreDisco : '' %>" >
                     <br>
                     <label for="">Categoría*</label>
-                    <select name="categoria_alta">
+                    <select name="categoria">
                         <option disabled selected value> -- selccione una opción -- </option>
                         <option value="Rock">Rock</option>
                         <option value="Jazz">Jazz</option>
@@ -38,20 +38,20 @@
                     </select>
                     <br>
                     <label for="">Precio*</label>
-                    <input type="text" name="precio_alta" value="<%= locals.prev && prev.precio_alta ? prev.precio_alta : '' %>" required>
+                    <input type="text" name="precio" value="<%= locals.prev && prev.precio ? prev.precio : '' %>" >
                     <br>
                     <label for="">Stock*</label>
-                    <input type="text" name="stock_alta" value="<%= locals.prev && prev.stock_alta ? prev.stock_alta: '' %>" required>
+                    <input type="text" name="stock" value="<%= locals.prev && prev.stock ? prev.stock : '' %>" >
                     <br>
                     <label for="">SKU*</label>
-                    <input type="text" name="sku_alta" value="<%= locals.prev && prev.sku_alta ? prev.sku_alta: '' %>" required>
+                    <input type="text" name="sku" value="<%= locals.prev && prev.sku ? prev.sku : '' %>" >
                     <br>
                     <label for="">Recomendado*</label>
-                    <input type="checkbox" name="recomendado_alta" value="<%= locals.prev && prev.recomendado_alta ? prev.recomendado_alta: '' %>" required>
+                    <input type="checkbox" name="recomendado" value="<%= locals.prev && prev.recomendado ? prev.recomendado : '' %>" >
                     <br>
                     <label for="">Imagen*</label>
-                    <input type="text" name="imagen_alta" value="<%= locals.prev && prev.imagen_alta ? prev.imagen_alta: '' %>" required>
-                    <br>
+                    <input type="file" name="imagen" value="<%= locals.prev && prev.imagen ? prev.imagen : '' %>" >
+                    <h6>* - Campos Requeridos</h6>
                     <div>
                         <input type="submit" value="Grabar" name="submit_alta">
                         <input type="reset" value="Borrar" name="reset_alta">

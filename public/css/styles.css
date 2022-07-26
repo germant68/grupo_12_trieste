@@ -254,6 +254,9 @@ h2, section {
 
 
 /* Formulario de Registracio */
+.error_msg_form {
+    color: red;
+}
 
 .form_reg {
     display: flex;
@@ -297,13 +300,13 @@ h2, section {
     margin: auto;
 }
 
-.form_reg_alta_producto input[name=nombreArtista_alta],
-.form_reg_alta_producto input[name=nombreDisco_alta],
-.form_reg_alta_producto input[name=stock_alta],
-.form_reg_alta_producto input[name=precio_alta],
-.form_reg_alta_producto input[name=sku_alta],
-.form_reg_alta_producto input[name=imagen_alta],
-.form_reg_alta_producto select[name=categoria_alta] {
+.form_reg_alta_producto input[name=nombreArtista],
+.form_reg_alta_producto input[name=nombreDisco],
+.form_reg_alta_producto input[name=stock],
+.form_reg_alta_producto input[name=precio],
+.form_reg_alta_producto input[name=sku],
+.form_reg_alta_producto input[name=imagen],
+.form_reg_alta_producto select[name=categoria] {
     padding: 12px 20px;
     border-radius: 8px;
     width: 20%;

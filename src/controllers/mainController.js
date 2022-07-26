@@ -160,7 +160,7 @@ const controller = {
                         ...req.body,
                         pwd_reg: bcryptjs.hashSync(pwd_reg, 10),
                     };
-                    //res.send(obj);
+                    
                     //Llamamos al metodo de Model que da de alta el usuario
                     modelUser.create(obj);
                     const msjeExito = 'Usuario Creado Satisfactoriamente';

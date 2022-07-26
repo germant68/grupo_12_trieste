@@ -24,7 +24,7 @@ const usuario = {
     },
 
     create:(data) => {
-        console.log('create');
+        
         const allUsers = usuario.getAllUsuarios();
         const obj = {
             id: usuario.newId(),
@@ -32,7 +32,7 @@ const usuario = {
             nombre_reg: data.nombre_reg,
             apellido_reg: data.apellido_reg,
             usuario_reg: data.usuario_reg,
-            pwd_reg: data.pwd_reg,
+            pwd_reg: data.pwd_reg
         }
 
         allUsers.push(obj);
