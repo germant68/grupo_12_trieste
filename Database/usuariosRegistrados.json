@@ -16,5 +16,15 @@
   "pwd_reg": "$2a$10$R0a.Qcq/GamnpuJlC.Qtlub6prXQm9xZ.gjLy/CIbDRvfrUbj4xtC",
   "pwdrepeat": "123",
   "submit_reg": "Enviar"
+ },
+ {
+  "id": 3,
+  "usuario_reg": "german@gmail.com",
+  "email_reg": "german@gmail.com",
+  "nombre_reg": "a",
+  "apellido_reg": "g",
+  "pwd_reg": "$2a$10$lP1YEskE0dV2KiTR2am/Ou6k2K.RCOnur2pqjZQLaemsQnjaNzZiK",
+  "pwdrepeat": "123456",
+  "submit_reg": "Enviar"
  }
 ]

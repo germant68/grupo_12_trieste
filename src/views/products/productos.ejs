@@ -2,13 +2,13 @@
 <body>
     <%- include('../partials/header') %>
     <br>
-    <main class="main">
-        <div class="container">
+    <main>
+        <div>
             <h2 class="main-title">LISTADO DE DISCOS</h2>
             <section class="container-productos">
                 <!-- lo dejamos en 6 para que se vea mejor -->
                 <% for (let i=0; i< listadoDiscos.length; i++) { %>   
-                    <div class="producto">
+                    <div class="producto-listado">
                         <a href="#"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
                         <div class="product__decription">
                             <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
