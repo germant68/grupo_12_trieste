@@ -47,7 +47,7 @@
 <main class="main">
         <h2 class="main-title">TE RECOMENDAMOS</h2>
         <section class="container-productos">
-            <% for (let i=0; i< 6; i++) { %>   
+            <% for (let i=0; i< listadoDiscos.length; i++) { %>   
                 <div class="producto-listado">
                     <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
                     <div class="product__decription">
@@ -65,7 +65,7 @@
     <h2 class="main-title">LOS MAS VENDIDOS</h2>
     <section class="container-productos">
 
-        <% for (let i=0; i<6; i++) { %>
+        <% for (let i=0; i<listadoDiscos.length; i++) { %>
        <div class="producto-listado">
         <a href="#"><img src=<%= listadoDiscos[i].img %> alt="" class="producto__img"></a>
         <div class="product__decription">
@@ -79,7 +79,7 @@
 
     <h2 class="main-title">OFERTAS</h2>
     <section class="container-productos">
-        <% for (let i=0; i< 6; i++) { %>   
+        <% for (let i=0; i< listadoDiscos.length; i++) { %>   
             <div class="producto">
                 <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
                 <div class="product__decription">

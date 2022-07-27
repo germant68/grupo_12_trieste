@@ -133,6 +133,7 @@ body {
 .container-productos{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .producto {
@@ -214,7 +215,7 @@ header {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     width: 300px;
 }
 

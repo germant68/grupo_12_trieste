@@ -6,8 +6,12 @@
             <i class="fa fa-search"></i>
         </div>             
         <div class="header_top_right">
+            <% if (1==1) {%>
             <p><a href="/registro">CREAR CUENTA</a></p>
-            <p><a href="/login">INICIAR SESIÓN</a>
+            <% } else { %>
+            <p><a href="/registro" style="color: red;">HOLA ERNESTO</a></p>
+            <% } %>
+            <p><a href="/login">LOGIN</a>
             <p><a href="/carrito"><i class="fa-solid fa-basket-shopping"></i></a></p>
         </div>
     </div>
