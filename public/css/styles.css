@@ -132,14 +132,16 @@ body {
 
 .container-productos{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .producto {
+    display: block;
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
     position: relative;
-    width: 100%;
+    width: 35vh;
     border-bottom: solid 1px #ebebeb;
     border-radius: 10px;
 }
@@ -153,6 +155,19 @@ body {
     right: 10px;
     color: white;
 }
+
+.producto-listado {
+    display: block;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 35vh;
+    border-bottom: solid 1px #ebebeb;
+    border-radius: 10px;
+}
+
+
 .producto__img{
     width: 100%;
     height: 120px;
