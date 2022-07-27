@@ -267,6 +267,12 @@ h2, section {
     text-align: center;
 }
 
+
+/* Formulario de Registracio */
+.error_msg_form {
+    color: red;
+}
+
 .form_reg {
     display: flex;
     flex-direction: column;
@@ -301,6 +307,43 @@ h2, section {
     color: white;
 }
 
+/* Formulario de Alta de Producto */
+
+.form_reg_alta_producto {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.form_reg_alta_producto input[name=nombreArtista],
+.form_reg_alta_producto input[name=nombreDisco],
+.form_reg_alta_producto input[name=stock],
+.form_reg_alta_producto input[name=precio],
+.form_reg_alta_producto input[name=sku],
+.form_reg_alta_producto input[name=imagen],
+.form_reg_alta_producto select[name=categoria] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+.form_reg_alta_producto input[name=reset_alta],
+.form_reg_alta_producto input[name=submit_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_reg_alta_producto input[name=reset_alta]:hover,
+.form_reg_alta_producto input[name=submit_alta]:hover {
+    background-color:dimgray;
+    color: white;
+}
+/* Fin Estilos Formulario Alta Producto*/
 
 #disco {
     font-size: 30px;
@@ -564,4 +607,28 @@ footer {
 
 .producto_box_ecv .producto_card_ecv .listadoDiscos-informacion {
     font-size: 16px;
+}
+
+/* CONTAINER ALFABETO */
+.container-alfabeto {
+    display: flex;
+    justify-content: center;
+
+}
+
+.item-alfabeto {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 2px;
+    width: 30px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+.href-alfabeto {
+    background-color: transparent;
+    text-decoration: none;
 }
