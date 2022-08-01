@@ -10,9 +10,9 @@
  {
   "id": 2,
   "email_reg": "admin@gmail.com",
-  "nombre_reg": "Administrador",
-  "apellido_reg": "Trieste",
+  "nombre_reg": "admin",
+  "apellido_reg": "admin",
   "usuario_reg": "administrador",
-  "pwd_reg": "$2a$10$HFxbPNo9ampyTneDHDdfZuSfAIIhwfiGikUtpx5oQm0ozcKhoG59i"
+  "pwd_reg": "$2a$10$wzzaoX97CejlD4b8w9cd7OwB6VTCTWt.H8WHHhn8cHlrvEq.A4LV2"
  }
 ]
