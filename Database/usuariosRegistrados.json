@@ -6,5 +6,13 @@
   "apellido_reg": "Caballero",
   "usuario_reg": "elmono007",
   "pwd_reg": "$2a$10$th8.5fM5fokWD3AUgZXARe23ZAwYYeVVxHkqgLBFjglUK64tN.0oK"
+ },
+ {
+  "id": 2,
+  "email_reg": "admin@gmail.com",
+  "nombre_reg": "Administrador",
+  "apellido_reg": "Trieste",
+  "usuario_reg": "administrador",
+  "pwd_reg": "$2a$10$HFxbPNo9ampyTneDHDdfZuSfAIIhwfiGikUtpx5oQm0ozcKhoG59i"
  }
 ]

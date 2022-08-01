@@ -36,17 +36,49 @@ const listadoDiscos = json.map(e => {
 const alpha = Array.from(Array(26)).map((e, i) => i + 65);
 const alfabeto = alpha.map((x) => String.fromCharCode(x));
 
-
 //definimos el objeto Controller
 const controller = {
     productos: (req, res) => {
 
-        res.render(path.join(__dirname, '../views/products/productos'), {'listadoDiscos': listadoDiscos});
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+      console.log(userSession);
+      
+      res.render(path.join(__dirname, '../views/products/productos'), {
+        'session': userSession.userId,
+        'listadoDiscos': listadoDiscos });
+
+    //res.render(path.join(__dirname, '../views/products/productos'), {'listadoDiscos': listadoDiscos});
+    },
+
+    dashboard: (req, res) => {
+
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+
+      //Traemos algunos productos 
+      res.render(path.join(__dirname, '../views/products/dashboard'), {
+              'session': userSession.userId,
+              'listadoDiscos': listadoDiscos });
+
+      //res.render(path.join(__dirname, '../views/products/dashboard'));
     },
 
     //ALTA DE PRODUCTO
     altaProducto: (req, res) => {
-        res.render(path.join(__dirname, '../views/products/altaProducto'));
+
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+      
+      if ( userSession && userSession.userId == 'administrador') {
+
+        res.render(path.join(__dirname, '../views/products/altaProducto'), {
+          'session': userSession.userId,
+          'listadoDiscos': listadoDiscos });
+      } else {
+        res.send('Página no encontrada');
+      }    
+        //res.render(path.join(__dirname, '../views/products/altaProducto'));
     },
     
     //ALTA DE PRODUCTO POST
@@ -101,26 +133,52 @@ const controller = {
         })
 
      }
-
-
-
-
-
-
       //res.render(path.join(__dirname, '../views/products/altaProducto'));
     },
 
     productoDetalle: (req, res) => {
-      res.render(path.join(__dirname, '../views/products/productoDetalle'));
+       //Preguntamos por la sesion.
+       userSession = req.session;
+
+       let productoId = req.params.id;
+
+      //Buscamos el producto por Id. Para ellos usamos el ModelProducts.
+      let productoEncontrado = modelProducts.findByPk(productoId);
+
+      if (!productoEncontrado) {
+        productoEncontrado = undefined;
+      }  
+      console.log(productoEncontrado);
+
+      //res.render(path.join(__dirname, '../views/products/productoDetalle'));
+      
+        res.render(path.join(__dirname, '../views/products/productoDetalle'), {
+        'session': userSession.userId,
+        'productoEncontrado': productoEncontrado });
     },
 
     busquedaAvanzada: (req, res) => {
-      res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {'alfabeto': alfabeto});
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+
+      res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
+              'session': userSession.userId,
+              'alfabeto': alfabeto });
+
+      //res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {'alfabeto': alfabeto});
     },
 
     //OFERTAS
     ofertas: (req, res) => {
-      res.render(path.join(__dirname, '../views/ofertas'), {'listadoDiscos': listadoDiscos});
+
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+
+      res.render(path.join(__dirname, '../views/ofertas'), {
+        'session': userSession.userId,
+        'listadoDiscos': listadoDiscos });
+
+      // res.render(path.join(__dirname, '../views/ofertas'), {'listadoDiscos': listadoDiscos});
       },
 }
 

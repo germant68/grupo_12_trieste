@@ -43,13 +43,27 @@ const controller = {
 
     //HOME
     home: (req, res) => {
+        //Preguntamos por la sesion.
+        userSession = req.session;  
+
         //Traemos algunos productos 
-        res.render(path.join(__dirname, '../views/home'), {'listadoDiscos': listadoDiscos});
+            res.render(path.join(__dirname, '../views/home'), {
+                'session': userSession.userId,
+                'listadoDiscos': listadoDiscos });
     },
 
     //LOGIN
     login: (req, res) => {
         res.render(path.join(__dirname, '../views/users/login.ejs'));
+    },
+
+    //LOGOUT
+    logout: (req, res) => {
+        req.session.destroy(function () {
+            req.logout();
+            res.redirect('/');          
+            delete req.session;    
+        });
     },
         
     loginPost: (req, res) => {
@@ -73,7 +87,14 @@ const controller = {
                 if (pwd) {
                     // creamos la sesion
                     req.session.userLogged = userLogin;
-                    return res.send("Bienvenido" + userLogin.usuario_reg);
+                    req.session.userId = usuario_reg;
+
+                    //return res.send("Bienvenido" + userLogin.usuario_reg);
+                    
+                    res.render(path.join(__dirname, '../views/home'), {
+                        'session': req.session.userId,
+                        'listadoDiscos': listadoDiscos });
+
                 }else{
                     return res.send("Contraseña incorrecta");
 
@@ -98,17 +119,38 @@ const controller = {
 
     //CARRITO
     carrito: (req, res) => {
-        res.render(path.join(__dirname, '../views/carrito'));
+
+        //Preguntamos por la sesion.
+        userSession = req.session;  
+
+        //Traemos algunos productos 
+        res.render(path.join(__dirname, '../views/carrito'), {
+                'session': userSession.userId});
+                //'miCarrito': listadoDiscos });
+
+        //res.render(path.join(__dirname, '../views/carrito'));
     },
 
     //FAQ
     faq: (req, res) => {
-        res.render(path.join(__dirname, '../views/faq'));
+        //Preguntamos por la sesion.
+        userSession = req.session;  
+
+        res.render(path.join(__dirname, '../views/faq'), {
+            'session': userSession.userId});
     },
 
     //CONTACTO
     contacto: (req, res) => {
-        res.render(path.join(__dirname, '../views/contacto'));
+
+        //Preguntamos por la sesion.
+        userSession = req.session;  
+
+        //Traemos algunos productos 
+        res.render(path.join(__dirname, '../views/contacto'), {
+                'session': userSession.userId });
+
+        //        res.render(path.join(__dirname, '../views/contacto'));
     },
 
     //ALTA DE USUARIO - REGISTRO

@@ -1,8 +1,10 @@
 <%- include('../partials/head') %>
-<body class="productodetalle">
-    <%- include('../partials/header') %>
+<body>
+    <%- include('../partials/header') %> 
     <br>
-    <main class="producto_detalle">
+    <% if(locals.productoEncontrado != undefined) {%>
+        <%= locals.productoEncontrado %>
+        <main class="producto_detalle">
         <div class="producto_box">
             <div class="producto_img">
             <img src="./images/71tVF6HDV5L._SY355_.jpg" alt="vinilo"></div>
@@ -31,6 +33,7 @@
             </div> 
         </div>
     </main>
+    <% } %>
     <br>
 
     <%- include('../partials/footer') %>

@@ -116,7 +116,8 @@
   "sku": "123QWE456ASD",
   "categoria": "Rock",
   "vendidos": 0,
-  "recomendado": ""
+  "recomendado": "",
+  "img": "./images/chuckberry_torontofestival.webp"
  },
  {
   "id": 11,
@@ -126,6 +127,20 @@
   "stock": "6",
   "sku": "123QWE456ASP",
   "categoria": "Rock",
-  "vendidos": 0
+  "vendidos": 0,
+  "recomendado": "",
+  "img": "./images/theclash_combatrock.jpg"
+ },
+ {
+  "id": 12,
+  "nombreArtista": "Rolando",
+  "nombreDisco": "Rolando Greatest hits",
+  "precio": "5.63",
+  "stock": "10",
+  "sku": "123qwe453sdd324cvb",
+  "categoria": "Rock",
+  "vendidos": 0,
+  "recomendado": "",
+  "img": "./images/theclash_combatrock.jpg"
  }
 ]

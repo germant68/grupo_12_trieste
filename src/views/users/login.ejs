@@ -8,6 +8,14 @@
             </div>
             <div>
                 <br>
+                <% if (locals.errores) { %>
+                    <% errores.forEach(e => { %>
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                    <% } )%>
+                <% }%>
+                <% if (locals.session) { %>
+                     <p><%= locals.session %></p>
+                <% }%>
                 <form action="/login" method="POST" class="contenedor_login">
                         <label for="usuario_log">Nombre de usuario</label>
                         <input type="text" name="usuario_log"> 

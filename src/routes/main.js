@@ -43,6 +43,8 @@ router.get('/', mainController.home);
 
 router.get('/login', mainController.login);
 
+router.get('/logout', mainController.logout);
+
 router.get('/registro', mainController.registro);
 
 router.get('/ofertas', productosController.ofertas);
@@ -55,11 +57,15 @@ router.get('/faq', mainController.faq);
 
 router.get('/contacto', mainController.contacto);
 
-router.get('/productoDetalle', productosController.productoDetalle);
+router.get('/productoDetalle/:id', productosController.productoDetalle);
 
 router.get('/altaProducto', productosController.altaProducto);
 
+router.get('/modifProducto', productosController.dashboard);
+
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
+
+router.get('/dashboard', productosController.dashboard);
 
 // Rutas POST
 router.post('/registro', validacionesRegistro, mainController.postRegistro);

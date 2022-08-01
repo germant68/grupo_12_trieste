@@ -9,16 +9,16 @@ body {
     font-size: 22px;
     text-align: start;
     opacity: 0.9;
+    
 }
 
 .main {
     padding: 15px;
+    margin: 20px;
 }
 
 
 /* SLIDER */
-
-
 
 .container-home{
     display: flex;
@@ -632,4 +632,38 @@ footer {
 .href-alfabeto {
     background-color: transparent;
     text-decoration: none;
+}
+
+/* DASHBOARD */
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dashboard-items {
+    border: 1px black solid;
+    background-color: white;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+.href-dashboard-item {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* Mapa Contacto */
+.contacto-map {
+    margin: 20px;
+    border: solid 2px black;
+}
+
+.contacto-header {
+    margin: 20px;
 }
