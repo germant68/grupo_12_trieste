@@ -59,11 +59,8 @@ const controller = {
 
     //LOGOUT
     logout: (req, res) => {
-        req.session.destroy(function () {
-            req.logout();
-            res.redirect('/');          
-            delete req.session;    
-        });
+        req.session.destroy();
+        res.redirect('/');             
     },
         
     loginPost: (req, res) => {

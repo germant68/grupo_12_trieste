@@ -142,7 +142,7 @@ const controller = {
 
        let productoId = req.params.id;
 
-      //Buscamos el producto por Id. Para ellos usamos el ModelProducts.
+      //Buscamos el producto por Id. Para ello usamos el ModelProducts.
       let productoEncontrado = modelProducts.findByPk(productoId);
 
       if (!productoEncontrado) {
