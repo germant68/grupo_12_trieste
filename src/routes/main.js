@@ -14,6 +14,9 @@ const { body } = require('express-validator');
 //Definimos la variable router quien nos va a rutear los pedidos al controlados
 const router = express.Router();         
 
+//requerimos el MDW para validaciones de usuarios
+const authMiddleware = require('../middlewares/authMiddleware');
+
 //Implementamos las validaciones. Todas en un arreglo.
 // Lo pasamos como MDW en el POST del Registro
 const validacionesRegistro = [
@@ -65,7 +68,7 @@ router.get('/modifProducto', productosController.dashboard);
 
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 
-router.get('/dashboard', productosController.dashboard);
+router.get('/dashboard', authMiddleware, productosController.dashboard);
 
 // Rutas POST
 router.post('/registro', validacionesRegistro, mainController.postRegistro);

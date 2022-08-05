@@ -6,7 +6,6 @@ const morgan = require('morgan');
 
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
-const userMdw = require('./middlewares/userMdw');
 
 const app = express();
 
@@ -30,8 +29,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-
-app.use(userMdw);
 
 var userSession;
 

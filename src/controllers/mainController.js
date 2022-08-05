@@ -60,6 +60,7 @@ const controller = {
     //LOGOUT
     logout: (req, res) => {
         req.session.destroy();
+        console.log(req.session);
         res.redirect('/');             
     },
         
@@ -84,6 +85,7 @@ const controller = {
                 if (pwd) {
                     // creamos la sesion
                     req.session.userLogged = userLogin;
+                    console.log(req.session.userLogged);
                     req.session.userId = usuario_reg;
 
                     //return res.send("Bienvenido" + userLogin.usuario_reg);
@@ -93,17 +95,21 @@ const controller = {
                         'listadoDiscos': listadoDiscos });
 
                 }else{
-                    return res.send("Contraseña incorrecta");
-
+                    console.log('hola');
+                    return res.render(path.join(__dirname, '../views/users/login'), {
+                        errores: {'msg': 'Credenciales Inválidas'}
+                    });
                 }
 
             }else{
-                res.send("ERROR! No se encontro el usuario");
+                return res.render(path.join(__dirname, '../views/users/login'), {
+                    errores: {'msg': 'Credenciales Inválidas'}
+                });
             };
 
         } else {
             res.render('login',{
-                'errores':errors.array(),
+                'errores': errors.array(),
                 'prev': req.body
             })
         }

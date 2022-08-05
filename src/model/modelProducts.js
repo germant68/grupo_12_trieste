@@ -1,3 +1,12 @@
+//Este Model tiene como funcionalidad implementar los siguientes pasos: CRUD
+// 1. Obtener todos los prodductos
+// 2. Generar un nuevo Id para un usuario nuevo
+// 3. Crear un usuario nuevo
+// 4. Buscar por Primary Key un usuario, en este caso ID
+// 5. Buscar por un campo determinado.
+// 6. Update de un producto.
+// 7. Borrar Producto
+
 // Importamos FS y Path para trabajar con el archivo de Usuarios
 const { json } = require('express');
 const fs = require('fs');

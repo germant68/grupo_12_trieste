@@ -9,9 +9,9 @@
             <div>
                 <br>
                 <% if (locals.errores) { %>
-                    <% errores.forEach(e => { %>
-                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
-                    <% } )%>
+                    
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.errores .msg %></p>
+                    
                 <% }%>
                 <% if (locals.session) { %>
                      <p><%= locals.session %></p>
