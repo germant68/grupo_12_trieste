@@ -81,6 +81,28 @@ const controller = {
 
     },
 
+    modificarProducto: (req, res) => {
+      
+      //Vamos a modificar un usuario. 
+      //Creamos primero el objeto con los valores del formulario.
+      const{
+        nombreArtista,
+        nombreDisco,
+        categoria,
+        precio,
+        stock,
+        sku,
+        recomendado,
+        imagen
+    }=req.body;
+
+      const productoId = req.params.id;
+      const productoEncontrado = modelProducts.findByPk(productoId);
+
+      res.send(productoEncontrado);
+
+    },
+
     dashboard: (req, res) => {
 
       //Preguntamos por la sesion.

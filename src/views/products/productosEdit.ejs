@@ -22,12 +22,15 @@
                             <h3 class="product__title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].nombreArtista %>" placeholder="Nombre Artista"></h3>
                             <label for="precio">Precio $</label>
                             <h3 class="product__title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
-                            <label for="img">Imagen Disco $</label>
-                            <h3 class="product__title"><input type="file" name="img" value="<%= listadoDiscos[i].img %>"></h3>
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload"></i>
+                                    Tapa Disco
+                            </label>
+                            <h3 class="product__title"><input id="file-upload" type="file" name="img" value="<%= listadoDiscos[i].img %>" ></h3>
                         </div>
                         <p></p>
                         <div class="product__decription">
-                            <span class="producto__price"><a href="#">Modificar</a></span>
+                            <span class="producto__price"><a href="/modificarProducto/<%= listadoDiscos[i].id%>">Modificar</a></span>
                             <span class="producto__price"><a href="/borrarProducto/<%= listadoDiscos[i].id%>">Borrar</a></span>
                         </div>
                     </div>

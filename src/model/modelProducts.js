@@ -84,7 +84,11 @@ const producto = {
       
       fs.writeFileSync(producto.filename, JSON.stringify(productosRestantes, null, ' '));
       return true;
-    } 
+    },
+
+    modifProducto: (pe) => {
+        
+    }
 }
 
 //Devolvemos el objeto usuario

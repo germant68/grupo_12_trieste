@@ -68,6 +68,8 @@ router.get('/altaProducto', productosController.altaProducto);
 
 router.get('/borrarProducto/:id', authMiddleware, productosController.borrarProducto)
 
+router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 
 router.get('/dashboard', authMiddleware, productosController.dashboard);
@@ -78,6 +80,8 @@ router.post('/registro', validacionesRegistro, mainController.postRegistro);
 router.post('/login', validateLogin, mainController.loginPost);
 
 router.post('/altaProducto', validateAltaProducto, productosController.altaProductoPost);
+
+router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

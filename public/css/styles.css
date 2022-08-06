@@ -187,6 +187,11 @@ body {
     font-weight: bold;
 }
 
+.producto__fav {
+    color: rgb(193, 207, 4);
+    font-weight: bold
+}
+
 .product__icon{
     display: block;
     margin: 10px 0;
@@ -268,10 +273,20 @@ h2, section {
     text-align: center;
 }
 
-/* Formulario de Modif PRoducto */
+/* Formulario de Modif Producto */
 .notification_msg_form {
     color: rgb(255, 162, 0);
     text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 /* Formulario de Registracion */
