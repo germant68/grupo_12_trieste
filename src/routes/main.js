@@ -56,7 +56,7 @@ router.get('/carrito', mainController.carrito);
 
 router.get('/productos', productosController.productos);
 
-router.get('/productosEdit', productosController.productosEdit);
+router.get('/productosEdit', authMiddleware, productosController.productosEdit);
 
 router.get('/faq', mainController.faq);
 
@@ -66,9 +66,7 @@ router.get('/productoDetalle/', productosController.productoDetalle);
 
 router.get('/altaProducto', productosController.altaProducto);
 
-router.get('/borrarProducto/:id', productosController.borrarProducto)
-
-router.get('/modifProducto', productosController.productosEdit);
+router.get('/borrarProducto/:id', authMiddleware, productosController.borrarProducto)
 
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 

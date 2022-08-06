@@ -55,7 +55,7 @@ const controller = {
 
     productosEdit: (req, res) => {
       res.render(path.join(__dirname, '../views/products/productosEdit'), {
-        //'session': userSession.userId,
+        'session': userSession.userId,
         'listadoDiscos': listadoDiscos });
     },
 
@@ -67,15 +67,15 @@ const controller = {
 
       //Llamamos al modelo con id para que lo borre.
       if (modelProducts.delete(productoId)) {
-          msje = 'El Producto se ha borrado';
+          msje = 'Producto borrado correctamente';
           nuevoListado = getAllProductos;
 
         } else {
-          msje = 'El Producto no se ha podido borrar';
+            msje = 'El Producto no se ha podido borrar';
       } 
 
       res.render(path.join(__dirname, '../views/products/productosEdit'), {
-        //'session': userSession.userId,
+      'session': userSession.userId,
        'msje': msje,
        'listadoDiscos': getAllProductos() });
 
