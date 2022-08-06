@@ -10,6 +10,9 @@ const modelProducts = require('../model/modelProducts');
 
 //Seteamos la variable path para contener el path a la pagina
 const path = require('path');
+const { getAllProductos } = require('../model/modelProducts');
+const producto = require('../model/modelProducts');
+const { listeners } = require('process');
 
 const jsonPath = path.join(__dirname,'../../database/InfoDiscos.json');
 
@@ -42,13 +45,40 @@ const controller = {
 
       //Preguntamos por la sesion.
       userSession = req.session;  
-      console.log(userSession);
       
       res.render(path.join(__dirname, '../views/products/productos'), {
         'session': userSession.userId,
         'listadoDiscos': listadoDiscos });
 
     //res.render(path.join(__dirname, '../views/products/productos'), {'listadoDiscos': listadoDiscos});
+    },
+
+    productosEdit: (req, res) => {
+      res.render(path.join(__dirname, '../views/products/productosEdit'), {
+        //'session': userSession.userId,
+        'listadoDiscos': listadoDiscos });
+    },
+
+    borrarProducto: (req, res) => {
+
+      let productoId = req.params.id;
+      let msje;
+      let nuevoListado = [];
+
+      //Llamamos al modelo con id para que lo borre.
+      if (modelProducts.delete(productoId)) {
+          msje = 'El Producto se ha borrado';
+          nuevoListado = getAllProductos;
+
+        } else {
+          msje = 'El Producto no se ha podido borrar';
+      } 
+
+      res.render(path.join(__dirname, '../views/products/productosEdit'), {
+        //'session': userSession.userId,
+       'msje': msje,
+       'listadoDiscos': getAllProductos() });
+
     },
 
     dashboard: (req, res) => {
@@ -148,8 +178,6 @@ const controller = {
       if (!productoEncontrado) {
         productoEncontrado = undefined;
       }  
-      console.log(productoEncontrado);
-
       //res.render(path.join(__dirname, '../views/products/productoDetalle'));
       
         res.render(path.join(__dirname, '../views/products/productoDetalle'), {

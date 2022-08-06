@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <main class="main">
+        <div class="container"> 
+            <h2 class="main-title">Modificación de Productos</h2>
+            <% if (locals.msje) { %>
+                <p><%= locals.msje %></p>
+           <% }%>
+            <section class="container-productos">
+
+                <% for (let i=0; i< listadoDiscos.length; i++) { %>
+                    <form action="">   
+                    <div class="producto-listado">
+                        <img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>>
+                        <div class="product__decription">
+                            <br>
+                            <label for="nombreDisco">Nombre Disco</label>
+                            <h3 class="product__title"><input type="text" name="nombreDisco" value="<%= listadoDiscos[i].nombreDisco %>" placeholder="Nombre Disco"></h3>
+                            <label for="nombreAtista"> Nombre Artista / Grupo</label>
+                            <h3 class="product__title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].nombreArtista %>" placeholder="Nombre Artista"></h3>
+                            <label for="precio">Precio $</label>
+                            <h3 class="product__title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
+                            <label for="img">Imagen Disco $</label>
+                            <h3 class="product__title"><input type="file" name="img" value="<%= listadoDiscos[i].img %>"></h3>
+                        </div>
+                        <p></p>
+                        <div class="product__decription">
+                            <span class="producto__price"><a href="#">Modificar</a></span>
+                            <span class="producto__price"><a href="/borrarProducto/<%= listadoDiscos[i].id%>">Borrar</a></span>
+                        </div>
+                    </div>
+                    </form>
+                    <br>
+                 <% } %>
+            </section>
+         </div> 
+    </main>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>

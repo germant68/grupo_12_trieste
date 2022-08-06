@@ -56,15 +56,19 @@ router.get('/carrito', mainController.carrito);
 
 router.get('/productos', productosController.productos);
 
+router.get('/productosEdit', productosController.productosEdit);
+
 router.get('/faq', mainController.faq);
 
 router.get('/contacto', mainController.contacto);
 
-router.get('/productoDetalle/:id', productosController.productoDetalle);
+router.get('/productoDetalle/', productosController.productoDetalle);
 
 router.get('/altaProducto', productosController.altaProducto);
 
-router.get('/modifProducto', productosController.dashboard);
+router.get('/borrarProducto/:id', productosController.borrarProducto)
+
+router.get('/modifProducto', productosController.productosEdit);
 
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 

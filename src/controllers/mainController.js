@@ -95,7 +95,7 @@ const controller = {
                         'listadoDiscos': listadoDiscos });
 
                 }else{
-                    console.log('hola');
+                    
                     return res.render(path.join(__dirname, '../views/users/login'), {
                         errores: {'msg': 'Credenciales Inválidas'}
                     });

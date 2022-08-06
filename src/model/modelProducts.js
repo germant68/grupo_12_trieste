@@ -8,6 +8,7 @@
 // 7. Borrar Producto
 
 // Importamos FS y Path para trabajar con el archivo de Usuarios
+const e = require('express');
 const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -66,7 +67,24 @@ const producto = {
     findByField: (field, text) => {
         
         return producto.getAllProductos().find((element) => element[field] == text);
-    }
+    },
+
+    delete: (id) => {
+      //Buscamos el producto por Id. Para ello usamos el ModelProducts.
+      let productoEncontrado = producto.findByPk(id);
+
+      if (!productoEncontrado) { //Retorna falso
+         return productoEncontrado; //false
+      };
+
+      //sino retorna encontrado entonces modificamos...filtramos aquel producto que no quiero
+      let productosAll = producto.getAllProductos();
+    
+      let productosRestantes = productosAll.filter(e => e.id != parseInt(id));
+      
+      fs.writeFileSync(producto.filename, JSON.stringify(productosRestantes, null, ' '));
+      return true;
+    } 
 }
 
 //Devolvemos el objeto usuario
