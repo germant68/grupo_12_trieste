@@ -11,6 +11,7 @@
             <section class="container-modificacion"> 
  
                 <% for (let i=0; i< listadoDiscos.length; i++) { %>
+<<<<<<< Updated upstream
                     <form action="">   
                     <div class="producto--listado">
                         <img alt="" class="producto___img" src= <%= listadoDiscos[i].img %>>
@@ -22,14 +23,43 @@
                             <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].nombreArtista %>" placeholder="Nombre Artista"></h3>
                             <label for="precio">Precio: $</label>
                             <h3 class="product___title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
+=======
+                    <form action="/modificarProducto/<%= listadoDiscos[i].id %>?_method=PUT" method="POST">   
+                    <div class="producto-listado">
+                        <img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>>
+                        <div class="product__decription">
+                            <br>
+                            <label for="nombreDisco">Nombre Disco</label>
+                            <h3 class="product__title"><input type="text" name="nombreDisco" value="<%= listadoDiscos[i].nombreDisco %>" placeholder="Nombre Disco"></h3>
+                            <label for="nombreAtista"> Nombre Artista / Grupo</label>
+                            <h3 class="product__title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].nombreArtista %>" placeholder="Nombre Artista"></h3>
+                            <label for="precio">Precio $</label>
+                            <h3 class="product__title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
+                            <label for="stock">Stock</label>
+                            <h3 class="product__title"><input type="text" name="stock" value="<%= listadoDiscos[i].stock %>" placeholder="Stock"></h3>
+>>>>>>> Stashed changes
                             <label for="file-upload" class="custom-file-upload">
                                 <i class="fa fa-cloud-upload"></i>
                                     Tapa Disco
                             </label>
+<<<<<<< Updated upstream
                             <h3 class="product___title"><input id="file-upload" type="file" name="img" value="<%= listadoDiscos[i].img %>" ></h3>
+=======
+                            <p></p>
+                            <input type="text" name="id" value="<%= listadoDiscos[i].id %>" readonly>
+                            <p></p>
+                            <% if (listadoDiscos[i].recomendado) { %>
+                                <input type="checkbox" name="recomendado" checked>
+                            <% } else { %>
+                                <input type="checkbox" name="recomendado">
+                            <% } %>    
+                            <h3 class="product__title"><input id="file-upload" type="file" name="img" value="<%= listadoDiscos[i].img %>" ></h3>
+>>>>>>> Stashed changes
                         </div>
                         <p></p>
                         <div class="product__decription">
+                            <span class="producto__price"><input type="submit" value="Modificar"><a href="/modificarProducto/<%= listadoDiscos[i].id%>"></a></span>
+                            <span class="producto__price"><input type="submit" value="Borrar"><a href="/borrarProducto/<%= listadoDiscos[i].id%>"></a></span>
                         </div>
                         
                         <br>
