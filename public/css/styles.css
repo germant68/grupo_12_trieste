@@ -273,7 +273,42 @@ h2, section {
     text-align: center;
 }
 
+
+
 /* Formulario de Modif Producto */
+
+
+.producto--listado {
+        display: block;
+        border: 10px solid #ccc;
+        padding: 25px;
+        max-width: 800px;
+        margin: auto;
+        width: 125vh;
+        border-bottom: solid 1px #ebebeb;
+        border-radius: 10px;
+        background-color: white;
+        position: relative;
+        text-align: left;
+        align-items: left;
+    }
+
+
+.producto___img {
+    width: 350px;
+    top: 50px;  
+    right: 35px; 
+    position: absolute;
+}
+
+.linea {
+    border-top: 1px solid black;
+    height: 2px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+      }
+    
+
 .notification_msg_form {
     color: rgb(255, 162, 0);
     text-align: center;
@@ -288,6 +323,13 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+
+.product___title {
+    top: -15px;  
+    right: -420px;
+}
+
+
 
 /* Formulario de Registracion */
 .error_msg_form {
@@ -666,7 +708,7 @@ footer {
 
 }
 
-.dashboard-items {
+.dashboard-items { 
     border: 1px black solid;
     background-color: white;
     border-radius: 4px;
@@ -717,3 +759,8 @@ footer {
     border: solid 2px black;
     width: 120vh;
 }
+
+
+/* 
+MODIFICACION DE PRODUCTO */
+
