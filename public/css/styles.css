@@ -406,6 +406,11 @@ input[type="file"] {
     background-color:dimgray;
     color: white;
 }
+.form_reg_alta_producto input[name=recomendado] {
+    height: 20px;
+    width: 20px;
+}
+
 /* Fin Estilos Formulario Alta Producto*/
 
 #disco {

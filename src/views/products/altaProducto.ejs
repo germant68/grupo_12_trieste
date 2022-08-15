@@ -17,7 +17,7 @@
                 <% if (locals.msje) { %>
                     <p><%= locals.msje %></p>
                <% }%>
-                <form action="/altaProducto" method="POST" class="form_reg_alta_producto">
+                <form action="/altaProducto" method="POST" enctype="multipart/form-data" class="form_reg_alta_producto">
                     <label for="nombreArtista">Nombre Artista*</label>
                     <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
                     <br>
@@ -45,15 +45,16 @@
                     <input type="text" name="sku" value="<%= locals.prev && prev.sku ? prev.sku : '' %>" >
                     <br>
                     <label for="">Recomendado*</label>
-                    <input type="checkbox" name="recomendado" value="<%= locals.prev && prev.recomendado ? prev.recomendado : '' %>" >
+                    <input type="checkbox" name="recomendado" class="form_reg_alta_producto" value="<%= locals.prev && prev.recomendado ? prev.recomendado : '' %>" >
                     <br>
                     <label for="">Imagen*</label>
                     <input type="file" name="imagen" value="<%= locals.prev && prev.imagen ? prev.imagen : '' %>" >
-                    <h6>* - Campos Requeridos</h6>
+                    <h6>* Campos Requeridos</h6>
                     <div>
                         <input type="submit" value="Grabar" name="submit_alta">
                         <input type="reset" value="Borrar" name="reset_alta">
                     </div>
+                    
                 </form>
             </div>
 

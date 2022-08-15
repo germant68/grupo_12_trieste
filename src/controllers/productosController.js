@@ -61,6 +61,9 @@ const controller = {
 
     borrarProducto: (req, res) => {
 
+       //Preguntamos por la sesion.
+       userSession = req.session;  
+       
       let productoId = req.params.id;
       let msje;
       let nuevoListado = [];
@@ -83,9 +86,9 @@ const controller = {
 
     modificarProducto: (req, res) => {
       
-      //Vamos a modificar un usuario. 
+      //Vamos a modificar un producto. 
       //Creamos primero el objeto con los valores del formulario.
-      const{
+      const {
         nombreArtista,
         nombreDisco,
         categoria,
@@ -96,10 +99,28 @@ const controller = {
         imagen
     }=req.body;
 
-      const productoId = req.params.id;
-      const productoEncontrado = modelProducts.findByPk(productoId);
+    console.log(req.body);
+    console.log(req.params.id);
 
-      res.send(productoEncontrado);
+      const productoId = req.body.id;
+      const productoAModificar = modelProducts.findByPk(productoId);
+      
+      if (productoAModificar) {
+        //Armamos las modificaciones
+
+        productoAModificar.nombreArtista = nombreArtista;
+        productoAModificar.nombreDisco = nombreDisco;
+        productoAModificar.categoria = categoria;
+        productoAModificar.precio = precio;
+        productoAModificar.stock = stock;
+        productoAModificar.sku = sku;
+        productoAModificar.recomendado = recomendado ? recomendado : false,
+        productoAModificar.imagen = imagen;
+
+        res.send(productoAModificar);
+      } else {
+        res.send('No hay estereo no hay')
+      }
 
     },
 
@@ -137,6 +158,7 @@ const controller = {
     altaProductoPost: (req, res) => {
       //Vamos a dar de alta un usuario. 
       //Creamos primero el objeto con los valores del formulario.
+      console.log(req.body);
       const{
         nombreArtista,
         nombreDisco,

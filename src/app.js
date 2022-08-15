@@ -3,6 +3,7 @@ const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
@@ -16,6 +17,9 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 //Uso de Morgan 
 app.use(morgan('dev'));
+
+//Uso de Method Override
+app.use(methodOverride('_method'));
 
 // Parsing the incoming data 
 app.use(express.json());

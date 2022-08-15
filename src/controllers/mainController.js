@@ -85,7 +85,6 @@ const controller = {
                 if (pwd) {
                     // creamos la sesion
                     req.session.userLogged = userLogin;
-                    console.log(req.session.userLogged);
                     req.session.userId = usuario_reg;
 
                     //return res.send("Bienvenido" + userLogin.usuario_reg);

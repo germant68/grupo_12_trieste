@@ -4,7 +4,7 @@
   "nombreArtista": "QUEEN",
   "nombreDisco": "Greatest Hits",
   "precio": 7.25,
-  "stock": 0,
+  "stock": 10,
   "sku": "123QWE789QWE",
   "categoria": "Pop, Rock",
   "vendidos": 7,
@@ -106,5 +106,9 @@
   "vendidos": 0,
   "recomendado": "",
   "img": "/images/theclash_combatrock.jpg"
+ },
+ {
+  "id": 13,
+  "vendidos": 0
  }
 ]

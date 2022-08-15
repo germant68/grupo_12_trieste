@@ -4,6 +4,7 @@
 
 const express = require('express');
 
+//Requerimos los controladores
 const mainController = require('../controllers/mainController');
 const productosController = require('../controllers/productosController');
 
@@ -16,14 +17,17 @@ const router = express.Router();
 
 //requerimos el MDW para validaciones de usuarios
 const authMiddleware = require('../middlewares/authMiddleware');
+//const validacionesRegistroMdw = require('../middlewares/validacionesRegistroMdw');
 
 //Implementamos las validaciones. Todas en un arreglo.
-// Lo pasamos como MDW en el POST del Registro
+// Validaciones Registro
 const validacionesRegistro = [
     body('usuario_reg').isLength({ min: 8}).withMessage('El usuario no puede ser menor a 8 caracteres'),
     body('email_reg').isEmail().withMessage('Formato inválido de Email'),
-    body('pwd_reg').isLength({ min: 8}).withMessage('La contraseña debe tener mínimo 8 caracteres'),
+    body('pwd_reg').isLength({ min: 8}).withMessage('La contraseña debe tener mínimo 8 caracteres')
+    
 ];
+
 
 //Validaciones Login
 const validateLogin = [
@@ -37,7 +41,7 @@ const validateAltaProducto = [
     body('nombreDisco').notEmpty().withMessage('Debe ingresar el nombre del Disco'),
     body('precio').notEmpty().withMessage('Debe ingresar el precio del producto'),
     body('precio').isNumeric().withMessage('El precio debe ser numérico'),
-    body('stock').isNumeric().withMessage('El stock debe ser numérico'),
+    body('stock').isNumeric().withMessage('El stock debe ser numérico')
 
 ];
 
@@ -62,13 +66,13 @@ router.get('/faq', mainController.faq);
 
 router.get('/contacto', mainController.contacto);
 
-router.get('/productoDetalle/', productosController.productoDetalle);
+router.get('/productoDetalle/:id', productosController.productoDetalle);
 
 router.get('/altaProducto', productosController.altaProducto);
 
 router.get('/borrarProducto/:id', authMiddleware, productosController.borrarProducto)
 
-router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+router.put('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 
@@ -79,7 +83,7 @@ router.post('/registro', validacionesRegistro, mainController.postRegistro);
 
 router.post('/login', validateLogin, mainController.loginPost);
 
-router.post('/altaProducto', validateAltaProducto, productosController.altaProductoPost);
+router.post('/altaProducto', authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
 router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
