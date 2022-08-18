@@ -18,9 +18,9 @@
                 <% }%>
 
                 <form action="/registro" method="POST" class="form_reg">
-                    <label for="usuario_reg">Usuario*</label>
+                    <!-- <label for="usuario_reg">Usuario*</label>
                     <input type="text" name="usuario_reg" value="<%= locals.prev && prev.usuario_reg ? prev.usuario_reg: '' %>" required>
-                    <br>
+                    <br>-->
                     <label for="">Dirección de correo electrónico*</label>
                     <input type="email" name="email_reg" value="<%= locals.prev && prev.email_reg ? prev.email_reg: '' %>" required>
                     <br>
@@ -30,10 +30,10 @@
                     <label for="">Apellido*</label>
                     <input type="text" name="apellido_reg" value="<%= locals.prev && prev.apellido_reg ? prev.apellido_reg: '' %>" required>
                     <br>
-                    <label for="pwd_reg">Contraseña</label>
+                    <label for="pwd_reg">Contraseña*</label>
                     <input type="password" name="pwd_reg" id="pwd_reg" required> 
                     <br>
-                    <label for="pwdrepeat">Repita su Contraseña</label>
+                    <label for="pwdrepeat">Repita su Contraseña*</label>
                     <input type="password" name="pwdrepeat" id="pwdrepeat" required> 
                     <br>
                     <div>

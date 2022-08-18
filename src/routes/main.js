@@ -31,7 +31,7 @@ const validacionesRegistro = [
 
 //Validaciones Login
 const validateLogin = [
-    body('usuario_log').isEmpty().withMessage('Debe ingresar su usuario'),
+    body('usuario_email').notEmpty().withMessage('Debe ingresar su email'),
     body('password_log').notEmpty().withMessage('Debe ingresar su password')
 ];
 

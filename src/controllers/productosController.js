@@ -143,7 +143,7 @@ const controller = {
       //Preguntamos por la sesion.
       userSession = req.session;  
       
-      if ( userSession && userSession.userId == 'administrador') {
+      if ( userSession && userSession.userId == 'admin') {
 
         res.render(path.join(__dirname, '../views/products/altaProducto'), {
           'session': userSession.userId,

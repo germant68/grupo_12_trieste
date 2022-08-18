@@ -68,26 +68,27 @@ const controller = {
         //Creamos primero el objeto con los valores del formulario.
         //uso usuario_reg y pwd_reg para igualar a los campos del archivo
         //y que funcione el findByField
-        const usuario_reg = req.body.usuario_log;
+        const usuario_email = req.body.usuario_email;
         const pwd_reg = req.body.password_log;
+        console.log(usuario_email);
+        console.log(pwd_reg);
     
         //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);
-
+        console.log(errores);
         if (errores.isEmpty) {
             //ahora validamos que el usuario exista.
-            const userLogin = modelUser.findByField('usuario_reg', usuario_reg);
+            const userLogin = modelUser.findByField('email_reg', usuario_email);
+            console.log(userLogin);
 
             if (userLogin) {
                 //debemos chequear la contraseña
-                const pwd = bcryptjs.compareSync(pwd_reg,userLogin.pwd_reg);
+                const pwd = bcryptjs.compareSync(pwd_reg, userLogin.pwd_reg);
                 
                 if (pwd) {
                     // creamos la sesion
                     req.session.userLogged = userLogin;
-                    req.session.userId = usuario_reg;
-
-                    //return res.send("Bienvenido" + userLogin.usuario_reg);
+                    req.session.userId = userLogin.nombre_reg;
                     
                     res.render(path.join(__dirname, '../views/home'), {
                         'session': req.session.userId,

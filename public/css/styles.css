@@ -314,9 +314,7 @@ h2, section {
     text-align: center;
 }
 
-input[type="file"] {
-    display: none;
-}
+
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
@@ -376,6 +374,7 @@ input[type="file"] {
     display: flex;
     flex-direction: column;
     margin: auto;
+
 }
 
 .form_reg_alta_producto input[name=nombreArtista],
@@ -390,6 +389,7 @@ input[type="file"] {
     width: 20%;
     border: 1px solid #ccc;
     margin: auto;
+    
 }
 
 .form_reg_alta_producto input[name=reset_alta],
@@ -523,16 +523,13 @@ footer {
 
 /* Formulario de login */
 
-
-
-
 .contenedor_login{
     display: flex;
     flex-direction: column;
     margin: auto;
 }
 
-.contenedor_login input[name=usuario_log],
+.contenedor_login input[name=usuario_email],
 .contenedor_login input[name=password_log] {
     padding: 12px 20px;
     border-radius: 8px;
@@ -549,6 +546,11 @@ footer {
     background-color:white;
 }
 
+.contenedor_login input[name=submit_login]:hover {
+    background-color:dimgray;
+    color: white;
+}
+
 #disco {
     font-size: 30px;
 }
@@ -556,7 +558,6 @@ footer {
 
 
 /* Detalle de producto */
-
 
 .producto_box{
     border: 1px solid #ccc;
