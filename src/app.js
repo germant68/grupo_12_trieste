@@ -10,7 +10,8 @@ const routerMain = require('./routes/main');
 
 const app = express();
 
-app.set('view engine','ejs');                   //Seteamos el View Engine
+//Seteamos el View Engine
+app.set('view engine','ejs');                   
 
 //Generamos el Path Public para los archivos estaticos
 app.use(express.static(path.join(__dirname, '../public')));
@@ -34,14 +35,14 @@ app.use(session({
     saveUninitialized: false
 }));
 
-var userSession;
-
 // Set the Cookie parser
 app.use(cookieParser());
 
-// app.use('/productos', routerProductos);
+//Variable que contiene el path de las rutas
 app.use(routerMain);
 
+
+//Servidor escuchando
 app.listen(3001, () => {
     console.log("Servidor escuchando en el puerto 3001");
 });
