@@ -10,7 +10,7 @@
             <% if (locals.session) { %>
                  <p><a href="/registro"><%= locals.session %></a></p>
                  <p><a href="/logout">LOGOUT</a>
-                 <% } else { %>
+            <% } else { %>
             <p><a href="/registro">CREAR CUENTA</a></p>
             <p><a href="/login">LOGIN</a>
             <% } %>            
@@ -26,8 +26,11 @@
             <li><a href="/productos">Productos</a></li>
             <li><a href="/busquedaAvanzada">Búsqueda Avanzada</a></li>
             <li><a href="/contacto">Contacto</a></li> 
-            <% if (locals.session == 'admin') { %>
-                <li><a href="/dashboard">Dashboard</a></li> 
+            
+            <% if (locals.session) { %>
+                <% if (locals.session == 'Admin') { %>
+                    <li><a href="/dashboard">Dashboard</a></li> 
+                <% }%>      
              <% }%>   
         </ul>
         </div>

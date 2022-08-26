@@ -8,7 +8,7 @@ const methodOverride = require('method-override');
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
 
-const app = express();
+const app = express();    //Indicamos a la Aplicacion que puede usar los metodos de Express
 
 //Seteamos el View Engine
 app.set('view engine','ejs');                   
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 //Uso de Morgan 
 app.use(morgan('dev'));
 
-//Uso de Method Override
+//Uso de Method Override PAra Simular el POST
 app.use(methodOverride('_method'));
 
 // Parsing the incoming data 

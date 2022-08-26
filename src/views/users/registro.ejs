@@ -7,15 +7,16 @@
                 <h2>REGISTRATE</h2><img src="./images/music_icon.png" id="disco" alt="music_icon">
             </div>
             <div>
-                <br>
+                <br><h6>(*) Campos Requeridos</h6>
                 <% if (locals.errores) { %>
                     <% errores.forEach(e => { %>
                         <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
                     <% } )%>
                 <% }%>
                 <% if (locals.msje) { %>
-                     <p><%= locals.msje %></p>
+                    <p class="error_msg_form"><%= locals.msje %></p>
                 <% }%>
+                <br>
 
                 <form action="/registro" method="POST" class="form_reg">
                     <!-- <label for="usuario_reg">Usuario*</label>
@@ -38,7 +39,6 @@
                     <br>
                     <div>
                     <input type="checkbox" name="newsletter" value="<%= locals.prev && prev.newsletter ? prev.newsletter: '' %>"> <label> Suscribite a nuestra newsletter para recibir novedades</label>
-                    <h6>* - Campos Requeridos</h6>
                     </div>
                     <br>
                     <div>

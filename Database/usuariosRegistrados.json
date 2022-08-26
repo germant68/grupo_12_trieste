@@ -14,5 +14,12 @@
   "apellido_reg": "admin",
   "usuario_reg": "administrador",
   "pwd_reg": "$2a$10$wzzaoX97CejlD4b8w9cd7OwB6VTCTWt.H8WHHhn8cHlrvEq.A4LV2"
+ },
+ {
+  "id": 3,
+  "email_reg": "mail@gmail.com",
+  "nombre_reg": "Lionel",
+  "apellido_reg": "Messi",
+  "pwd_reg": "$2a$10$qGuctHV9vuJKKpLd1hjI5ewJMR0wMEFe.89Yu.FYzI.ZrZL4ASjfW"
  }
 ]

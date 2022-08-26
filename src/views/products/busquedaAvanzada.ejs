@@ -4,10 +4,35 @@
         <h2 class="main-title">Búsqueda Avanzada</h2>
         <div class="container-alfabeto">
             <% for(let i=0; i < alfabeto.length ; i++) {%>
-                <p class="item-alfabeto"><a href="#" class="href-alfabeto"><%= alfabeto[i]%></a></p>
+                <p class="item-alfabeto"><a href="/busquedaAvanzada?keyword=<%= alfabeto[i]%>" class="href-alfabeto"><%= alfabeto[i]%></a></p>
             <% }%>
         </div>
         <br>
+        <section class="container-productos">
+            
+            <% if (listadoDiscos) { %>
+                <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+                    <div class="producto-listado">
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
+                        <div class="product__decription">
+                            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                            <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
+                            <p></p>
+                            <span class="producto__price">Categoria: <%= listadoDiscos[i].genero.titulo %></span>
+                            <p></p>
+                            <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
+                            <p></p>
+                            <% if (listadoDiscos[i].recomendado == 1) { %>
+                                <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                            <% } %>
+                            
+                        </div>
+                        <br>
+                        <i class="product__icon fa-solid fa-cart-arrow-down"></i>
+                    </div>
+                <% } %>
+             <% } %>
+        </section>
     <%- include('../partials/footer') %>
 </body>
 </html>

@@ -17,15 +17,17 @@ const router = express.Router();
 
 //requerimos el MDW para validaciones de usuarios
 const authMiddleware = require('../middlewares/authMiddleware');
+const { Router } = require('express');
 //const validacionesRegistroMdw = require('../middlewares/validacionesRegistroMdw');
 
 //Implementamos las validaciones. Todas en un arreglo.
-// Validaciones Registro
+//Validaciones Registro
+//console.log(body.pwd_reg);
+//console.log(body.pwdrepeat);
 const validacionesRegistro = [
-    body('usuario_reg').isLength({ min: 8}).withMessage('El usuario no puede ser menor a 8 caracteres'),
     body('email_reg').isEmail().withMessage('Formato inválido de Email'),
-    body('pwd_reg').isLength({ min: 8}).withMessage('La contraseña debe tener mínimo 8 caracteres')
-    
+    body('pwd_reg').isLength({ min: 3}).withMessage('La contraseña debe tener mínimo 3 caracteres'),
+    //body('pwd_reg').equals('pwdrepeat').withMessage('Las contraseñas deben coincidir')
 ];
 
 
@@ -79,13 +81,22 @@ router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 router.get('/dashboard', authMiddleware, productosController.dashboard);
 
 // Rutas POST
-router.post('/registro', validacionesRegistro, mainController.postRegistro);
+//router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
+router.post('/registro', validacionesRegistro, mainController.postRegistro); //con DB
 
 router.post('/login', validateLogin, mainController.loginPost);
 
 router.post('/altaProducto', authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
 router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+
+
+//base de datos
+router.get('/usuarios', mainController.listadoUsuarios);
+
+
+
+
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;

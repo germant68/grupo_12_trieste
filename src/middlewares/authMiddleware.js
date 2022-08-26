@@ -1,7 +1,7 @@
 //authentication middleware
 
 function authMiddleware (req, res, next) {
-    if (!req.session.userLogged) {
+    if (!req.session.nombre == 'Admin') {
         return res.redirect('/login');
     }
     next ();

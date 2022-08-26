@@ -1,3 +1,8 @@
+//Traemos la base de datos con Sequelize
+const db = require('../../Database/models');
+
+const Op = db.Sequelize.Op; // Para operadores del WHERE.
+
 // Traemos el File System para trabajar con JSON
 const fs = require('fs');
 
@@ -18,7 +23,7 @@ const jsonPath = path.join(__dirname,'../../database/InfoDiscos.json');
 
 const json = JSON.parse(fs.readFileSync(jsonPath,'utf-8'));
 
-const listadoDiscos = json.map(e => {
+/*const listadoDiscos = json.map(e => {
     return {
       
       id: e.id,
@@ -34,6 +39,9 @@ const listadoDiscos = json.map(e => {
 
     }
   });
+*/
+let listadoDiscos = {};
+
 
 // Generamos un array con todas las letras que vamos a usar para la busqueda avanzada.
 const alpha = Array.from(Array(26)).map((e, i) => i + 65);
@@ -41,7 +49,31 @@ const alfabeto = alpha.map((x) => String.fromCharCode(x));
 
 //definimos el objeto Controller
 const controller = {
+
     productos: (req, res) => {
+
+      //Preguntamos por la sesion.
+      userSession = req.session.nombre;
+
+      db.Producto.findAll({
+        raw : true, 
+        nest: true,
+        include: [{
+          association: 'artista',
+        }, 
+        {
+          association: 'genero',
+        }]
+      })
+        .then(productos => {
+          
+          res.render(path.join(__dirname, '../views/products/productos'), {
+            'session': userSession,
+            'listadoDiscos': productos });
+        })
+    },
+
+    productos1: (req, res) => {
 
       //Preguntamos por la sesion.
       userSession = req.session;  
@@ -55,7 +87,7 @@ const controller = {
 
     productosEdit: (req, res) => {
       res.render(path.join(__dirname, '../views/products/productosEdit'), {
-        'session': userSession.userId,
+        'session': userSession.nombre,
         'listadoDiscos': listadoDiscos });
     },
 
@@ -97,10 +129,10 @@ const controller = {
         sku,
         recomendado,
         imagen
-    }=req.body;
+      }=req.body;
 
-    console.log(req.body);
-    console.log(req.params.id);
+      console.log(req.body);
+      console.log(req.params.id);
 
       const productoId = req.body.id;
       const productoAModificar = modelProducts.findByPk(productoId);
@@ -131,7 +163,7 @@ const controller = {
 
       //Traemos algunos productos 
       res.render(path.join(__dirname, '../views/products/dashboard'), {
-              'session': userSession.userId,
+              'session': userSession.nombre,
               'listadoDiscos': listadoDiscos });
 
       //res.render(path.join(__dirname, '../views/products/dashboard'));
@@ -143,10 +175,10 @@ const controller = {
       //Preguntamos por la sesion.
       userSession = req.session;  
       
-      if ( userSession && userSession.userId == 'admin') {
+      if ( userSession && userSession.nombre == 'Admin') {
 
         res.render(path.join(__dirname, '../views/products/altaProducto'), {
-          'session': userSession.userId,
+          'session': userSession.nombre,
           'listadoDiscos': listadoDiscos });
       } else {
         res.send('Página no encontrada');
@@ -231,28 +263,83 @@ const controller = {
 
     busquedaAvanzada: (req, res) => {
       //Preguntamos por la sesion.
-      userSession = req.session;  
+      userSession = req.session.nombre;  
+      console.log(req.query.keyword);
+      if (req.query.keyword) {
 
-      res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
-              'session': userSession.userId,
-              'alfabeto': alfabeto });
+        db.Producto.findAll({
+          raw : true, 
+          nest: true,
+          
+          include: [{
+              association: 'artista',
+              where: { 
+                nombre_artista: { [Op.like]: req.query.keyword + '%' }
+              },
+            }, 
+            {
+              association: 'genero',
+            }]
+        })
+          .then(productos => {
+            
+            res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
+              'session': userSession,
+              'alfabeto': alfabeto,
+              'listadoDiscos': productos });
+          });
 
-      //res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {'alfabeto': alfabeto});
+      } else {
+
+        res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
+                'session': userSession,
+                'alfabeto': alfabeto,
+                'listadoDiscos': listadoDiscos });
+        }
     },
 
     //OFERTAS
     ofertas: (req, res) => {
 
       //Preguntamos por la sesion.
-      userSession = req.session;  
+      userSession = req.session.nombre;  
 
       res.render(path.join(__dirname, '../views/ofertas'), {
-        'session': userSession.userId,
+        'session': userSession,
         'listadoDiscos': listadoDiscos });
 
       // res.render(path.join(__dirname, '../views/ofertas'), {'listadoDiscos': listadoDiscos});
-      },
-}
+    },
+
+    // BUSQUEDA AVANZADA
+    search: (req, res) =>{ 
+
+      //Preguntamos por la sesion.
+      userSession = req.session.nombre;
+
+      db.Producto.findAll({
+        raw : true, 
+        nest: true,
+        where: { 
+            nombre_artista: { [Op.like]: req.params.keyword + '%' }
+          },
+        include: [{
+            association: 'artista',
+          }, 
+          {
+            association: 'genero',
+          }]
+      })
+        .then(productos => {
+          
+          res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
+            'session': userSession,
+            'alfabeto': alfabeto,
+          'listadoDiscos': listadoDiscos });
+        });
+    }
+
+  }
 
 // Finalizamos devolviendo el objeto
 module.exports = controller;
