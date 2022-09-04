@@ -110,10 +110,32 @@ const controller = {
 
     //EDITAR PRODUCTO
     productosEdit: (req, res) => {
-      res.render(path.join(__dirname, '../views/products/productosEdit'), {
-        'session': userSession.nombre,
-        'listadoDiscos': listadoDiscos });
-    },
+
+        //Preguntamos por la sesion.
+        userSession = req.session.nombre;
+
+        db.Producto.findAll({
+          raw : true, 
+          nest: true,
+          include: [{
+            association: 'artista',
+          }, 
+          {
+            association: 'genero',
+          }]
+        })
+          .then(productos => {
+            
+            res.render(path.join(__dirname, '../views/products/productosEdit'), {
+              'session': userSession,
+              'listadoDiscos': productos });
+          })
+      },
+
+      // res.render(path.join(__dirname, '../views/products/productosEdit'), {
+      //   'session': userSession.nombre,
+      //   'listadoDiscos': listadoDiscos });
+    //},
 
     //BORRAR PRODUCTO
     borrarProducto: (req, res) => {
@@ -698,7 +720,7 @@ const controller = {
         .then(productos => {
           
           console.log(productos);
-          
+
           res.render(path.join(__dirname, '../views/ofertas'), {
             'session': userSession,
             'alfabeto': alfabeto,
