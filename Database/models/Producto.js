@@ -25,7 +25,9 @@ module.exports = (sequelize, dataTypes) => {
 
         img: {type: dataTypes.STRING},
 
-        precio: {type: dataTypes.DECIMAL(10,2)}
+        precio: {type: dataTypes.DECIMAL(10,2)},
+
+        oferta: {type: dataTypes.DECIMAL(10,2)}
 
     };
 

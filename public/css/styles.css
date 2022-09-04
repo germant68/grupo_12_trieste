@@ -327,7 +327,35 @@ h2, section {
     right: -420px;
 }
 
+/* Formulario de Alta Generos */
+.form_generos {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
 
+.form_generos input[name=titulo] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+/* Formulario de Alta Artistas */
+.form_artistas {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.form_artistas input[name=nombreArtista]{
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 20%;
+    border: 1px solid #ccc;
+    margin: auto;
+}
 
 /* Formulario de Registracion */
 .error_msg_form {
@@ -369,6 +397,9 @@ h2, section {
 }
 
 /* Formulario de Alta de Producto */
+.success_msg_form {
+    color: rgb(9, 154, 21);
+}
 
 .form_reg_alta_producto {
     display: flex;
@@ -377,12 +408,13 @@ h2, section {
 
 }
 
-.form_reg_alta_producto input[name=nombreArtista],
+.form_reg_alta_producto select[name=nombreArtista],
 .form_reg_alta_producto input[name=nombreDisco],
 .form_reg_alta_producto input[name=stock],
 .form_reg_alta_producto input[name=precio],
 .form_reg_alta_producto input[name=sku],
 .form_reg_alta_producto input[name=imagen],
+.form_reg_alta_producto input[name=oferta],
 .form_reg_alta_producto select[name=categoria] {
     padding: 12px 20px;
     border-radius: 8px;
@@ -410,6 +442,13 @@ h2, section {
 .form_reg_alta_producto input[name=recomendado] {
     height: 20px;
     width: 20px;
+}
+
+.file-upload {
+    opacity: none;
+    background-color: white;
+    position: relative;
+    z-index: 2;
 }
 
 /* Fin Estilos Formulario Alta Producto*/

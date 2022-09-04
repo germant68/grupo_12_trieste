@@ -1,0 +1,44 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section>
+            <div>
+                <h2>ALTA DE ARTISTA</h2>
+            </div>
+            <div>
+                <br>
+                <% if (locals.errores) { %>
+                    <% errores.forEach(e => { %>
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                    <% } )%>
+                <% }%>
+
+                <% if (locals.msje && locals.type == 'S') { %>
+                        <p class="success_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>
+                    <% } else {%>
+                        <% if (locals.msje && locals.type == 'E') { %>
+                            <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
+                        <% }%>
+                <% }%>
+                <form action="/altaArtistaPost" method="POST" enctype="multipart/form-data" class="form_artistas">
+                    <label for="nombreArtista">Nombre del Artista*</label>
+                    <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
+                    <br>
+                    <h6>* Campos Requeridos</h6>
+                    <div>
+                        <input type="submit" value="Grabar" name="submit_alta">
+                        <input type="reset" value="Borrar" name="reset_alta">
+                    </div>
+                    
+                </form>
+            </div>
+
+        <br>
+        </section>
+        
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

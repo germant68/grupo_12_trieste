@@ -5,13 +5,33 @@
         <div class="container">
             <h2 class="main-title">Estas son nuestras Ofertas!</h2>
             <section class="container-productos">
-                <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+                <!-- <% for (let i=0; i< listadoDiscos.length; i++) { %>   
                     <div class="producto-listado">
                         <a href="productoDetalle.ejs"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
                         <div class="product__decription">
                             <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
                             <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                         </div>
+                        <i class="product__icon fa-solid fa-cart-arrow-down"></i>
+                    </div>
+                 <% } %> -->
+                 <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+                    <div class="producto">
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
+                        <div class="product__decription">
+                            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                            <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
+                            <p></p>
+                            <span class="producto__price">Categoria: <%= listadoDiscos[i].genero.titulo %></span>
+                            <p></p>
+                            <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
+                            <p></p>
+                            <% if (listadoDiscos[i].recomendado == 1) { %>
+                                <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                            <% } %>
+                            
+                        </div>
+                        <br>
                         <i class="product__icon fa-solid fa-cart-arrow-down"></i>
                     </div>
                  <% } %>

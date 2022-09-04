@@ -4,6 +4,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const busboyBodyParser = require('busboy-body-parser');
 
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
@@ -25,6 +27,8 @@ app.use(methodOverride('_method'));
 // Parsing the incoming data 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(busboyBodyParser());
 
 //URL Encoded para parametros y Session. Seteamos la sesion para un día
 const oneDay = 1000 * 60 * 60 * 24;

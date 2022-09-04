@@ -1,0 +1,34 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <main class="main">
+        <div class="container">
+            <h2 class="main-title">Listado de Géneros Musicales Cargados</h2>
+            <section class="container-productos">
+                <table>
+                    <tr>
+                        <th>Id.</th>
+                        <th>Título del Género</th>
+                    </tr>
+                <% for (let i=0; i< listadoGeneros.length; i++) { %>   
+                    <tr>
+                    <td>
+                        <div class="producto-listado">
+                            <%= listadoGeneros[i].id %>    
+                        </div>
+                    </td>
+                    <td>
+                        <div class="producto-listado">
+                            <%= listadoGeneros[i].titulo %></td>
+                        </div>
+                    </tr>
+                 <% } %>
+                </table>
+            </section>
+        </div>
+    </main>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>

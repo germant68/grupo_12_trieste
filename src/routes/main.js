@@ -4,6 +4,9 @@
 
 const express = require('express');
 
+// Libreria de Multer
+const multer = require('multer');
+
 //Requerimos los controladores
 const mainController = require('../controllers/mainController');
 const productosController = require('../controllers/productosController');
@@ -18,6 +21,7 @@ const router = express.Router();
 //requerimos el MDW para validaciones de usuarios
 const authMiddleware = require('../middlewares/authMiddleware');
 const { Router } = require('express');
+//const { TimeoutError } = require('sequelize/types');
 //const validacionesRegistroMdw = require('../middlewares/validacionesRegistroMdw');
 
 //Implementamos las validaciones. Todas en un arreglo.
@@ -39,12 +43,22 @@ const validateLogin = [
 
 //Validaciones AltaProducto
 const validateAltaProducto = [
-    body('nombreArtista').notEmpty().withMessage('Debe ingresar el nombre del Artista'),
+    //body('nombreArtista').notEmpty().withMessage('Debe ingresar el nombre del Artista').bail(),
     body('nombreDisco').notEmpty().withMessage('Debe ingresar el nombre del Disco'),
     body('precio').notEmpty().withMessage('Debe ingresar el precio del producto'),
     body('precio').isNumeric().withMessage('El precio debe ser numérico'),
     body('stock').isNumeric().withMessage('El stock debe ser numérico')
 
+];
+
+//Validaciones Alta Artista
+const validateAltaArtista = [
+    body('nombreArtista').notEmpty().withMessage('Debe ingresar nombre de Artista')
+];
+
+//Validaciones Alta Genero
+const validateAltaGenero= [
+    body('titulo').notEmpty().withMessage('Debe ingresar título para el Género')
 ];
 
 // Rutas GET
@@ -80,16 +94,28 @@ router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 
 router.get('/dashboard', authMiddleware, productosController.dashboard);
 
+router.get('/altaGenero', authMiddleware, productosController.altaGenero);
+
+router.get('/altaArtista', authMiddleware, productosController.altaArtista);
+
+router.get('/listadoArtistas', authMiddleware, productosController.listadoArtistas);
+
+router.get('/listadoGeneros', authMiddleware, productosController.listadoGeneros);
+
+router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+
 // Rutas POST
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
 router.post('/registro', validacionesRegistro, mainController.postRegistro); //con DB
 
 router.post('/login', validateLogin, mainController.loginPost);
 
+//router.post('/altaProducto', authMiddleware,  productosController.altaProductoPost);
 router.post('/altaProducto', authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
-router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArtistaPost);
 
+router.post('/altaGeneroPost', validateAltaGenero, productosController.altaGeneroPost);
 
 //base de datos
 router.get('/usuarios', mainController.listadoUsuarios);

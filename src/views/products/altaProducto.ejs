@@ -5,6 +5,8 @@
         <section>
             <div>
                 <h2>ALTA DE PRODUCTO</h2>
+                <h6>( RECUERDE! Primero debe crear Artistas/Géneros si no están en los menúes desplegables )</h6>
+
             </div>
             <div>
                 <br>
@@ -14,12 +16,32 @@
                     <% } )%>
                 <% }%>
 
+                <% if (locals.msje && locals.type == 'S') { %>
+                        <p class="success_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>
+                    <% } else {%>
+                        <% if (locals.msje && locals.type == 'E') { %>
+                            <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
+                        <% }%>
+                <% }%>
+                <!-- <% if (locals.errores) { %>
+                    <% errores.forEach(e => { %>
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                        <br>
+                    <% } )%>
+                <% }%>
+
                 <% if (locals.msje) { %>
-                    <p><%= locals.msje %></p>
-               <% }%>
-                <form action="/altaProducto" method="POST" enctype="multipart/form-data" class="form_reg_alta_producto">
+                    <p class="success_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>
+               <% }%> -->
+                
+               <form action="/altaProducto" method="POST" enctype="multipart/form-data" class="form_reg_alta_producto"> 
                     <label for="nombreArtista">Nombre Artista*</label>
-                    <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
+                    <select name="nombreArtista">
+                        <option disabled selected value> -- Selccione un artista -- </option>
+                        <% artistas.forEach( a => { %>
+                        <option value="<%= locals.prev && prev.id ? prev.id : a.id %>"><%= a.nombre_artista %></option>
+                        <% } )%>
+                    </select>
                     <br>
                     <label for="nombreDisco">Nombre del Disco*</label>
                     <input type="text" name="nombreDisco" value="<%= locals.prev && prev.nombreDisco ? prev.nombreDisco : '' %>" >
@@ -27,16 +49,23 @@
                     <label for="">Género*</label>
                     <select name="categoria">
                         <option disabled selected value> -- Selccione un género -- </option>
-                        <option value="Rock">Rock</option>
-                        <option value="Jazz">Jazz</option>
+                        <% generos.forEach( e => { %>
+                        
+                        <option value="<%= e.id%>"><%= e.titulo %></option>
+                        <!--<option value="Jazz">Jazz</option>
                         <option value="Pop">Pop</option>
                         <option value="Blues">Blues</option>
                         <option value="Electronica">Electrónica</option>
-                        <option value="Tango">Tango</option>
+                        <option value="nuevo">Nuevo Genero</option>-->
+                        <% } )%>
                     </select>
+                    
                     <br>
                     <label for="">Precio*</label>
                     <input type="text" name="precio" value="<%= locals.prev && prev.precio ? prev.precio : '' %>" >
+                    <br>
+                    <label for="">% de Descuento (si aplica)</label>
+                    <input type="text" name="oferta" value="<%= locals.prev && prev.oferta ? prev.oferta : '' %>" >
                     <br>
                     <label for="">Stock*</label>
                     <input type="text" name="stock" value="<%= locals.prev && prev.stock ? prev.stock : '' %>" >
@@ -44,11 +73,11 @@
                     <label for="">SKU*</label>
                     <input type="text" name="sku" value="<%= locals.prev && prev.sku ? prev.sku : '' %>" >
                     <br>
-                    <label for="">Recomendado*</label>
-                    <input type="checkbox" name="recomendado" class="form_reg_alta_producto" value="<%= locals.prev && prev.recomendado ? prev.recomendado : '' %>" >
+                    <label for="">Recomendado</label>
+                    <input type="checkbox" name="recomendado" class="form_reg_alta_producto" value="<%= locals.prev && prev.recomendado ? prev.recomendado : '1' %>" >
                     <br>
-                    <label for="">Imagen*</label>
-                    <input type="file" name="imagen" >
+                    <label for="">Tapa del Disco*</label>
+                    <input type="file" name="imagen" class="file-upload">
                     
                     <h6>* Campos Requeridos</h6>
                     <div>

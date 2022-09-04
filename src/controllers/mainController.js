@@ -99,10 +99,8 @@ const controller = {
                     if (pwd_ok) {
                         // creamos la sesion
                         req.session.nombre = userLogin.nombre;
-                        userSession = req.session.nombre;  
-                        //req.session.userId = userLogin.nombre_reg;
-                        //console.log(req.session.nombre);
-                        //console.log(req.session);
+                        userSession = req.session.nombre; 
+
                         try {
                             listadoDiscos = await db.Producto.findAll({
                                 raw : true, 
@@ -120,7 +118,7 @@ const controller = {
                                 'listadoDiscos': listadoDiscos });
 
                         } catch (error) {
-                            console.log(error);
+                            
                             return res.render(path.join(__dirname, '../views/users/login'), {
                                 errores: {'msg': 'Hubo un problema. Intente mas tarde por favor...'}
                             });
@@ -176,7 +174,7 @@ const controller = {
                     // creamos la sesion
                     req.session.userLogged = userLogin;
                     req.session.userId = userLogin.nombre_reg;
-
+                    
                         res.render(path.join(__dirname, '../views/home'), {
                             'session': req.session.userId,
                             'listadoDiscos': listadoDiscos });
@@ -255,9 +253,6 @@ const controller = {
             email_reg,
             pwd_reg
         }=req.body;
-    
-        console.log(req.body.pwd_reg);
-        console.log(req.body.pwdrepeat);
 
         //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);

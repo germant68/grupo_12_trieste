@@ -15,6 +15,17 @@
           <th>Cantidad</th>
           <th>Subtotal</th>
         </tr>
+        <% if (locals.session.carrito) { %> 
+          <% for (let i=0; i<locals.session.carrito.length; i++) { %>
+              <td><i class="fa-solid fa-trash-can"></i></td>
+              <td class="ancho-celda-carrito"><img src="<%= locals.session.carrito[i].img%>" class="icono-foto-carrito"></td>
+              <td><%= locals.session.carrito[i].nombre_disco%> - <%= locals.session.carrito[i].nombre_artista %></td>
+              <td>$35.00</td>
+              <td>1</td>
+              <td>$35.00</td>
+            <% } %>
+          <% } %>
+        <!--
         <tr>
             <td><i class="fa-solid fa-trash-can"></i></td>
             <td class="ancho-celda-carrito"><img src="./images/u2_pop.jpg" class="icono-foto-carrito"></td>
@@ -47,6 +58,7 @@
             <td>1</td>
             <td>$25.00</td>
         </tr>
+        -->
       </table>
       <br>
       <br>
