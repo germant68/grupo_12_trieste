@@ -45,9 +45,10 @@ const validateLogin = [
 const validateAltaProducto = [
     //body('nombreArtista').notEmpty().withMessage('Debe ingresar el nombre del Artista').bail(),
     body('nombreDisco').notEmpty().withMessage('Debe ingresar el nombre del Disco'),
-    body('precio').notEmpty().withMessage('Debe ingresar el precio del producto'),
-    body('precio').isNumeric().withMessage('El precio debe ser numérico'),
-    body('stock').isNumeric().withMessage('El stock debe ser numérico')
+    body('nombreArtista').exists().withMessage('Debe seleccionar un Artista'),
+    body('categoria').exists().withMessage('Debe seleccionar un género'),
+    body('precio').notEmpty().withMessage('Debe ingresar el precio del producto').isNumeric().withMessage('El precio debe ser numérico'),
+    body('stock').notEmpty().withMessage('Debe ingresar el stock del producto').isNumeric().withMessage('El stock debe ser numérico')
 
 ];
 

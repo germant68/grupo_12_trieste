@@ -17,22 +17,14 @@
                 <% }%>
 
                 <% if (locals.msje && locals.type == 'S') { %>
+                    <% delete locals.prev %>
                         <p class="success_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>
                     <% } else {%>
                         <% if (locals.msje && locals.type == 'E') { %>
+                            <% delete locals.prev %>
                             <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
                         <% }%>
                 <% }%>
-                <!-- <% if (locals.errores) { %>
-                    <% errores.forEach(e => { %>
-                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
-                        <br>
-                    <% } )%>
-                <% }%>
-
-                <% if (locals.msje) { %>
-                    <p class="success_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>
-               <% }%> -->
                 
                <form action="/altaProducto" method="POST" enctype="multipart/form-data" class="form_reg_alta_producto"> 
                     <label for="nombreArtista">Nombre Artista*</label>
@@ -50,13 +42,7 @@
                     <select name="categoria">
                         <option disabled selected value> -- Selccione un género -- </option>
                         <% generos.forEach( e => { %>
-                        
-                        <option value="<%= e.id%>"><%= e.titulo %></option>
-                        <!--<option value="Jazz">Jazz</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Blues">Blues</option>
-                        <option value="Electronica">Electrónica</option>
-                        <option value="nuevo">Nuevo Genero</option>-->
+                            <option value="<%= e.id%>"><%= e.titulo %></option>
                         <% } )%>
                     </select>
                     

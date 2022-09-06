@@ -19,10 +19,25 @@
                             <label for="nombreDisco">Nombre Disco:</label>
                             <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= listadoDiscos[i].nombre_disco %>" placeholder="Nombre Disco"></h3>
                             <label for="nombreAtista"> Nombre Artista / Grupo:</label>
-                            <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].artista.nombre_artista %>" placeholder="Nombre Artista"></h3>
+                            <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].artista.nombre_artista %>" placeholder="Nombre Artista" disabled="disabled"></h3>
                             <label for="precio">Precio: $</label>
                             <h3 class="product___title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
-                            <label for="file-upload" class="custom-file-upload">
+                            
+                            <label for="oferta">Oferta: % Off</label>
+                            <h3 class="product___title"><input type="text" name="oferta" value="<%= listadoDiscos[i].oferta %>" placeholder="Oferta"></h3>
+                            
+                            <label for="stock">Stock: </label>
+                            <h3 class="product___title"><input type="text" name="stock" value="<%= listadoDiscos[i].stock %>" placeholder="Stock"></h3>
+                            
+                            <label for="recomendado">Recomendado?: </label>
+                            
+                            <% if (listadoDiscos[i].recomendado == 1) { %>
+                                <h3 class="product___title"><input type="checkbox" name="recomendado" checked></h3>
+                            <% } else { %>
+                                <h3 class="product___title"><input type="checkbox" name="recomendado"></h3>
+                            <% } %>
+                            
+                                <label for="file-upload" class="custom-file-upload">
                                 <i class="fa fa-cloud-upload"></i>
                                     Tapa Disco
                             </label>

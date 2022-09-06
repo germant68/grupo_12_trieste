@@ -138,7 +138,7 @@ const controller = {
     //},
 
     //BORRAR PRODUCTO
-    borrarProducto: (req, res) => {
+    borrarProducto: async (req, res) => {
 
        //Preguntamos por la sesion.
        userSession = req.session;  
@@ -148,20 +148,64 @@ const controller = {
       let nuevoListado = [];
 
       //Llamamos al modelo con id para que lo borre.
-      if (modelProducts.delete(productoId)) {
-          msje = 'Producto borrado correctamente';
-          nuevoListado = getAllProductos;
+      try {
 
-        } else {
-            msje = 'El Producto no se ha podido borrar';
-      } 
+        await db.Producto.destroy({
+             where: {
+                 id: productoId
+             }
+         });
+         console.log('por acaiqiaiaiai');
+         res.redirect(path.join(__dirname, '../views/products/productosEdit'));
 
-      res.render(path.join(__dirname, '../views/products/productosEdit'), {
-      'session': userSession.userId,
-       'msje': msje,
-       'listadoDiscos': getAllProductos() });
+         //res.redirect('/movies');
+
+     } catch (error) {
+         
+        console.log(error);
+
+     }
+
+
+      // if (modelProducts.delete(productoId)) {
+      //     msje = 'Producto borrado correctamente';
+      //     nuevoListado = getAllProductos;
+
+      //   } else {
+      //       msje = 'El Producto no se ha podido borrar';
+      // } 
+
+      // res.render(path.join(__dirname, '../views/products/productosEdit'), {
+      // 'session': userSession.userId,
+      //  'msje': msje,
+      //  'listadoDiscos': getAllProductos() });
 
     },
+
+    borrarProducto1: (req, res) => {
+
+      //Preguntamos por la sesion.
+      userSession = req.session;  
+      
+     let productoId = req.params.id;
+     let msje;
+     let nuevoListado = [];
+
+     //Llamamos al modelo con id para que lo borre.
+     if (modelProducts.delete(productoId)) {
+         msje = 'Producto borrado correctamente';
+         nuevoListado = getAllProductos;
+
+       } else {
+           msje = 'El Producto no se ha podido borrar';
+     } 
+
+     res.render(path.join(__dirname, '../views/products/productosEdit'), {
+     'session': userSession.userId,
+      'msje': msje,
+      'listadoDiscos': getAllProductos() });
+
+   },
 
     //MODIFICAR PRODUCTO
     modificarProducto: (req, res) => {
@@ -273,91 +317,113 @@ const controller = {
 
      //Traemos las validaciones del Formulario de Alta de Producto
      const errores = validationResult(req);
-     
-     if (errores.isEmpty()) { //Todo bien en el formulario, procedemos a crear el articulo.
 
-        console.log(oferta);
-        //console.log(sku);
+     //Con esta variable manejo el error y mensajes al front (0 OK, 1 Error Validacion, 2 Error Create)
+     //msje y msjType son para manejar desde el front los errores.
+     let errorCode = 0; 
+     let msje = '';
+     let msjType = '';
 
-        //ahora validamos que el producto (SKU) no exista.
-        try {
-          
-          const productoSku = await db.Producto.findOrCreate({ 
-            where: { sku: sku }, 
-            defaults: {
-                nombre_disco: nombreDisco, 
-                genero_id: categoria, 
-                stock: stock, 
-                sku: sku, 
-                recomendado: recomendado, 
-                artista_id: nombreArtista, 
-                img: imagen, 
-                precio: precio,
-                oferta: oferta },
-            raw : true, 
-            nest: true
-          });  
-          
-          if (productoSku[1]) {           //True --> entonces se creo correctamente
-             const msjeExito = 'Producto Creado Satisfactoriamente';
-             const msjeType = 'S';
-             //alert(msjeExito);
-             
-             //res.redirect('/altaProducto',);
-            res.render(path.join(__dirname, '../views/products/altaProducto'), {
-              'session': userSession,
-              'msje': msjeExito, 
-              'type': msjeType,
-              'errores': errores.array(),
-              'prev': req.body,
-              'artistas': artistas,
-              'generos': generos
-               });
-          
-          } else {
-              
-              const msjeError = 'El producto ya existe';
-              const msjeType = 'E';
+      if (errores.isEmpty()) { //Todo bien en el formulario, procedemos a crear el articulo.
 
-              res.render(path.join(__dirname, '../views/products/altaProducto'), {
-                'session': userSession,
-                'msje': msjeError,
-                'type': msjeType, 
-                'errores': errores.array(),
-                'prev': req.body,
-                'artistas': artistas,
-                'generos': generos });
-          }
-
-        } catch (error) {
-
-          console.log('entro en esta');
+          //ahora validamos que el producto (SKU) no exista.
+          try {
             
-          const msjeError = 'Error en la creación del Producto. Volver a intentar más tarde';
-          const msjeType = 'E';
+            const productoSku = await db.Producto.findOrCreate({ 
+              where: { sku: sku }, 
+              defaults: {
+                  nombre_disco: nombreDisco, 
+                  genero_id: categoria, 
+                  stock: stock, 
+                  sku: sku, 
+                  recomendado: recomendado, 
+                  artista_id: nombreArtista, 
+                  img: imagen, 
+                  precio: precio,
+                  oferta: oferta },
+              raw : true, 
+              nest: true
+            });  
+            
+            if (productoSku[1]) {           //True --> entonces se creo correctamente
+              
+              msje = 'Producto Creado Satisfactoriamente';
+              msjType = 'S';
+              errorCode = 0;
+            
+            } else {  //El próducto ya Existe
+                
+                const msje = 'El producto ya existe';
+                const msjeType = 'E';
+                errorCode = 2;
 
-            res.render(path.join(__dirname, '../views/products/altaProducto'), {
-              'session': userSession,
-              'msje': msjeError, 
-              'type': msjeType,
-              'errores': errores.array(),
-              'prev': req.body,
-              'artistas': artistas,
-              'generos': generos });  
-        };
+            }
+
+          } catch (error) {
+
+              console.log('entro en esta');
+                
+              msje = 'Error en la creación del Producto. Volver a intentar más tarde';
+              msjType = 'E';
+              errorCode = 3;
+    
+          };
 
 
-    }else{
-        // Acá sí hubo errores en alguno de los campos de los formularios.
-        // Renderizamos el formulario con el arreglo de errores para que los muestre y los valores
-        // que ya traía, para que queden visualizados.
-        res.render(path.join(__dirname, '../views/products/altaProducto'),{
-          'errores':errores.array(),
-          'prev': req.body,
-          'artistas': artistas,
-          'generos': generos
-          });
-    }
+      }else{
+
+          // Acá sí hubo errores en alguno de los campos de los formularios.
+          // Renderizamos el formulario con el arreglo de errores para que los muestre y los valores
+          // que ya traía, para que queden visualizados.
+          //Seteamos codigo de error igual a 1
+          console.log('zarpado');
+          msje = 'Error Validacion';
+          errorCode = 1;
+
+      }
+
+    //andes de renderizar la pagina, leemos los datos de los Productos de vuelta de la Base de Datos.
+
+      db.Genero.findAll({
+        raw : true, 
+        nest: true,
+      }).then(generosAll => {
+        
+        generos = generosAll;
+        db.Artista.findAll({
+        raw : true, 
+        nest: true,
+        }).then(artistasAll => {
+            artistas = artistasAll 
+            
+          //Finalmente renderizamos la página con todos los parámetros.
+          res.render(path.join(__dirname, '../views/products/altaProducto'), {
+            'session': userSession,
+            'msje': msje, 
+            'type': msjType,
+            'errorCode': errorCode,
+            'errores': errores.array(),
+            'prev': req.body,
+            'artistas': artistas,
+            'generos': generos });  
+          })
+      });
+
+      console.log(artistas);
+      console.log(generos);
+
+
+      // //Finalmente renderizamos la página con todos los parámetros.
+      // res.render(path.join(__dirname, '../views/products/altaProducto'), {
+      //   'session': userSession,
+      //   'msje': msje, 
+      //   'type': msjType,
+      //   'errorCode': errorCode,
+      //   'errores': errores.array(),
+      //   'prev': req.body,
+      //   'artistas': artistas,
+      //   'generos': generos });  
+
     },
 
     altaProductoPost1: (req, res) => {
