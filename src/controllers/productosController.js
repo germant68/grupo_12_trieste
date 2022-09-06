@@ -844,8 +844,13 @@ const controller = {
       }  else {
         res.send('Página Géneros no encontrada');
      }
-    }
+    },
 
+    //Listado de Resultado de la Busqueda del HEader
+    resultadoBusqueda: (req, res) => {
+      console.log("entro en la busqueda vieja");
+    }
+    
   }
 
 // Finalizamos devolviendo el objeto

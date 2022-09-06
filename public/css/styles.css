@@ -810,3 +810,27 @@ footer {
 /* 
 MODIFICACION DE PRODUCTO */
 
+/* Boton Volver de ABM de Administrado */
+.backButton {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    text-align: center;
+
+   
+    
+}
+
+.backButton:hover {
+    background-color:dimgray;
+    color: white;
+}
+
+/* Estilos de FAQ Section */
+
+.faqSection {
+    margin: 20px;
+    text-align: justify;
+}

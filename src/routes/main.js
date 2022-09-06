@@ -21,17 +21,14 @@ const router = express.Router();
 //requerimos el MDW para validaciones de usuarios
 const authMiddleware = require('../middlewares/authMiddleware');
 const { Router } = require('express');
-//const { TimeoutError } = require('sequelize/types');
 //const validacionesRegistroMdw = require('../middlewares/validacionesRegistroMdw');
 
 //Implementamos las validaciones. Todas en un arreglo.
 //Validaciones Registro
-//console.log(body.pwd_reg);
-//console.log(body.pwdrepeat);
 const validacionesRegistro = [
     body('email_reg').isEmail().withMessage('Formato inválido de Email'),
-    body('pwd_reg').isLength({ min: 3}).withMessage('La contraseña debe tener mínimo 3 caracteres'),
-    //body('pwd_reg').equals('pwdrepeat').withMessage('Las contraseñas deben coincidir')
+    body('pwd_reg').isLength({ min: 3}).withMessage('La contraseña debe tener mínimo 3 caracteres')
+    //body('pwdrepeat').equals('pwd_reg').withMessage('Las contraseñas deben coincidir')
 ];
 
 
@@ -105,13 +102,15 @@ router.get('/listadoGeneros', authMiddleware, productosController.listadoGeneros
 
 router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
+router.get('/resultadoBusqueda', productosController.resultadoBusqueda);
+
 // Rutas POST
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
 router.post('/registro', validacionesRegistro, mainController.postRegistro); //con DB
 
 router.post('/login', validateLogin, mainController.loginPost);
 
-//router.post('/altaProducto', authMiddleware,  productosController.altaProductoPost);
+//router.post('/altaProducto', authMiddleware,  productosController.altaProductoPost); //con JSON
 router.post('/altaProducto', authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
 router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArtistaPost);
