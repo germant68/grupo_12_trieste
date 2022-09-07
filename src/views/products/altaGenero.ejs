@@ -21,6 +21,10 @@
                             <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
                         <% }%>
                 <% }%>
+                <p style="text-align: center;">
+                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                </p>
+                <br>
                 
                 <form action="/altaGeneroPost" method="POST" enctype="multipart/form-data" class="form_generos">
                     <label for="titulo">Título del Género*</label>

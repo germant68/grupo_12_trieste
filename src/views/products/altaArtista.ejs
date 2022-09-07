@@ -21,14 +21,18 @@
                             <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
                         <% }%>
                 <% }%>
+                <p style="text-align: center;">
+                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                </p>
+                <br>
                 <form action="/altaArtistaPost" method="POST" enctype="multipart/form-data" class="form_artistas">
                     <label for="nombreArtista">Nombre del Artista*</label>
                     <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
                     <br>
                     <h6>* Campos Requeridos</h6>
                     <div>
-                        <input type="submit" value="Grabar" name="submit_alta">
-                        <input type="reset" value="Borrar" name="reset_alta">
+                        <input type="submit" value="Grabar" name="submit_alta" class="form_reg_alta_artistas_generos">
+                        <input type="reset" value="Borrar" name="reset_alta" class="form_reg_alta_artistas_generos">
                     </div>
                     
                 </form>

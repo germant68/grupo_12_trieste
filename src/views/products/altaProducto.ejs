@@ -9,7 +9,6 @@
 
             </div>
             <div>
-                <br>
                 <% if (locals.errores) { %>
                     <% errores.forEach(e => { %>
                         <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
@@ -25,7 +24,10 @@
                             <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.msje %></p>  
                         <% }%>
                 <% }%>
-                
+                <p style="text-align: center;">
+                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                </p>
+                <br>
                <form action="/altaProducto" method="POST" enctype="multipart/form-data" class="form_reg_alta_producto"> 
                     <label for="nombreArtista">Nombre Artista*</label>
                     <select name="nombreArtista">
@@ -69,6 +71,9 @@
                     <div>
                         <input type="submit" value="Grabar" name="submit_alta">
                         <input type="reset" value="Borrar" name="reset_alta">
+                        
+                        <!--    <button class="backButton" onclick="history.go(-2)"> Volver </button>-->
+                        
                     </div>
                     
                 </form>

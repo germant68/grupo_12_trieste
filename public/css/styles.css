@@ -342,6 +342,21 @@ h2, section {
     margin: auto;
 }
 
+.form_generos input[name=reset_alta],
+.form_generos input[name=submit_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_generos input[name=reset_alta]:hover,
+.form_generos input[name=submit_alta]:hover {
+    background-color:dimgray;
+    color: white;
+}
+
 /* Formulario de Alta Artistas */
 .form_artistas {
     display: flex;
@@ -355,6 +370,21 @@ h2, section {
     width: 20%;
     border: 1px solid #ccc;
     margin: auto;
+}
+
+.form_artistas input[name=reset_alta],
+.form_artistas input[name=submit_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_artistas input[name=reset_alta]:hover,
+.form_artistas input[name=submit_alta]:hover {
+    background-color:dimgray;
+    color: white;
 }
 
 /* Formulario de Registracion */
@@ -833,4 +863,21 @@ MODIFICACION DE PRODUCTO */
 .faqSection {
     margin: 20px;
     text-align: justify;
+}
+
+/* Creacion de Artistas y Generos Botones */
+
+.form_reg_alta_artistas_generos input[name=reset_alta],
+.form_reg_alta_artistas_generos input[name=submit_alta] {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    background-color:white;
+}
+
+.form_reg_alta_artistas_generos input[name=reset_alta]:hover,
+.form_reg_alta_artistas_generos input[name=submit_alta]:hover {
+    background-color:dimgray;
+    color: white;
 }
