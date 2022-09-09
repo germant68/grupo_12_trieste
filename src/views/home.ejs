@@ -52,11 +52,11 @@
                 <div class="producto-listado">
                     <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                     <div class="product__decription">
-                        <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
+                        <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                         <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                         <p></p>
                         <p></p>
-                        <span class="producto__price">Categoria: <%= listadoDiscos[i].categoria %></span>
+                        <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                         <p></p>
                         <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
                         <p></p>
@@ -79,10 +79,10 @@
        <div class="producto-listado">
         <a href="#"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
         <div class="product__decription">
-            <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
+            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
             <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
             <p></p>
-            <span class="producto__price">Categoria: <%= listadoDiscos[i].categoria %></span>
+            <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
             <p></p>
             <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
             <p></p>
@@ -102,10 +102,10 @@
             <div class="producto">
                 <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                 <div class="product__decription">
-                    <h3 class="product__title"><%= listadoDiscos[i].nombreDisco %> - <%= listadoDiscos[i].nombreArtista %></h3>
+                    <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                     <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                     <p></p>
-                    <span class="producto__price">Categoria: <%= listadoDiscos[i].categoria %></span>
+                    <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                     <p></p>
                     <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
                     <p></p>

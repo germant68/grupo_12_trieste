@@ -9,38 +9,23 @@ const path = require('path');
 const multer = require('multer');
 //const uploadFile = require('../middlewares/multerMiddleware');
 
-///----------------
+// Implementamos el Disk Sotrage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         let folder = path.join(__dirname, '../../Public/images/');
         cb(null, folder);
-
     },
 
     filename: (req, file, cb) => {
-        console.log('MOROOOOO');
-        console.log(file);
         const newFilename = file.originalname;
         cb (null, newFilename)
-        //let filename = `${}`
+
     }
 })
 
 const uploadFile = multer({ storage: storage })
 
-//--------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
+// ----------- Fin de Multer -----------
 
 //Requerimos los controladores
 const mainController = require('../controllers/mainController');
