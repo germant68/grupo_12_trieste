@@ -8,12 +8,13 @@
     <br>
     <table class="tabla-carrito" cellspacing="10" cellpadding="20">
         <tr>
-          <th class="celda-primera-carrito "></th>
+          <th class="celda-primera-carrito "><img src="/images/abba_gold.jpg" alt=""></th>
           <th>Producto</th>
           <th>Descripción</th>
           <th>Precio</th>
           <th>Cantidad</th>
           <th>Subtotal</th>
+          
         </tr>
         <% if (locals.session.carrito) { %> 
           <% for (let i=0; i<locals.session.carrito.length; i++) { %>

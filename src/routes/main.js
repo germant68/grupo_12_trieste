@@ -3,9 +3,44 @@
 // Por eso debemos Requerirlo al modulo
 
 const express = require('express');
+const path = require('path');
 
 // Libreria de Multer
 const multer = require('multer');
+//const uploadFile = require('../middlewares/multerMiddleware');
+
+///----------------
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        let folder = path.join(__dirname, '../../Public/images/');
+        cb(null, folder);
+
+    },
+
+    filename: (req, file, cb) => {
+        console.log('MOROOOOO');
+        console.log(file);
+        const newFilename = file.originalname;
+        cb (null, newFilename)
+        //let filename = `${}`
+    }
+})
+
+const uploadFile = multer({ storage: storage })
+
+//--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Requerimos los controladores
 const mainController = require('../controllers/mainController');
@@ -111,7 +146,7 @@ router.post('/registro', validacionesRegistro, mainController.postRegistro); //c
 router.post('/login', validateLogin, mainController.loginPost);
 
 //router.post('/altaProducto', authMiddleware,  productosController.altaProductoPost); //con JSON
-router.post('/altaProducto', authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
+router.post('/altaProducto', uploadFile.single('imagen'), authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
 router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArtistaPost);
 

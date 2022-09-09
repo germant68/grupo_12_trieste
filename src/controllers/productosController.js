@@ -44,23 +44,6 @@ let listadoDiscos = {};
 let generos = [];
 let artistas = [];
 
-/*const generos = async () => {
-  await db.Genero.findAll({
-    raw : true, 
-    nest: true,
-  }).then(generos => {
-      return generos });
-  }
-
-  const artistas = async () => {
-    await db.Artista.findAll({
-      raw : true, 
-      nest: true,
-    }).then(artistas => {
-        return artistas });
-    }
-  
-    console.log(artistas);*/
 
 // Generamos un array con todas las letras que vamos a usar para la busqueda avanzada.
 const alpha = Array.from(Array(26)).map((e, i) => i + 65);
@@ -131,11 +114,6 @@ const controller = {
               'listadoDiscos': productos });
           })
       },
-
-      // res.render(path.join(__dirname, '../views/products/productosEdit'), {
-      //   'session': userSession.nombre,
-      //   'listadoDiscos': listadoDiscos });
-    //},
 
     //BORRAR PRODUCTO
     borrarProducto: async (req, res) => {
@@ -312,8 +290,9 @@ const controller = {
         stock,
         sku,
         recomendado,
-        imagen
     } = req.body;
+
+    const imagen = req.file.filename //Uso el objeto file que viene en el Form de MULTER.
 
      //Traemos las validaciones del Formulario de Alta de Producto
      const errores = validationResult(req);
@@ -362,6 +341,7 @@ const controller = {
           } catch (error) {
 
               console.log('entro en esta');
+              console.log(error);
                 
               msje = 'Error en la creación del Producto. Volver a intentar más tarde';
               msjType = 'E';
@@ -408,9 +388,6 @@ const controller = {
             'generos': generos });  
           })
       });
-
-      console.log(artistas);
-      console.log(generos);
 
 
       // //Finalmente renderizamos la página con todos los parámetros.
@@ -633,7 +610,8 @@ const controller = {
 
       //Vamos a dar de alta un artista.
       const nuevoArtista = req.body.nombreArtista;
-      console.log(nuevoArtista);
+      // console.log(nuevoArtista);
+      // console.log('eioio');
       
       //Traemos las validaciones del Formulario de Alta de Artista
       const errores = validationResult(req);
@@ -707,23 +685,35 @@ const controller = {
     },
 
     //DETALLE DE PRODUCTO
-    productoDetalle: (req, res) => {
+    productoDetalle: async (req, res) => {
+
        //Preguntamos por la sesion.
        userSession = req.session;
 
-       let productoId = req.params.id;
+       let productoEncontrado = {};
 
-      //Buscamos el producto por Id. Para ello usamos el ModelProducts.
-      let productoEncontrado = modelProducts.findByPk(productoId);
+       //Buscamos el producto por Id. en la Base de Datos
+       try {
+        const { id } = req.params;
+        productoEncontrado = await db.Producto.findByPk(id, { 
+          raw : true, 
+          nest: true,
+          include: [{
+            association: 'artista',
+          }, 
+          {
+            association: 'genero',
+          }]});
 
-      if (!productoEncontrado) {
+      } catch (error) {
         productoEncontrado = undefined;
-      }  
-      //res.render(path.join(__dirname, '../views/products/productoDetalle'));
-      
-        res.render(path.join(__dirname, '../views/products/productoDetalle'), {
+
+      }
+      console.log(productoEncontrado);
+      res.render(path.join(__dirname, '../views/products/productoDetalle'), {
         'session': userSession.userId,
         'productoEncontrado': productoEncontrado });
+
     },
 
     //BUSQUEDA AVANZADA
@@ -850,7 +840,7 @@ const controller = {
     resultadoBusqueda: (req, res) => {
       console.log("entro en la busqueda vieja");
     }
-    
+
   }
 
 // Finalizamos devolviendo el objeto

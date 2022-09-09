@@ -5,27 +5,79 @@
     <% if(locals.productoEncontrado != undefined) {%>
         
     <main class="producto_detalle">
-        <div class="producto_box">
-            <div class="producto_img">
+        <h2 class="main-title">Detalle de Producto</h2>
+        <div>
+            <div class="producto--listado">
+                <img alt="" class="producto___img" src= <%= productoEncontrado.img %>>
+                <div class="product__decription">
+                    <br>
+                    <label for="nombreDisco">Nombre Disco:</label>
+                    <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= productoEncontrado.nombre_disco %>" placeholder="Nombre Disco"></h3>
+                    <label for="nombreAtista"> Nombre Artista / Grupo:</label>
+                    <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= productoEncontrado.artista.nombre_artista %>" placeholder="Nombre Artista" disabled="disabled"></h3>
+                    <label for="precio">Precio: $</label>
+                    <h3 class="product___title"><input type="text" name="precio" value="<%= productoEncontrado.precio %>" placeholder="Precio"></h3>
+                    
+                    <label for="oferta">Oferta: % Off</label>
+                    <h3 class="product___title"><input type="text" name="oferta" value="<%= productoEncontrado.oferta %>" placeholder="Oferta"></h3>
+                    
+                    <label for="stock">Stock: </label>
+                    <h3 class="product___title"><input type="text" name="stock" value="<%= productoEncontrado.stock %>" placeholder="Stock"></h3>
+                    
+                    
+                    
+                    <% if (productoEncontrado.recomendado == 1) { %>
+                        <label for="recomendado">Recomendado?: <h3 class="product___title"><input type="checkbox" name="recomendado" checked></h3></label>
+                    <% } else { %>
+                        <label for="recomendado">Recomendado?: <h3 class="product___title"><input type="checkbox" name="recomendado"></h3></label>
+                    <% } %>
+                    
+                        <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i>
+                            Tapa Disco
+                    </label>
+                    
+                </div>
+                <p></p>
+                <div class="product__decription">
+                    <span class="producto__price"><a href="/modificarProducto/<%= productoEncontrado.id%>">Modificar</a></span>
+                    <span class="producto__price"><a href="/borrarProducto/<%= productoEncontrado.id%>">Borrar</a></span>
+                </div>
+                
+                <br>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="producto_img">
             <img src=<%= locals.productoEncontrado.img %> alt="vinilo"></div>
 
             <div class="detalle_p">
                 <div class="producto_titulo">
-                    <h3><%= locals.productoEncontrado.nombreArtista %> <br>
-                        <h4><%= locals.productoEncontrado.nombreDisco %></h4>
+                    <h3><%= locals.productoEncontrado.artista.nombre_artista %> <br>
+                        <h4><%= locals.productoEncontrado.nombre_disco %></h4>
                     </h3>
                 </div>  
                 <div class="producto_genero">
-                    <h4>Genero: <%= locals.productoEncontrado.categoria %></h4>
+                    <h4>Genero: <%= locals.productoEncontrado.genero.titulo %></h4>
+                    Stock: <%= locals.productoEncontrado.stock %> u.
                 <div class="producto_comprar">
                     <div class="precio">
-                        <sup>$ <%= locals.productoEncontrado.precio %></sup>
+                        <sup> Precio: $<%= locals.productoEncontrado.precio %>
+                        </sup>
                     </div>
                     <div class="product_boton">
                         <a class="comprar" href="·">Comprar</a>
                     </div>
                 </div>
-            </div> 
+            </div>  -->
         </div>
     </main>
     <% } %>

@@ -17,7 +17,7 @@
                  <% } %> -->
                  <% for (let i=0; i< listadoDiscos.length; i++) { %>   
                     <div class="producto">
-                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                         <div class="product__decription">
                             <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                             <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>

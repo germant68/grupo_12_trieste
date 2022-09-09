@@ -25,7 +25,7 @@
                     <button class="backButton" onclick="history.go(-1)"> Volver </button>
                 </p>
                 <br>
-                <form action="/altaArtistaPost" method="POST" enctype="multipart/form-data" class="form_artistas">
+                <form action="/altaArtistaPost" method="POST" class="form_artistas">
                     <label for="nombreArtista">Nombre del Artista*</label>
                     <input type="text" name="nombreArtista" value="<%= locals.prev && prev.nombreArtista ? prev.nombreArtista : '' %>" >
                     <br>
