@@ -13,12 +13,12 @@
             <% if (listadoDiscos) { %>
                 <% for (let i=0; i< listadoDiscos.length; i++) { %>   
                     <div class="producto-listado">
-                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= listadoDiscos[i].img %>></a>
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                         <div class="product__decription">
                             <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                             <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                             <p></p>
-                            <span class="producto__price">Categoria: <%= listadoDiscos[i].genero.titulo %></span>
+                            <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                             <p></p>
                             <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
                             <p></p>

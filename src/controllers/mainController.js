@@ -72,7 +72,6 @@ const controller = {
     home1: (req, res) => {
         //Preguntamos por la sesion.
         userSession = req.session.nombre;  
-        console.log(req.session);
         
         //Traemos algunos productos 
             res.render(path.join(__dirname, '../views/home'), {
@@ -113,8 +112,6 @@ const controller = {
                     nest: true
                 });  
                     
-                console.log(userLogin);
-
                 if (userLogin) {
                     //debemos chequear la contraseña
                     const pwd_ok = bcryptjs.compareSync(pwd_reg, userLogin.password);
