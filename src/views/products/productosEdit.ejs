@@ -15,15 +15,17 @@
             <section class="container-modificacion"> 
  
                 <% for (let i=0; i< listadoDiscos.length; i++) { %>
-                    <form action="">   
+                    <form action="/modificarProducto/<%= listadoDiscos[i].id%>" method="POST">   
                     <div class="producto--listado">
-                        <img alt="" class="producto___img" src= <%= listadoDiscos[i].img %>>
+                        <img alt="" class="producto___img" src= <%= '/images/' + listadoDiscos[i].img %>>
                         <div class="product__decription">
                             <br>
                             <label for="nombreDisco">Nombre Disco:</label>
-                            <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= listadoDiscos[i].nombre_disco %>" placeholder="Nombre Disco"></h3>
+                            <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= listadoDiscos[i].nombre_disco %>" placeholder="Nombre Disco" disabled="disabled"></h3>
                             <label for="nombreAtista"> Nombre Artista / Grupo:</label>
                             <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= listadoDiscos[i].artista.nombre_artista %>" placeholder="Nombre Artista" disabled="disabled"></h3>
+                            <label for="genero">Género</label>
+                            <h3 class="product___title"><input type="text" name="genero" value="<%= listadoDiscos[i].genero.titulo %>" placeholder="Genero Musical" disabled="disabled"></h3>
                             <label for="precio">Precio: $</label>
                             <h3 class="product___title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
                             
@@ -31,26 +33,22 @@
                             <h3 class="product___title"><input type="text" name="oferta" value="<%= listadoDiscos[i].oferta %>" placeholder="Oferta"></h3>
                             
                             <label for="stock">Stock: </label>
-                            <h3 class="product___title"><input type="text" name="stock" value="<%= listadoDiscos[i].stock %>" placeholder="Stock"></h3>
+                            <h3 class="product___title"><input type="number" name="stock" value="<%= listadoDiscos[i].stock %>" placeholder="Stock"></h3>
                             
                             <label for="recomendado">Recomendado?: </label>
                             
                             <% if (listadoDiscos[i].recomendado == 1) { %>
-                                <h3 class="product___title"><input type="checkbox" name="recomendado" checked></h3>
+                                <h3 class="product___title"><input type="checkbox" name="favorito" checked></h3>
                             <% } else { %>
-                                <h3 class="product___title"><input type="checkbox" name="recomendado"></h3>
+                                <h3 class="product___title"><input type="checkbox" name="favorito"></h3>
                             <% } %>
-                            
-                                <label for="file-upload" class="custom-file-upload">
-                                <i class="fa fa-cloud-upload"></i>
-                                    Tapa Disco
-                            </label>
-                            <!-- <h3 class="product___title"><input id="file-upload" type="file" name="img" value="<%= listadoDiscos[i].img %>" ></h3> -->
+
                         </div>
                         <p></p>
                         <div class="product__decription">
-                            <span class="producto__price"><a href="/modificarProducto/<%= listadoDiscos[i].id%>">Modificar</a></span>
-                            <span class="producto__price"><a href="/borrarProducto/<%= listadoDiscos[i].id%>">Borrar</a></span>
+                            <input type="submit" class="producto__price" value="Modificar">
+                            <!-- <span class="producto__price"><a href="/modificarProducto/<%= listadoDiscos[i].id%>">Modificar</a></span> -->
+                            <a href="/borrarProducto/<%= listadoDiscos[i].id%>"><input type="button" value="Borrar" class="producto__price"></a>
                         </div>
                         
                         <br>

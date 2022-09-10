@@ -116,54 +116,49 @@ const controller = {
       },
 
     //BORRAR PRODUCTO
-    borrarProducto: async (req, res) => {
+    borrarProducto: (req, res) => {
 
        //Preguntamos por la sesion.
-       userSession = req.session;  
+       userSession = req.session.nombre;  
        
       let productoId = req.params.id;
-      let msje;
-      let nuevoListado = [];
 
       //Llamamos al modelo con id para que lo borre.
-      try {
 
-        await db.Producto.destroy({
+      db.Producto.destroy({
              where: {
                  id: productoId
              }
-         });
-         console.log('por acaiqiaiaiai');
-         res.redirect(path.join(__dirname, '../views/products/productosEdit'));
+         })
+         .then( resultado => {
 
-         //res.redirect('/movies');
+           //res.redirect(path.join(__dirname, '../views/home'));
 
-     } catch (error) {
-         
-        console.log(error);
+            db.Producto.findAll({
+              raw : true, 
+              nest: true,
+              include: [{
+                association: 'artista',
+              }, 
+              {
+                association: 'genero',
+              }]
+            })
+              .then(productos => {
+                
+                res.render(path.join(__dirname, '../views/products/productosEdit'), {
+                  'session': userSession,
+                  'listadoDiscos': productos });
+              })
 
-     }
-
-
-      // if (modelProducts.delete(productoId)) {
-      //     msje = 'Producto borrado correctamente';
-      //     nuevoListado = getAllProductos;
-
-      //   } else {
-      //       msje = 'El Producto no se ha podido borrar';
-      // } 
-
-      // res.render(path.join(__dirname, '../views/products/productosEdit'), {
-      // 'session': userSession.userId,
-      //  'msje': msje,
-      //  'listadoDiscos': getAllProductos() });
+        });
 
     },
 
     borrarProducto1: (req, res) => {
 
       //Preguntamos por la sesion.
-      userSession = req.session;  
+      userSession = req.session.nombre;  
       
      let productoId = req.params.id;
      let msje;
@@ -179,49 +174,78 @@ const controller = {
      } 
 
      res.render(path.join(__dirname, '../views/products/productosEdit'), {
-     'session': userSession.userId,
+     'session': userSession,
       'msje': msje,
       'listadoDiscos': getAllProductos() });
 
    },
 
     //MODIFICAR PRODUCTO
-    modificarProducto: (req, res) => {
+    modificarProducto: async (req, res) => {
       
+      //Preguntamos por la sesion.
+      userSession = req.session.nombre;  
+
       //Vamos a modificar un producto. 
-      //Creamos primero el objeto con los valores del formulario.
-      const {
-        nombreArtista,
-        nombreDisco,
-        categoria,
-        precio,
-        stock,
-        sku,
-        recomendado,
-        imagen
-      }=req.body;
+      try {
 
-      console.log(req.body);
-      console.log(req.params.id);
+        //Creamos primero el objeto con los valores del formulario QUE PUEDEN MODIFICARSE
+        const {
+          precio,
+          stock,
+          oferta,
+          favorito,
+        }=req.body;
 
-      const productoId = req.body.id;
-      const productoAModificar = modelProducts.findByPk(productoId);
+        let recomendado = '';
+        if ( favorito == 'on') {
+           recomendado = 1; //Sigue como recomendado
+        } else {
+           recomendado = 0;  //Lo removemos de ser recomendado
+        }
       
-      if (productoAModificar) {
-        //Armamos las modificaciones
+        await db.Producto.update(
+            {
+                precio,
+                stock,
+                oferta,
+                recomendado,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                }
+            }
+        );
 
-        productoAModificar.nombreArtista = nombreArtista;
-        productoAModificar.nombreDisco = nombreDisco;
-        productoAModificar.categoria = categoria;
-        productoAModificar.precio = precio;
-        productoAModificar.stock = stock;
-        productoAModificar.sku = sku;
-        productoAModificar.recomendado = recomendado ? recomendado : false,
-        productoAModificar.imagen = imagen;
-
-        res.send(productoAModificar);
-      } else {
-        res.send('No hay estereo no hay')
+        let msje = 'Producto Modificado con éxito';
+        //Volvemos a renderizar la vista
+        db.Producto.findAll({
+          raw : true, 
+          nest: true,
+          include: [{
+            association: 'artista',
+          }, 
+          {
+            association: 'genero',
+          }]
+        })
+          .then(productos => {
+            
+            res.render(path.join(__dirname, '../views/products/productosEdit'), {
+              'session': userSession,
+              'msje': msje,
+              'listadoDiscos': productos });
+          })
+          
+      } catch (error) {
+          let msje = 'Error Modificando el Producto. Vuelva a intentar...';
+          
+          res.render(path.join(__dirname, '../views/products/productosEdit'), {
+            'session': userSession,
+            'msje': msje,
+            'listadoDiscos': productos });
+          //console.log(error);
       }
 
     },
@@ -688,7 +712,7 @@ const controller = {
     productoDetalle: async (req, res) => {
 
        //Preguntamos por la sesion.
-       userSession = req.session;
+       userSession = req.session.nombre;
 
        let productoEncontrado = {};
 
@@ -709,9 +733,10 @@ const controller = {
         productoEncontrado = undefined;
 
       }
-      console.log(productoEncontrado);
+
+      //console.log(productoEncontrado);
       res.render(path.join(__dirname, '../views/products/productoDetalle'), {
-        'session': userSession.userId,
+        'session': userSession,
         'productoEncontrado': productoEncontrado });
 
     },

@@ -106,8 +106,6 @@ router.get('/altaProducto', productosController.altaProducto);
 
 router.get('/borrarProducto/:id', authMiddleware, productosController.borrarProducto)
 
-router.put('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
-
 router.get('/busquedaAvanzada', productosController.busquedaAvanzada);
 
 router.get('/dashboard', authMiddleware, productosController.dashboard);
@@ -136,6 +134,8 @@ router.post('/altaProducto', uploadFile.single('imagen'), authMiddleware,  valid
 router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArtistaPost);
 
 router.post('/altaGeneroPost', validateAltaGenero, productosController.altaGeneroPost);
+
+router.post('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
 //base de datos
 router.get('/usuarios', mainController.listadoUsuarios);

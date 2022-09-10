@@ -197,10 +197,47 @@ body {
     margin: 10px 0;
 }
 
+.producto__stock_ok {
+    
+    border: 1px solid rgba(65, 207, 4, 0.952);;
+    background-color: rgba(65, 207, 4, 0.952);;
+    width: 240px;
+    color: white;
+    font-weight: bold
+}
 
+.producto__stock_soldout {
+    border: 1px solid red;
+    background-color: red;
+    width: 240px;
+    color: white;
+    font-weight: bold;
+}
+
+.producto__detalle_campo_cantidad {
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.producto__detalle_campo_oferta {
+    color: rgb(6, 98, 14);
+}
+
+.producto__detalle_boton_comprar {
+    background-color: #555555;
+    color: white;
+    border-radius: 5px;
+}
+
+.producto__detalle_boton_comprar:hover {
+    background-color: #c4b7b7;
+    color: white;
+    border-radius: 5px;
+    
+}
 
 /* HEADER */
-
 
 header {
     background-color: white;
@@ -282,9 +319,10 @@ h2, section {
         display: block;
         border: 10px solid #ccc;
         padding: 25px;
-        max-width: 800px;
+        max-width: 1000px; /*Estaba en 800*/
         margin: auto;
-        width: 125vh;
+        /*width: 125vh;*/
+        width: 900px;
         border-bottom: solid 1px #ebebeb;
         border-radius: 10px;
         background-color: white;
@@ -300,6 +338,11 @@ h2, section {
     right: 35px; 
     position: absolute;
 }
+
+.product__description_detalle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 
 .linea {
     border-top: 1px solid black;
@@ -325,7 +368,18 @@ h2, section {
 .product___title {
     top: -15px;  
     right: -420px;
+    
 }
+
+.product___title_detalle {
+    top: -15px;  
+    right: -420px;
+    border: 0;
+    outline: 0;
+    border-width:0px;
+}
+
+
 
 /* Formulario de Alta Generos */
 .form_generos {
@@ -847,9 +901,7 @@ MODIFICACION DE PRODUCTO */
     border: 1px solid black;
     color: black;
     background-color: white;
-    text-align: center;
-
-   
+    text-align: center;  
     
 }
 

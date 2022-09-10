@@ -8,11 +8,15 @@
         <h2 class="main-title">Detalle de Producto</h2>
         <div>
             <div class="producto--listado">
-                <img alt="" class="producto___img" src= <%= productoEncontrado.img %>>
+                <img alt="" class="producto___img" src= <%= '/images/' + productoEncontrado.img %>>
+                
                 <div class="product__decription">
                     <br>
+                    <!--
                     <label for="nombreDisco">Nombre Disco:</label>
-                    <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= productoEncontrado.nombre_disco %>" placeholder="Nombre Disco"></h3>
+                    <h3 class="product___title_detalle"><input type="text" name="nombreDisco" value="<%= productoEncontrado.nombre_disco %>" placeholder="Nombre Disco"></h3>
+                     <h3 class="product___title"><input type="text" name="nombreDisco" value="<%= productoEncontrado.nombre_disco %>" placeholder="Nombre Disco"></h3></h3> 
+
                     <label for="nombreAtista"> Nombre Artista / Grupo:</label>
                     <h3 class="product___title"><input type="text" name="nombreArtista" value="<%= productoEncontrado.artista.nombre_artista %>" placeholder="Nombre Artista" disabled="disabled"></h3>
                     <label for="precio">Precio: $</label>
@@ -24,36 +28,44 @@
                     <label for="stock">Stock: </label>
                     <h3 class="product___title"><input type="text" name="stock" value="<%= productoEncontrado.stock %>" placeholder="Stock"></h3>
                     
-                    
-                    
                     <% if (productoEncontrado.recomendado == 1) { %>
                         <label for="recomendado">Recomendado?: <h3 class="product___title"><input type="checkbox" name="recomendado" checked></h3></label>
                     <% } else { %>
                         <label for="recomendado">Recomendado?: <h3 class="product___title"><input type="checkbox" name="recomendado"></h3></label>
                     <% } %>
+                    -->
                     
-                        <label for="file-upload" class="custom-file-upload">
-                        <i class="fa fa-cloud-upload"></i>
-                            Tapa Disco
-                    </label>
-                    
-                </div>
-                <p></p>
-                <div class="product__decription">
-                    <span class="producto__price"><a href="/modificarProducto/<%= productoEncontrado.id%>">Modificar</a></span>
-                    <span class="producto__price"><a href="/borrarProducto/<%= productoEncontrado.id%>">Borrar</a></span>
-                </div>
+                    <h3><%= productoEncontrado.nombre_disco %></h3>
+                    <p class="product__description_detalle"><%= productoEncontrado.artista.nombre_artista %></p>
+                    <p style="font-weight: bold;">$<%= productoEncontrado.precio %></p>
+                    <% if (productoEncontrado.oferta > 0) { %>
+                        <p class="producto__detalle_campo_oferta"><i class="fa-solid fa-bell"></i></i> - <%= productoEncontrado.oferta %>% Off</p>
                 
-                <br>
+                    <% } %>
+                    <p>Género: <%= productoEncontrado.genero.titulo %></p>
+                    <p>SKU: <%= productoEncontrado.sku %></p>
+
+                    <% if (productoEncontrado.recomendado == 1) { %>
+                        <span class="producto__fav"><i class="fa-solid fa-star"></i></span> - Disco Recomendado!
+                
+                    <% } %>
+
+                    <% if (productoEncontrado.stock > 0) { %>
+                        <p class="producto__stock_ok"> <i class="fa-solid fa-thumbs-up"></i> - Stock Disponible!</p>
+                        <p><input type="number" class="producto__detalle_campo_cantidad" value="1"> <input type="submit" value="Comprar" class="producto__detalle_boton_comprar" onclick=""></p>
+
+                    <% } else { %>
+                        <p class="producto__stock_soldout"> <i class="fa-sharp fa-solid fa-thumbs-down"></i> - Agotado!</p>
+                    <% } %>
+                    
+                    <i class="fa-solid fa-bell-on"></i>
+                   <p style="text-align: center;">
+                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                    </p>      
+
+                </div>
+
             </div>
-
-
-
-
-
-
-
-
 
 
             <!-- <div class="producto_img">

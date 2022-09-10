@@ -45,12 +45,12 @@
 </div>
 
 <main class="main">
-        <h2 class="main-title">TE RECOMENDAMOS</h2>
+        <h2 class="main-title">TE RECOMENDAMOS...</h2>
         <section class="container-productos">
             <% for (let i=0; i< listadoDiscos.length; i++) { %>
                 <% if (listadoDiscos[i].recomendado) { %>   
                 <div class="producto-listado">
-                    <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
+                    <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                     <div class="product__decription">
                         <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                         <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
@@ -59,7 +59,7 @@
                         <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                         <p></p>
                         <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
-                        <p></p>
+                        <p></p> 
                         <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
                         <p></p>
                     </div>
@@ -77,7 +77,7 @@
 
         <% for (let i=0; i<listadoDiscos.length; i++) { %>
        <div class="producto-listado">
-        <a href="#"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
+        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
         <div class="product__decription">
             <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
             <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
@@ -99,8 +99,9 @@
     <h2 class="main-title">OFERTAS</h2>
     <section class="container-productos">
         <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+            <% if (listadoDiscos[i].oferta > 0) { %>
             <div class="producto">
-                <a href="./products/productoDetalle.ejs"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
+                <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                 <div class="product__decription">
                     <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                     <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
@@ -115,6 +116,7 @@
                 </div>
                 <i class="product__icon fa-solid fa-cart-arrow-down"></i>
             </div>
+            <% } %>
         <% } %>
     </section>
 </div>
