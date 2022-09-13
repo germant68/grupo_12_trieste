@@ -54,8 +54,8 @@
                         <p class="producto__stock_ok"> <i class="fa-solid fa-thumbs-up"></i> - Stock Disponible!</p>
                         <!-- <p><input type="number" class="producto__detalle_campo_cantidad" value="1"> <input type="submit" value="Comprar" class="producto__detalle_boton_comprar" onclick=""></p> -->
                         
-                        <form action="/agregarACarrito/<%= productoEncontrado.id%>" method="GET">
-                            <p><input type="number" class="comprarItem" value="1"> <input type="submit" value="Comprar" class="comprarItemButton" onclick=""></p>
+                        <form action="/agregarACarrito/<%= productoEncontrado.id%>" method="POST">
+                            <p><input type="number" class="comprarItem" name='cantidad' value="1"> <input type="submit" value="Comprar" class="comprarItemButton" onclick=""></p>
                         </form>
 
                     <% } else { %>

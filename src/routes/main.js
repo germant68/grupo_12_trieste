@@ -126,6 +126,8 @@ router.get('/resultadoBusqueda', productosController.resultadoBusqueda);
 
 router.get('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
+router.get('/removeItemCarrito/:id', authCarritoMiddleware, productosController.removeItemCarrito);
+
 
 
 // Rutas POST
@@ -142,6 +144,8 @@ router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArt
 router.post('/altaGeneroPost', validateAltaGenero, productosController.altaGeneroPost);
 
 router.post('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+
+router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
 //base de datos
 router.get('/usuarios', mainController.listadoUsuarios);

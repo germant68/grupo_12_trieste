@@ -20,7 +20,7 @@
           
           <% for (let i=0; i<locals.carrito.length; i++) { %>
             <tr>
-              <td><a href="#"><i class="fa-solid fa-xmark" style="color: red"></i></td></a>
+              <td><a href="/removeItemCarrito/<%= locals.carrito[i].id %>"><i class="fa-solid fa-xmark" style="color: red"></i></td></a>
               <td class="ancho-celda-carrito"><img src="<%= '/images/' + locals.carrito[i].img%>" class="producto__img__encarrito"></td>
               <td><%= locals.carrito[i].nombre_disco%> - <%= locals.carrito[i].artista.nombre_artista %></td>
               <td>$ <%= locals.carrito[i].precio %></td>
