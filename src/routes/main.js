@@ -38,8 +38,10 @@ const { body } = require('express-validator');
 //Definimos la variable router quien nos va a rutear los pedidos al controlados
 const router = express.Router();         
 
-//requerimos el MDW para validaciones de usuarios
+//requerimos el MDW para validaciones de usuarios y carrito
 const authMiddleware = require('../middlewares/authMiddleware');
+const authCarritoMiddleware = require('../middlewares/authCarritoMiddleware');
+
 const { Router } = require('express');
 //const validacionesRegistroMdw = require('../middlewares/validacionesRegistroMdw');
 
@@ -121,6 +123,10 @@ router.get('/listadoGeneros', authMiddleware, productosController.listadoGeneros
 router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
 router.get('/resultadoBusqueda', productosController.resultadoBusqueda);
+
+router.get('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
+
+
 
 // Rutas POST
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON

@@ -26,8 +26,8 @@ body {
 }
 
 .container-slider {
-    width: 90%;
-    max-width: 900px;
+    width: 1500px;
+    max-width: 1500;
     margin: auto;
     overflow: hidden;
     box-shadow: 0 0 0 10px #fff,
@@ -170,7 +170,13 @@ body {
 
 
 .producto__img{
-    width: 100%;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.producto__img__encarrito{
+    width: 120px;
     height: 120px;
     object-fit: contain;
 }
@@ -368,7 +374,7 @@ h2, section {
 .product___title {
     top: -15px;  
     right: -420px;
-    
+
 }
 
 .product___title_detalle {
@@ -932,4 +938,30 @@ MODIFICACION DE PRODUCTO */
 .form_reg_alta_artistas_generos input[name=submit_alta]:hover {
     background-color:dimgray;
     color: white;
+}
+
+/* Boton y campo Cantidad para agregar a carrito */
+.comprarItem {
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid;
+}
+
+.comprarItemButton {
+    height: 35px;
+    font-size: 16px;
+    background-color: #dbcbcb;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.comprarItemButton:hover {
+    background-color: #656262;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
 }

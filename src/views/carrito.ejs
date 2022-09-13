@@ -16,56 +16,38 @@
           <th>Subtotal</th>
           
         </tr>
-        <% if (locals.session.carrito) { %> 
-          <% for (let i=0; i<locals.session.carrito.length; i++) { %>
-              <td><i class="fa-solid fa-trash-can"></i></td>
-              <td class="ancho-celda-carrito"><img src="<%= locals.session.carrito[i].img%>" class="icono-foto-carrito"></td>
-              <td><%= locals.session.carrito[i].nombre_disco%> - <%= locals.session.carrito[i].nombre_artista %></td>
-              <td>$35.00</td>
-              <td>1</td>
-              <td>$35.00</td>
+        <% if (locals.carrito) { %> 
+          
+          <% for (let i=0; i<locals.carrito.length; i++) { %>
+            <tr>
+              <td><a href="#"><i class="fa-solid fa-xmark" style="color: red"></i></td></a>
+              <td class="ancho-celda-carrito"><img src="<%= '/images/' + locals.carrito[i].img%>" class="producto__img__encarrito"></td>
+              <td><%= locals.carrito[i].nombre_disco%> - <%= locals.carrito[i].artista.nombre_artista %></td>
+              <td>$ <%= locals.carrito[i].precio %></td>
+              <td><%= locals.carrito[i].cantidad %></td>
+              <td>$ <%= locals.carrito[i].subtotal %></td>
+            </tr>
             <% } %>
           <% } %>
-        <!--
-        <tr>
-            <td><i class="fa-solid fa-trash-can"></i></td>
-            <td class="ancho-celda-carrito"><img src="./images/u2_pop.jpg" class="icono-foto-carrito"></td>
-            <td>U2 - Pop</td>
-            <td>$35.00</td>
-            <td>1</td>
-            <td>$35.00</td>
-        </tr>
-        <tr>
-            <td><i class="fa-solid fa-trash-can"></i></td>
-            <td class="ancho-celda-carrito"><img src="./images/kiss_rnrover.jpg" class="icono-foto-carrito"></td>
-            <td>Kiss - Greatest Hits</td>
-            <td>$25.00</td>
-            <td>1</td>
-            <td>$25.00</td>
-        </tr>
-        <tr>
-            <td><i class="fa-solid fa-trash-can"></i></td>
-            <td class="ancho-celda-carrito"><img src="./images/queen_greatesthits.jpg" class="icono-foto-carrito"></td>
-            <td>Queen - Greatest Hits</td>
-            <td>$40.00</td>
-            <td>1</td>
-            <td>$40.00</td>
-        </tr>
-        <tr>
-            <td><i class="fa-solid fa-trash-can"></i></td>
-            <td class="ancho-celda-carrito"><img src="./images/abba_gold.jpg" class="icono-foto-carrito"></td>
-            <td>ABBA - Gold</td>
-            <td>$25.00</td>
-            <td>1</td>
-            <td>$25.00</td>
-        </tr>
-        -->
+
       </table>
       <br>
       <br>
       <div class="subtotal-carrito">
-        <h3>Total del Carrito</h3>
-        <h3>Subtotal</h3>
+        <% if (locals.carrito) { %>
+            <% let subtotal = 0 %>
+            <% locals.carrito.forEach(e => {
+              subtotal = subtotal + e.subtotal;
+              } )%>
+            <h3>Total Items en el Carrito: <%= locals.carrito.length%> </h3>
+            <h3>Subtotal de la compra: $ <%= subtotal %></h3>
+            <% } else { %>
+            <h3>Total Items en el Carrito: 0 </h3>
+            <% let subtotal = 0 %>
+            <h3>Subtotal de la compra: $ <%= subtotal %></h3>
+        <% } %>
+        
+        
       </div>
       <div class="button-div-carrito">
         <button type="submit" class="button-carrito">Finalizar la Compra</button>

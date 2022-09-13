@@ -52,15 +52,19 @@
 
                     <% if (productoEncontrado.stock > 0) { %>
                         <p class="producto__stock_ok"> <i class="fa-solid fa-thumbs-up"></i> - Stock Disponible!</p>
-                        <p><input type="number" class="producto__detalle_campo_cantidad" value="1"> <input type="submit" value="Comprar" class="producto__detalle_boton_comprar" onclick=""></p>
+                        <!-- <p><input type="number" class="producto__detalle_campo_cantidad" value="1"> <input type="submit" value="Comprar" class="producto__detalle_boton_comprar" onclick=""></p> -->
+                        
+                        <form action="/agregarACarrito/<%= productoEncontrado.id%>" method="GET">
+                            <p><input type="number" class="comprarItem" value="1"> <input type="submit" value="Comprar" class="comprarItemButton" onclick=""></p>
+                        </form>
 
                     <% } else { %>
                         <p class="producto__stock_soldout"> <i class="fa-sharp fa-solid fa-thumbs-down"></i> - Agotado!</p>
                     <% } %>
                     
                     <i class="fa-solid fa-bell-on"></i>
-                   <p style="text-align: center;">
-                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                    <p style="text-align: center;">
+                     <button class="backButton" onclick="history.go(-1)"> Volver </button>
                     </p>      
 
                 </div>

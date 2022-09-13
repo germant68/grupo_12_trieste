@@ -1,11 +1,12 @@
 
-<header > 
+<header>
+    <script src="/js/headeri.js"></script> 
     <div class="header_top_container">
         <a href="/"><img src="../images/logo.jpg" alt=""></a>
         <div>
-            <form action="/resultadoBusqueda">
-                <input type="text" placeholder="Busca tu vinilo...">
-                <a href="" type="submit"><i class="fa fa-search"></i></a>
+            <form action="" id="searchForm">
+                <input type="text" name="busquedaHome" placeholder="Busca tu vinilo...">
+                <a href="" class="submit"><i class="fa fa-search"></i></a> 
             </form>
         </div>             
         <div class="header_top_right">
@@ -16,8 +17,9 @@
             <p><a href="/registro">CREAR CUENTA</a></p>
             <p><a href="/login">LOGIN</a>
             <% } %>            
-            
+            <% if (locals.session) { %>
             <p><a href="/carrito"><i class="fa-solid fa-basket-shopping"></i></a></p>
+            <% } %>
         </div>
     </div>
     <div class="header_bottom_container">

@@ -864,6 +864,74 @@ const controller = {
     //Listado de Resultado de la Busqueda del HEader
     resultadoBusqueda: (req, res) => {
       console.log("entro en la busqueda vieja");
+    },
+
+    //Agregamos un item al carrito
+    agregarACarrito: async (req, res) => {  
+
+      //Preguntamos por la sesion.
+      userSession = req.session.nombre;
+      //console.log(req.session);
+
+      //Asignamos un array local para trabajar con el carrito a partir del carrito de sesion
+      let carritoAux = req.session.carrito;
+      //console.log('imprimiendo carrito aux');
+      //console.log(req.params.id);
+      //console.log(carritoAux);
+
+      //Primero buscamos el elemento en el Arreglo para o sumarlo o restarlo.
+      let disco = carritoAux.find(e => e.id == req.params.id);
+      if (disco) {
+        console.log('ahora modificamos el objeto encontrado');
+        disco.cantidad += 1;
+        disco.subtotal = disco.cantidad * disco.precio;
+        console.log(disco);
+        console.log(carritoAux);
+        req.session.carrito = carritoAux;
+      } else {
+        console.log('No paso una mierda');
+      
+   
+        //Buscamos el producto por Id. en la Base de Datos
+        try {
+          const { id } = req.params;
+          productoEncontrado = await db.Producto.findByPk(id, { 
+            raw : true, 
+            nest: true,
+            include: [{
+              association: 'artista',
+            }, 
+            {
+              association: 'genero',
+            }]});
+
+          } catch (error) {
+          productoEncontrado = undefined;
+
+        }
+
+        if (productoEncontrado) {
+
+          console.log('producto encontrado');
+          //if (req.session.carrito.length == 0 ) {
+            productoEncontrado.cantidad = 1;
+            productoEncontrado.subtotal = productoEncontrado.precio;
+            req.session.carrito.push(productoEncontrado);
+            console.log(req.session.carrito);
+          //}
+          
+          } else {
+          console.log('por la de abajo');
+          req.session.carrito = [];
+        }
+
+      }
+
+      res.render(path.join(__dirname, '../views/carrito'), {
+        'session': userSession,
+        'carrito': req.session.carrito 
+      });
+      
     }
 
   }

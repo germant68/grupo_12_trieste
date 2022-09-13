@@ -50,6 +50,15 @@ const controller = {
       //Preguntamos por la sesion.
       userSession = req.session.nombre;
 
+      if (req.session.carrito != undefined) {
+            userCarrito = req.session.carrito;
+            console.log('Carritohome?');
+            console.log(userCarrito);
+        } else {
+            userCarrito = [];
+        }
+      
+
       db.Producto.findAll({
         raw : true, 
         nest: true,
@@ -64,6 +73,7 @@ const controller = {
           
           res.render(path.join(__dirname, '../views/home'), {
             'session': userSession,
+            'carrito': userCarrito,
             'listadoDiscos': productos });
         })
     },
@@ -119,7 +129,11 @@ const controller = {
                     if (pwd_ok) {
                         // creamos la sesion
                         req.session.nombre = userLogin.nombre;
+                        req.session.carrito = [];
                         userSession = req.session.nombre; 
+                        userCarrito = req.session.carrito;
+                        console.log(userSession);
+                        console.log(userCarrito);
 
                         try {
                             listadoDiscos = await db.Producto.findAll({
@@ -135,6 +149,7 @@ const controller = {
                                                            
                             res.render(path.join(__dirname, '../views/home'), {
                                 'session': userSession, 
+                                'carrito': userCarrito,
                                 'listadoDiscos': listadoDiscos });
 
                         } catch (error) {
@@ -229,14 +244,15 @@ const controller = {
     carrito: (req, res) => {
 
         //Preguntamos por la sesion.
-        userSession = req.session;  
+        userSession = req.session.nombre;  
 
         //Traemos algunos productos 
+        
         res.render(path.join(__dirname, '../views/carrito'), {
-                'session': userSession.nombre});
+            'session': userSession,
+            'carrito': req.session.carrito });
                 //'miCarrito': listadoDiscos });
 
-        //res.render(path.join(__dirname, '../views/carrito'));
     },
 
     //FAQ

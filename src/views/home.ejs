@@ -3,124 +3,135 @@
 <body>
     <%- include('./partials/header') %>
     <br>
-<div class="container-home">
-    <div class="container-slider">
-        <div class="slider" id="slider">
-            <div class="slider__section">
-                <img src="./images/logo.JPG" alt="" class="slider__img">
+    <div class="container-home">
+        <div class="container-slider">
+            <div class="slider" id="slider">
+                <div class="slider__section">
+                    <img src="/images/logo.JPG" alt="bob" class="slider__img">
+                        <div class="slider__content">
+                            <h2 class="slider__title">OFERTAS/h2>
+                            <p class="slider__text">Compra con descuentos de hasta el 50%!</p>
+                            <a href="/ofertas" class="slider_section_btn">COMPRA AQUI!</a>
+                        </div>
+                </div>
+                <div class="slider__section">
+                    <img src="/images/logo.jpg" alt="aaaaa" class="slider__img">
                     <div class="slider__content">
-                        <h2 class="slider__title">OFERTAS/h2>
+                        <h2 class="slider__title">DESTACADOS</h2>
+                        <p class="slider__text">Explora y llevate lo mas buscado en la actualidad</p>
+                        <a href="/ofertas" class="slider_section_btn">COMPRA AQUI!</a>
+                    </div>
+                </div>  
+                <div class="slider__section">
+                    <img src="./images/71tVF6HDV5L._SY355_.jpg" alt="" class="slider__img">
+                    <div class="slider__content">
+                        <h2 class="slider__title">NOVEDADES</h2>
+                        <p class="slider__text">Descubrí lo último de la musica!</p>
+                        <a href="" class="slider_section_btn">COMPRA AQUI!</a>
+                    </div>
+                </div>  
+                <div class="slider__section">
+                    <img src="./images/51wGtpZw05L._UX250_FMwebp_QL85_.webp" alt="" class="slider__img">
+                    <div class="slider__content">
+                        <h2 class="slider__title">OFERTAS</h2>
                         <p class="slider__text">Compra con descuentos de hasta el 50%!</p>
                         <a href="" class="slider_section_btn">COMPRA AQUI!</a>
                     </div>
-            </div>
-            <div class="slider__section">
-                <img src="./images/51wGtpZw05L._UX250_FMwebp_QL85_.webp" alt="" class="slider__img">
-                <div class="slider__content">
-                    <h2 class="slider__title">DESTACADOS</h2>
-                    <p class="slider__text">Explora y llevate lo mas buscado en la actualidad</p>
-                    <a href="" class="slider_section_btn">COMPRA AQUI!</a>
-                </div>
-            </div>  
-            <div class="slider__section">
-                <img src="./images/71tVF6HDV5L._SY355_.jpg" alt="" class="slider__img">
-                <div class="slider__content">
-                    <h2 class="slider__title">NOVEDADES</h2>
-                    <p class="slider__text">Descubrí lo último de la musica!</p>
-                    <a href="" class="slider_section_btn">COMPRA AQUI!</a>
-                </div>
-            </div>  
-            <div class="slider__section">
-                <img src="./images/51wGtpZw05L._UX250_FMwebp_QL85_.webp" alt="" class="slider__img">
-                <div class="slider__content">
-                    <h2 class="slider__title">OFERTAS</h2>
-                    <p class="slider__text">Compra con descuentos de hasta el 50%!</p>
-                    <a href="" class="slider_section_btn">COMPRA AQUI!</a>
                 </div>
             </div>
+            <div class="slider__btn slider__btn--right" id="btn-right">&#62</div>
+            <div class="slider__btn slider__btn--left" id="btn-left">&#60</div>
         </div>
-        <div class="slider__btn slider__btn--right" id="btn-right">&#62</div>
-        <div class="slider__btn slider__btn--left" id="btn-left">&#60</div>
     </div>
-</div>
 
-<main class="main">
-        <h2 class="main-title">TE RECOMENDAMOS...</h2>
+    <main class="main">
+            <h2 class="main-title">TE RECOMENDAMOS...</h2>
+
+            <!-- <% if (locals.session ) { %>
+                <p><%= locals.session %></p>
+
+            <% } %>
+            <% if (locals.carrito.length > 0) { %>
+                <p><%= locals.carrito %></p>
+            <% } %> -->
+            <section class="container-productos">
+                <% for (let i=0; i< listadoDiscos.length; i++) { %>
+                    <% if (listadoDiscos[i].recomendado) { %>   
+                    <div class="producto-listado">
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
+                        <div class="product__decription">
+                            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                            <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
+                            <p></p>
+                            <p></p>
+                            <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
+                            <p></p>
+                            <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
+                            <p></p> 
+                            <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                            <p></p>
+                        </div>
+                        <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                        
+                    </div>
+                    <% } %>
+                <% } %>
+            </section>
+        </div>
+    <br>
+    <br>
+        <div class="container">
+        <h2 class="main-title">LOS MAS VENDIDOS</h2>
         <section class="container-productos">
-            <% for (let i=0; i< listadoDiscos.length; i++) { %>
-                <% if (listadoDiscos[i].recomendado) { %>   
-                <div class="producto-listado">
+
+            <% for (let i=0; i<listadoDiscos.length; i++) { %>
+            <div class="producto-listado">
+            <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
+            <div class="product__decription">
+                <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
+                <p></p>
+                <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
+                <p></p>
+                <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
+                <p></p>
+                <% if (listadoDiscos[i].recomendado) { %>
+                    <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                <% } %>
+            </div>
+            <br>
+            <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class="fa-solid fa-cart-arrow-down"></i></a>
+        </div>
+        <% } %>
+        </section>
+        <br>
+        <br>
+        <h2 class="main-title">OFERTAS</h2>
+        <section class="container-productos">
+            <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+                <% if (listadoDiscos[i].oferta > 0) { %>
+                <div class="producto">
                     <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
                     <div class="product__decription">
                         <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
                         <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                         <p></p>
-                        <p></p>
                         <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                         <p></p>
                         <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
-                        <p></p> 
-                        <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
                         <p></p>
+                        <% if (listadoDiscos[i].recomendado) { %>
+                            <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                        <% } %>
                     </div>
-                    <i class="product__icon fa-solid fa-cart-arrow-down"></i>
+                    <br>
+                    <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class="fa-solid fa-cart-arrow-down"></i></a>
                 </div>
                 <% } %>
             <% } %>
         </section>
     </div>
-<br>
-<br>
-    <div class="container">
-    <h2 class="main-title">LOS MAS VENDIDOS</h2>
-    <section class="container-productos">
-
-        <% for (let i=0; i<listadoDiscos.length; i++) { %>
-       <div class="producto-listado">
-        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
-        <div class="product__decription">
-            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
-            <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
-            <p></p>
-            <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
-            <p></p>
-            <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
-            <p></p>
-            <% if (listadoDiscos[i].recomendado) { %>
-                <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
-            <% } %>
-        </div>
-        <i class="product__icon fa-solid fa-cart-arrow-down"></i>
-       </div>
-       <% } %>
-    </section>
-    <br>
-    <br>
-    <h2 class="main-title">OFERTAS</h2>
-    <section class="container-productos">
-        <% for (let i=0; i< listadoDiscos.length; i++) { %>   
-            <% if (listadoDiscos[i].oferta > 0) { %>
-            <div class="producto">
-                <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
-                <div class="product__decription">
-                    <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
-                    <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
-                    <p></p>
-                    <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
-                    <p></p>
-                    <span class="producto__price">Stock: <%= listadoDiscos[i].stock %></span>
-                    <p></p>
-                    <% if (listadoDiscos[i].recomendado) { %>
-                        <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
-                    <% } %>
-                </div>
-                <i class="product__icon fa-solid fa-cart-arrow-down"></i>
-            </div>
-            <% } %>
-        <% } %>
-    </section>
-</div>
-</main>
+    </main>
 
 <br>
 <%- include('./partials/footer') %>
