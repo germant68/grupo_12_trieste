@@ -12,6 +12,7 @@
           <th>Producto</th>
           <th>Descripción</th>
           <th>Precio</th>
+          <th>Descuento</th>
           <th>Cantidad</th>
           <th>Subtotal</th>
           
@@ -24,6 +25,11 @@
               <td class="ancho-celda-carrito"><img src="<%= '/images/' + locals.carrito[i].img%>" class="producto__img__encarrito"></td>
               <td><%= locals.carrito[i].nombre_disco%> - <%= locals.carrito[i].artista.nombre_artista %></td>
               <td>$ <%= locals.carrito[i].precio %></td>
+              <% if (locals.carrito[i].oferta) { %>
+              <td>% <%= locals.carrito[i].oferta %></td>
+              <% } else { %>
+                <td>% 0</td>
+              <% } %>
               <td><%= locals.carrito[i].cantidad %></td>
               <td>$ <%= locals.carrito[i].subtotal %></td>
             </tr>

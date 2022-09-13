@@ -878,29 +878,35 @@ const controller = {
 
       //Por destructuring tomamos la cantidad si viene desde productoDetalle
       const { cantidad } = req.body;
-      console.log(cantidad);
-      console.log(carritoAux);
+      // console.log(cantidad);
+      // console.log(carritoAux);
 
-      console.log('imprimiendo carrito aux');
-      console.log(cantidad);
-      console.log(req.params.id);
-      console.log(carritoAux);
+      // console.log('imprimiendo carrito aux');
+      // console.log(cantidad);
+      // console.log(req.params.id);
+      // console.log(carritoAux);
 
       //Primero buscamos el elemento en el Arreglo para o sumarlo o restarlo.
       let disco = carritoAux.find(e => e.id == req.params.id);
 
       if (disco) {
-        console.log('ahora modificamos el objeto encontrado');
+        //console.log('ahora modificamos el objeto encontrado');
         
         if (cantidad) {
           disco.cantidad += cantidad;     //--> Viene del formulario de productoDetalle.
+          
         } else {
           disco.cantidad += 1;
         }
+
+        if (disco.oferta > 0) {
+          disco.subtotal = (disco.cantidad * disco.precio) * (1 - disco.oferta) ;
+        } else {
           disco.subtotal = disco.cantidad * disco.precio;
-          console.log(disco);
-          console.log(carritoAux);
+        }
+
           req.session.carrito = carritoAux;
+
       } else {
             
         //Buscamos el producto por Id. en la Base de Datos
@@ -927,11 +933,17 @@ const controller = {
           
             if (cantidad) {
               productoEncontrado.cantidad = cantidad;  
-              productoEncontrado.subtotal = cantidad * productoEncontrado.precio;
+              
             } else { 
               productoEncontrado.cantidad = 1;
-              productoEncontrado.subtotal = productoEncontrado.precio;
+              //productoEncontrado.subtotal = productoEncontrado.precio;
             }
+
+              if (productoEncontrado.oferta > 0) {
+                  productoEncontrado.subtotal = (productoEncontrado.cantidad * productoEncontrado.precio) * (1 - (productoEncontrado.oferta/100)) ;
+              } else {
+                  productoEncontrado.subtotal = (productoEncontrado.cantidad * productoEncontrado.precio);
+              }
             
             req.session.carrito.push(productoEncontrado);
             //console.log(req.session.carrito);
