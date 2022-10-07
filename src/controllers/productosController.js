@@ -186,69 +186,125 @@ const controller = {
       //Preguntamos por la sesion.
       userSession = req.session.nombre;  
 
-      //Vamos a modificar un producto. 
-      try {
-
-        //Creamos primero el objeto con los valores del formulario QUE PUEDEN MODIFICARSE
-        const {
-          precio,
-          stock,
-          oferta,
-          favorito,
-        }=req.body;
-
-        let recomendado = '';
-        if ( favorito == 'on') {
-           recomendado = 1; //Sigue como recomendado
-        } else {
-           recomendado = 0;  //Lo removemos de ser recomendado
-        }
+      //Traemos las validaciones del Formulario de Registro
+      const errores = validationResult(req);
+        
+      if (errores.isEmpty()) {
       
-        await db.Producto.update(
-            {
-                precio,
-                stock,
-                oferta,
-                recomendado,
-            },
-            {
-                where: {
-                    id: req.params.id,
-                }
-            }
-        );
 
-        let msje = 'Producto Modificado con éxito';
-        //Volvemos a renderizar la vista
-        db.Producto.findAll({
-          raw : true, 
-          nest: true,
-          include: [{
-            association: 'artista',
-          }, 
-          {
-            association: 'genero',
-          }]
-        })
-          .then(productos => {
+        //Vamos a modificar un producto. 
+        try {
+
+          //Creamos primero el objeto con los valores del formulario QUE PUEDEN MODIFICARSE
+          const {
+            precio,
+            stock,
+            oferta,
+            favorito,
+          }=req.body;
+
+          let recomendado = '';
+          if ( favorito == 'on' ) {
+            recomendado = 1; //Sigue como recomendado
+          } else {
+            recomendado = 0;  //Lo removemos de ser recomendado
+          }
+        
+          await db.Producto.update(
+              {
+                  precio,
+                  stock,
+                  oferta,
+                  recomendado,
+              },
+              {
+                  where: {
+                      id: req.params.id,
+                  }
+              }
+          );
+
+          let msje = 'Producto Modificado con éxito';
+          //Volvemos a renderizar la vista
+          db.Producto.findAll({
+            raw : true, 
+            nest: true,
+            include: [{
+              association: 'artista',
+            }, 
+            {
+              association: 'genero',
+            }]
+          })
+            .then(productos => {
+              
+              res.render(path.join(__dirname, '../views/products/productosEdit'), {
+                'session': userSession,
+                'msje': msje,
+                'errores': errores.array(),
+                'listadoDiscos': productos });
+            })
+            
+        } catch (error) {
+            let msje = 'Error Modificando el Producto. Vuelva a intentar...';
             
             res.render(path.join(__dirname, '../views/products/productosEdit'), {
               'session': userSession,
               'msje': msje,
+              'errores': errores.array(),
               'listadoDiscos': productos });
+            //console.log(error);
+        }
+
+      } else {
+        
+          //Volvemos a renderizar la vista
+          db.Producto.findAll({
+            raw : true, 
+            nest: true,
+            include: [{
+              association: 'artista',
+            }, 
+            {
+              association: 'genero',
+            }]
           })
-          
-      } catch (error) {
-          let msje = 'Error Modificando el Producto. Vuelva a intentar...';
-          
-          res.render(path.join(__dirname, '../views/products/productosEdit'), {
-            'session': userSession,
-            'msje': msje,
-            'listadoDiscos': productos });
-          //console.log(error);
+            .then(productos => {
+
+            console.log(errores.array());
+            res.render(path.join(__dirname, '../views/products/productosEdit'), {
+              'session': userSession,
+              'errores': errores.array(),
+              'listadoDiscos': productos });
+            })
       }
 
-    },
+    },       //Cierre de metodo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //DASHBOARD
     dashboard: (req, res) => {
@@ -412,18 +468,6 @@ const controller = {
             'generos': generos });  
           })
       });
-
-
-      // //Finalmente renderizamos la página con todos los parámetros.
-      // res.render(path.join(__dirname, '../views/products/altaProducto'), {
-      //   'session': userSession,
-      //   'msje': msje, 
-      //   'type': msjType,
-      //   'errorCode': errorCode,
-      //   'errores': errores.array(),
-      //   'prev': req.body,
-      //   'artistas': artistas,
-      //   'generos': generos });  
 
     },
 

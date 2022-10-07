@@ -5,9 +5,19 @@
     <main>
         <div> 
             <h2 class="main-title">Modificación de Productos</h2>
+            
+            
+            <% if (locals.errores) { %>
+                <% errores.forEach( e => { %> 
+                    <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                <% }) %>
+                
+            <% } %>
+            
             <% if (locals.msje) { %>
                 <p class="notification_msg_form"><i class="fa-solid fa-bell"></i> - <%= locals.msje %></p>
-           <% }%>
+            <% }%>
+
             <p style="text-align: center;">
                 <button class="backButton" onclick="history.go(-1)"> Volver </button>
             </p>
@@ -27,10 +37,10 @@
                             <label for="genero">Género</label>
                             <h3 class="product___title"><input type="text" name="genero" value="<%= listadoDiscos[i].genero.titulo %>" placeholder="Genero Musical" disabled="disabled"></h3>
                             <label for="precio">Precio: $</label>
-                            <h3 class="product___title"><input type="text" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
+                            <h3 class="product___title"><input type="number" step=".01" name="precio" value="<%= listadoDiscos[i].precio %>" placeholder="Precio"></h3>
                             
                             <label for="oferta">Oferta: % Off</label>
-                            <h3 class="product___title"><input type="text" name="oferta" value="<%= listadoDiscos[i].oferta %>" placeholder="Oferta"></h3>
+                            <h3 class="product___title"><input type="number" step=".01" name="oferta" value="<%= listadoDiscos[i].oferta %>" placeholder="Oferta"></h3>
                             
                             <label for="stock">Stock: </label>
                             <h3 class="product___title"><input type="number" name="stock" value="<%= listadoDiscos[i].stock %>" placeholder="Stock"></h3>

@@ -48,27 +48,59 @@ const { Router } = require('express');
 //Implementamos las validaciones. Todas en un arreglo.
 //Validaciones Registro
 const validacionesRegistro = [
-    body('email_reg').isEmail().withMessage('Formato inválido de Email'),
-    body('pwd_reg').isLength({ min: 3}).withMessage('La contraseña debe tener mínimo 3 caracteres')
-    //body('pwdrepeat').equals('pwd_reg').withMessage('Las contraseñas deben coincidir')
+    body('email_reg')
+        .notEmpty().withMessage('Por favor, complete el email').bail()
+        .isEmail().withMessage('Formato inválido de Email'),
+    body('nombre_reg')
+        .notEmpty().withMessage('Por favor complete su Nombre'),
+    body('apellido_reg')
+        .notEmpty().withMessage('Por favor complete su Apellido'),    
+    body('pwd_reg')
+        .isLength({ min: 3}).withMessage('La contraseña debe al menos 3 caracteres'),
+    body('pwdrepeat')
+        .notEmpty().withMessage('Debe reingresar su contraseña')
+        //.equals('pwd_reg').withMessage('Las contraseñas deben coincidir')
 ];
 
 
 //Validaciones Login
 const validateLogin = [
-    body('usuario_email').notEmpty().withMessage('Debe ingresar su email'),
-    body('password_log').notEmpty().withMessage('Debe ingresar su password')
+    body('usuario_email')
+        .notEmpty().withMessage('Debe ingresar su email').bail()
+        .isEmail().withMessage('Ingrese un email válido'),
+    body('password_log')
+        .notEmpty().withMessage('Debe ingresar su password').bail()
+        .isLength({min: 3}).withMessage('La contraseña debe contener mínimo 3 caracteres')
 ];
+
 
 //Validaciones AltaProducto
 const validateAltaProducto = [
-    //body('nombreArtista').notEmpty().withMessage('Debe ingresar el nombre del Artista').bail(),
-    body('nombreDisco').notEmpty().withMessage('Debe ingresar el nombre del Disco'),
-    body('nombreArtista').exists().withMessage('Debe seleccionar un Artista'),
-    body('categoria').exists().withMessage('Debe seleccionar un género'),
-    body('precio').notEmpty().withMessage('Debe ingresar el precio del producto').isNumeric().withMessage('El precio debe ser numérico'),
-    body('stock').notEmpty().withMessage('Debe ingresar el stock del producto').isNumeric().withMessage('El stock debe ser numérico')
+    body('nombreDisco')
+        .notEmpty().withMessage('Debe ingresar el nombre del Disco'),
+    body('nombreArtista')
+        .exists().withMessage('Debe seleccionar un Artista'),
+    body('categoria')
+        .exists().withMessage('Debe seleccionar un género'),
+    body('precio')
+        .notEmpty().withMessage('Debe ingresar el precio del producto')
+        .isNumeric().withMessage('El precio debe ser numérico'),
+    body('stock')
+        .notEmpty().withMessage('Debe ingresar el stock del producto')
+        .isNumeric().withMessage('El stock debe ser numérico')
 
+];
+
+//Validaciones Modificación Producto
+const validateModifProd = [
+    body('precio')
+        .notEmpty().withMessage('El campo precio debe estar completo')
+        .isNumeric({no_symbols: true}).withMessage('El campo precio debe ser un valor numérico y mayor a 0'),
+    body('oferta')
+        .notEmpty().withMessage('El campo oferta debe estar completo')
+        .isNumeric({no_symbols: true}).withMessage('El campo oferta debe ser un valor numérico y mayor o igual a 0'),
+    body('stock')
+        .isNumeric({no_symbols: true}).withMessage('El campo Stock debe ser un valor numérico y mayor o igual a 0'),
 ];
 
 //Validaciones Alta Artista
@@ -143,15 +175,12 @@ router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArt
 
 router.post('/altaGeneroPost', validateAltaGenero, productosController.altaGeneroPost);
 
-router.post('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
+router.post('/modificarProducto/:id', authMiddleware, validateModifProd, productosController.modificarProducto);
 
 router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
-//base de datos
+//base de datos ---LUEGO BORRAR!!!!!
 router.get('/usuarios', mainController.listadoUsuarios);
-
-
-
 
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.

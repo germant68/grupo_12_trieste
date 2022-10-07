@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 <body>
     <%- include('../partials/header') %>
+    <script src="/js/registro.js"></script>
     <main>
         <section>
             <div>
@@ -8,6 +9,10 @@
             </div>
             <div>
                 <br><h6>(*) Campos Requeridos</h6>
+                
+                <div class="error_msg_form">
+                </div>
+                
                 <% if (locals.errores) { %>
                     <% errores.forEach(e => { %>
                         <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
@@ -18,24 +23,24 @@
                 <% }%>
                 <br>
 
-                <form action="/registro" method="POST" class="form_reg">
+                <form action="/registro" method="POST" class="form_reg" id="registroForm">
                     <!-- <label for="usuario_reg">Usuario*</label>
                     <input type="text" name="usuario_reg" value="<%= locals.prev && prev.usuario_reg ? prev.usuario_reg: '' %>" required>
                     <br>-->
                     <label for="">Dirección de correo electrónico*</label>
-                    <input type="email" name="email_reg" value="<%= locals.prev && prev.email_reg ? prev.email_reg: '' %>" required>
+                    <input type="email" name="email_reg" id="email_reg" value="<%= locals.prev && prev.email_reg ? prev.email_reg: '' %>" >
                     <br>
                     <label for="">Nombre*</label>
-                    <input type="text" name="nombre_reg" value="<%= locals.prev && prev.nombre_reg ? prev.nombre_reg : '' %>" required>
+                    <input type="text" name="nombre_reg" id="nombreReg" value="<%= locals.prev && prev.nombre_reg ? prev.nombre_reg : '' %>" >
                     <br>
                     <label for="">Apellido*</label>
-                    <input type="text" name="apellido_reg" value="<%= locals.prev && prev.apellido_reg ? prev.apellido_reg: '' %>" required>
+                    <input type="text" name="apellido_reg" id="apellidoReg" value="<%= locals.prev && prev.apellido_reg ? prev.apellido_reg: '' %>" >
                     <br>
                     <label for="pwd_reg">Contraseña*</label>
-                    <input type="password" name="pwd_reg" id="pwd_reg" required> 
+                    <input type="password" name="pwd_reg" id="pwd_reg" > 
                     <br>
                     <label for="pwdrepeat">Repita su Contraseña*</label>
-                    <input type="password" name="pwdrepeat" id="pwdrepeat" required> 
+                    <input type="password" name="pwdrepeat" id="pwdrepeat" > 
                     <br>
                     <div>
                     <input type="checkbox" name="newsletter" value="<%= locals.prev && prev.newsletter ? prev.newsletter: '' %>"> <label> Suscribite a nuestra newsletter para recibir novedades</label>

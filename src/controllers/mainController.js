@@ -107,13 +107,11 @@ const controller = {
         //y que funcione el findByField
         const usuario_email = req.body.usuario_email;
         const pwd_reg = req.body.password_log;
-
-        //console.log(pwd_reg);
     
         //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);
                 
-        if (errores.isEmpty) {
+        if (errores.isEmpty()) {
             //ahora validamos que el usuario exista.
             try {
                 const userLogin = await db.Usuario.findOne({
@@ -132,8 +130,8 @@ const controller = {
                         req.session.carrito = [];
                         userSession = req.session.nombre; 
                         userCarrito = req.session.carrito;
-                        console.log(userSession);
-                        console.log(userCarrito);
+                        // console.log(userSession);
+                        // console.log(userCarrito);
 
                         try {
                             listadoDiscos = await db.Producto.findAll({
@@ -155,32 +153,34 @@ const controller = {
                         } catch (error) {
                             
                             return res.render(path.join(__dirname, '../views/users/login'), {
-                                errores: {'msg': 'Hubo un problema. Intente mas tarde por favor...'}
+                                errores: [{'msg': 'Hubo un problema. Intente mas tarde por favor...'}]
                             });
                         }
                     
                     }else{
                         
                         return res.render(path.join(__dirname, '../views/users/login'), {
-                            errores: {'msg': 'Credenciales Inválidas'}
+                            errores: [{'msg': 'Credenciales Inválidas'}]
                         });
                     }
 
                 }else{
                     return res.render(path.join(__dirname, '../views/users/login'), {
-                        errores: {'msg': 'Credenciales Inválidas'}
+                        errores: [{'msg': 'Credenciales Inválidas'}]
                     });
                 };
             } catch (error) {
                 
                 return res.render(path.join(__dirname, '../views/users/login'), {
-                    errores: {'msg': 'Hubo un problema. Intente mas tarde por favor...'}
+                    errores: [{'msg': 'Hubo un problema. Intente mas tarde por favor...'}]
                 });
             }
         
         } else {
-            res.render('login',{
-                'errores': errors.array(),
+            // console.log('entraoaoaocaca');
+            // console.log(errores.array());
+            res.render(path.join(__dirname, '../views/users/login'), {
+                'errores': errores.array(),
                 'prev': req.body
             })
         }
@@ -228,6 +228,7 @@ const controller = {
             };
 
         } else {
+            
             res.render('login',{
                 'errores': errors.array(),
                 'prev': req.body

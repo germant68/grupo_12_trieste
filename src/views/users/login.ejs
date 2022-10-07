@@ -1,30 +1,45 @@
 <%- include('../partials/head') %>
 <body>
     <%- include('../partials/header') %>
+    <script src="/js/login.js"></script>
     <main>
         <section>
             <div>
-                <h2>INGRESA</h2><img src="./images/music_icon.png" id="disco" alt="music_icon">
+                <h2>INGRESÁ</h2><img src="./images/music_icon.png" id="disco" alt="music_icon">
             </div>
             <div>
                 <br>
+                <!-- <% if (locals.errores) { %>
+                    <% for (let i = 0; i < locals.errores.length; i++  ) { %>
+                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.errores.msg %></p>
+                    <% }%>
+                <% }%> -->
+
+                <!-- Validamos desde el front 
+                <p id="error_result"></p>-->
+
+                <div class="error_msg_form">
+                </div>
+                
                 <% if (locals.errores) { %>
-                    
-                        <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.errores .msg %></p>
-                    
+                    <% for (let i = 0; i < locals.errores.length; i++) { %>
+                        <p class="error_msg_form" id="error_result"><i class="fa-solid fa-triangle-exclamation"></i> - <%= locals.errores[i].msg %></p>
+                    <% } %>
                 <% }%>
+
+                
                 <% if (locals.session) { %>
                      <p><%= locals.session %></p>
                 <% }%>
-                <form action="/login" method="POST" class="contenedor_login">
+                <form action="/login" method="POST" class="contenedor_login" id="loginForm">
                         <label for="usuario_email">Email de usuario</label>
-                        <input type="email" name="usuario_email"> 
+                        <input type="email" name="usuario_email" id="usuario_email"> 
                         <br>
                         <label for="password">Contraseña</label>
-                        <input type="password" name="password_log">
+                        <input type="password" name="password_log" id="password_log">
                         <br>    
                             <div>
-                                <input  type="submit" value="Enviar" name="submit_login">
+                                <input type="submit" value="Enviar" name="submit_login" id="btnSubmit">
                             </div>
                         <br>
                         <br>
