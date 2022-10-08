@@ -281,31 +281,6 @@ const controller = {
 
     },       //Cierre de metodo
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //DASHBOARD
     dashboard: (req, res) => {
 
@@ -808,6 +783,7 @@ const controller = {
         })
           .then(productos => {
             
+            console.log(productos);
             res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
               'session': userSession,
               'alfabeto': alfabeto,
@@ -903,11 +879,6 @@ const controller = {
       }  else {
         res.send('Página Géneros no encontrada');
      }
-    },
-
-    //Listado de Resultado de la Busqueda del HEader
-    resultadoBusqueda: (req, res) => {
-      console.log("entro en la busqueda vieja");
     },
 
     //Agregamos un item al carrito
@@ -1026,9 +997,82 @@ const controller = {
         });
 
       } 
+    },
+
+    //SEARCH BAR DEL HEADER
+    searchResults: (req, res) => {
+
+      //Preguntamos por la sesion.
+      userSession = req.session.nombre;
+
+      //console.log(req.body.busquedaHome);
+
+      const { busquedaHome } = req.body;
+      let productos = [];
+
+      //Buscamos Primero por Nombre de Disco, y ademas por nombre de Artista.
+      if (busquedaHome) {
+
+        //Busqueda x Nombre de Disco
+        db.Producto.findAll({
+          raw : true, 
+          nest: true,
+          where: { 
+            nombre_disco: { [Op.like]: '%' + busquedaHome + '%' }
+          },
+          include: [{
+            association: 'artista',
+          }, 
+          {
+            association: 'genero',
+          }]
+        })
+          .then(productosXDisco => {
+            //Primero Buscamos x nombre de Disco y lo asignamos a Prodcuto.
+            productos = productosXDisco;
+
+          //Busqueda x Nombre Artista
+          db.Producto.findAll({
+            raw : true, 
+            nest: true,
+            
+            include: [{
+                association: 'artista',
+                where: { 
+                  nombre_artista: { [Op.like]: '%' + busquedaHome + '%' }
+                },
+              }, 
+              {
+                association: 'genero',
+              }]
+          })
+            .then(productosXArtista => {
+              
+              //Si productos ya tenia contenido de Nombre por Disco le agregamos lo encontrado por 
+              //Discos x Artista
+              if (productos.length > 0) {
+                productos = productos.concat(productosXArtista);
+              } else {
+                productos = productosXArtista;
+              }
+
+              res.render(path.join(__dirname, '../views/products/searchResults'), {
+                'session': userSession,
+                'listadoDiscos': productos });
+            });
+
+          })
+
+      } else {
+          
+          res.render(path.join(__dirname, '../views/products/searchResults'), {
+          'session': userSession,
+          'listadoDiscos': productos });
+      }
+      
     }
 
-  }
+  } //Fin del Objeto del Controlador
 
 // Finalizamos devolviendo el objeto
 module.exports = controller;

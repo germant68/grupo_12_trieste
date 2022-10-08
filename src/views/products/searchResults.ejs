@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+        <h2 class="main-title">Productos Encontrados</h2>
+        
+        <br>
+        <section class="container-productos">
+            
+            <% if (listadoDiscos.length > 0) { %>
+                <% for (let i=0; i< listadoDiscos.length; i++) { %>   
+                    <div class="producto-listado">
+                        <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img alt="" class="producto__img" src= <%= '/images/' + listadoDiscos[i].img %>></a>
+                        <div class="product__decription">
+                            <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                            <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
+                            <p></p>
+                            <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
+                            <p></p>
+                            <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
+                            <p></p>
+                            <% if (listadoDiscos[i].recomendado == 1) { %>
+                                <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                            <% } %>
+                            
+                        </div>
+                        <br>
+                        <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class=" fa-solid fa-cart-arrow-down"></i></a>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p style="text-align: center;">No hemos podido encontrar lo que buscas. <i class="fa-regular fa-face-frown"></i></p>
+            <% } %>
+        </section>
+    <%- include('../partials/footer') %>
+</body>
+</html>

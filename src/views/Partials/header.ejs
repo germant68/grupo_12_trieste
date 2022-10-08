@@ -4,7 +4,7 @@
     <div class="header_top_container">
         <a href="/"><img src="../images/logo.jpg" alt=""></a>
         <div>
-            <form action="" id="searchForm">
+            <form action="/searchResults" id="searchForm" method="POST">
                 <input type="text" name="busquedaHome" placeholder="Busca tu vinilo...">
                 <!-- <a href="" class="submit"><i class="fa fa-search"></i></a>  -->
                 <button type="submit" class="submit"><i class="fa fa-search"></i></button>
@@ -15,11 +15,11 @@
                  <p><a href="/registro"><%= locals.session %></a></p>
                  <p><a href="/logout">LOGOUT</a>
             <% } else { %>
-            <p><a href="/registro">CREAR CUENTA</a></p>
-            <p><a href="/login">LOGIN</a>
+                <p><a href="/registro">CREAR CUENTA</a></p>
+                <p><a href="/login">LOGIN</a>
             <% } %>            
             <% if (locals.session) { %>
-            <p><a href="/carrito"><i class="fa-solid fa-basket-shopping"></i></a></p>
+                <p><a href="/carrito"><i class="fa-solid fa-basket-shopping"></i></a></p>
             <% } %>
         </div>
     </div>

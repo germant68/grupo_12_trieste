@@ -154,15 +154,13 @@ router.get('/listadoGeneros', authMiddleware, productosController.listadoGeneros
 
 router.get('/modificarProducto/:id', authMiddleware, productosController.modificarProducto);
 
-router.get('/resultadoBusqueda', productosController.resultadoBusqueda);
-
 router.get('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
 router.get('/removeItemCarrito/:id', authCarritoMiddleware, productosController.removeItemCarrito);
 
 
 
-// Rutas POST
+// <----- RUTAS POST ----->
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
 router.post('/registro', validacionesRegistro, mainController.postRegistro); //con DB
 
@@ -179,9 +177,10 @@ router.post('/modificarProducto/:id', authMiddleware, validateModifProd, product
 
 router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
+router.post('/searchResults', productosController.searchResults);
+
 //base de datos ---LUEGO BORRAR!!!!!
 router.get('/usuarios', mainController.listadoUsuarios);
-
 
 //Devolvemos el objeto router con todas las rutas y donde encontrarlas dentro del controlador.
 module.exports = router;
