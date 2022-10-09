@@ -31,6 +31,10 @@ const uploadFile = multer({ storage: storage })
 const mainController = require('../controllers/mainController');
 const productosController = require('../controllers/productosController');
 
+//Requerimos los controladores para la API
+const apiUserController = require('../../Database/API/userController');
+const apiProductosController = require('../../Database/API/productosController');
+
 // Trabajamos con el Express-Validator para las validaciones. Tomamos los valores
 // del BODY
 const { body } = require('express-validator');
@@ -178,6 +182,19 @@ router.post('/modificarProducto/:id', authMiddleware, validateModifProd, product
 router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.agregarACarrito);
 
 router.post('/searchResults', productosController.searchResults);
+
+
+
+// <----- RUTAS POST ----->
+router.get('/api/productos', apiProductosController.productos);
+
+router.get('/api/producto/:id', apiProductosController.detalleProducto);
+
+router.get('/api/usuarios', apiUserController.usuarios);
+
+router.get('/api/usuario/:id', apiUserController.detalleUsuario);
+
+
 
 //base de datos ---LUEGO BORRAR!!!!!
 router.get('/usuarios', mainController.listadoUsuarios);

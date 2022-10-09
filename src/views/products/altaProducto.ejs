@@ -41,7 +41,7 @@
                         <!-- <option disabled selected value> -- Seleccione un artista -- </option> -->
                         <option value="default"> -- Seleccione un artista -- </option>
                         <% artistas.forEach( a => { %>
-                        <option value="<%= locals.prev && prev.id ? prev.id : a.id %>"><%= a.nombre_artista %></option>
+                            <option value="<%= locals.prev && prev.id ? prev.id : a.id %>"><%= a.nombre_artista %></option>
                         <% } )%>
                     </select>
                     <br>

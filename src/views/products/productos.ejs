@@ -19,12 +19,14 @@
                             <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
                             <p></p>
                             <% if (listadoDiscos[i].recomendado == 1) { %>
-                                <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
+                                <div tooltip></div><span class="producto__fav"><i class="fa-solid fa-star"></i></span>
                             <% } %>
                             
                         </div>
                         <br>
-                        <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class=" fa-solid fa-cart-arrow-down"></i></a>
+                        <% if ( listadoDiscos[i].stock > 0 ) { %>
+                            <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class=" fa-solid fa-cart-arrow-down"></i></a>
+                        <% } %>
                     </div>
                  <% } %>
             </section>
