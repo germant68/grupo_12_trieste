@@ -190,6 +190,12 @@ router.get('/api/productos', apiProductosController.productos);
 
 router.get('/api/producto/:id', apiProductosController.detalleProducto);
 
+router.get('/api/generos', apiProductosController.generos);
+
+router.get('/api/artistas', apiProductosController.artistas);
+
+router.get('/api/ultimoDisco', apiProductosController.ultimoDisco);
+
 router.get('/api/usuarios', apiUserController.usuarios);
 
 router.get('/api/usuario/:id', apiUserController.detalleUsuario);

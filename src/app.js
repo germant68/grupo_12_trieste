@@ -6,11 +6,16 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const busboyBodyParser = require('busboy-body-parser');
+const cors = require('cors');
+
+
 
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
 
 const app = express();    //Indicamos a la Aplicacion que puede usar los metodos de Express
+
+app.use(cors());
 
 //Seteamos el View Engine
 app.set('view engine','ejs');                   
@@ -21,7 +26,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 //Uso de Morgan 
 app.use(morgan('dev'));
 
-//Uso de Method Override PAra Simular el POST
+//Uso de Method Override Para Simular el POST
 app.use(methodOverride('_method'));
 
 // Parsing the incoming data 
