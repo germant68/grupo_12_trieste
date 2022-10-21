@@ -9,6 +9,7 @@ body {
     font-size: 22px;
     text-align: start;
     opacity: 0.9;
+    width: 100%;
     
 }
 
@@ -167,6 +168,11 @@ body {
     color: white;
 }
 
+.producto:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
+
+
 .producto-listado {
     display: block;
     border: 1px solid #ccc;
@@ -178,7 +184,9 @@ body {
     border-radius: 10px;
 }
 
-
+.producto-listado:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
 .producto__img{
     width: 200px;
     height: 200px;
@@ -277,6 +285,7 @@ header {
     width: 300px;
 }
 
+
 header div a {
     text-decoration: none;
     color: black;
@@ -299,6 +308,10 @@ header img {
     justify-content: space-evenly; 
     text-align: center;
     margin-bottom: 5px;
+}
+
+.nav_bar_ul_menu {
+    list-style: none;
 }
 
 .search_bar {
@@ -987,4 +1000,250 @@ MODIFICACION DE PRODUCTO */
     border-radius: 5px;
     border: 1px solid;
     cursor: pointer;
+}
+
+/* Mobile First --------------------------------------------------------*/
+@media (max-width: 360px){ 
+    .nav_bar {
+        display: none;
+    }
+
+    .container-home {
+        display:none;
+    }
+
+    .header_search_field {
+        display: none;
+    }
+
+    
+    .search_bar {
+        width: 30%;
+    }
+
+    .contacto-map {
+        width: 40vh;
+    }
+
+    
+    .contenedor_login input[name=usuario_email],
+    .contenedor_login input[name=password_log] {
+        width: 40%;
+    }
+
+    .footer_container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+    
+    }
+
+    .producto___img {
+        width: 100px;
+        top: 50px;
+        right: 15px;
+        position: absolute;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    .main-title {
+        font-size: 15px;
+    }
+
+    .search_area {
+        display: none;
+    }
+
+    .header_top_right {
+        font-size: 10px;
+        width: 300px
+    }
+
+    li.nav_bar_ul_menu{
+        list-style: none;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    a.nav_bar_ul_menu{
+        text-align: center;
+        font-size: 15px;
+    }
+
+    header {
+        background-color: white;
+        width: 100%;
+        height: 250px;
+        text-align: center;
+        font-size: 15px;
+    }
+
+}
+
+/* Tablet First --------------------------------------------------------*/
+@media (max-width: 768px){ 
+
+    .nav_bar {
+        display: none;
+    }
+    .container-home {
+        display:none;
+    }
+
+    header div input {
+        width: 175px;
+    }
+
+    .contacto-map {
+        width: 60vh;
+    }
+
+   
+    .form_reg input[name=usuario_reg],
+    .form_reg input[name=nombre_reg],
+    .form_reg input[name=apellido_reg],
+    .form_reg input[name=email_reg],
+    .form_reg input[name=pwd_reg],
+    .form_reg input[name=pwdrepeat] {
+         width: 40%;
+
+    }
+    
+    .contenedor_login input[name=usuario_email],
+    .contenedor_login input[name=password_log] {
+        width: 40%;
+    }
+
+    .footer_container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+    
+    }
+
+    .dashboard-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-alfabeto {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .producto--listado {
+        display: block;
+        border: 10px solid #ccc;
+        padding: 25px;
+        max-width: 1000px;
+        margin: auto;
+        /* width: 125vh; */
+        width: 50%;
+        border-bottom: solid 1px #ebebeb;
+        border-radius: 10px;
+        background-color: white;
+        position: relative;
+        text-align: left;
+        align-items: left;
+    }
+
+    .producto___img {
+        width: 130px;
+        top: 50px;
+        right: 25px;
+        position: absolute;
+    }
+
+    .search_area {
+        display: none;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    header {
+        background-color: white;
+        width: 100%;
+        height: 270px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+}
+
+/* Laptop First --------------------------------------------------------*/
+@media (min-width: 769px){ 
+    .nav_bar_ul_menu {
+        display: none;
+
+    }
+
+    header div input {
+        width: 175px;
+    }
+
+    .form_reg input[name=usuario_reg],
+    .form_reg input[name=nombre_reg],
+    .form_reg input[name=apellido_reg],
+    .form_reg input[name=email_reg],
+    .form_reg input[name=pwd_reg],
+    .form_reg input[name=pwdrepeat] {
+        width: 40%;
+    }
+    
+    .contenedor_login input[name=usuario_email],
+    .contenedor_login input[name=password_log] {
+        width: 40%;
+    }
+
+    .footer_container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    
+    }
+
+}
+
+/* Laptop Wide >1200 --------------------------------------------------------*/
+@media (min-width: 1200px){ 
+    #nav_bar_ul_menu {
+        display: none;
+
+    }
+
+    header div input {
+        width: 350px;
+    }
+
+    .form_reg input[name=usuario_reg],
+    .form_reg input[name=nombre_reg],
+    .form_reg input[name=apellido_reg],
+    .form_reg input[name=email_reg],
+    .form_reg input[name=pwd_reg],
+    .form_reg input[name=pwdrepeat] {
+        width: 20%;
+    }
+    
+    .contenedor_login input[name=usuario_email],
+    .contenedor_login input[name=password_log] {
+        width: 20%;
+    }
+
+    .footer_container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    
+    }
+
 }

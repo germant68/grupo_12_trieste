@@ -3,9 +3,9 @@
     <!-- <script src="/js/headeri.js"></script>  -->
     <div class="header_top_container">
         <a href="/"><img src="../images/logo.jpg" alt=""></a>
-        <div>
+        <div class="search_area">
             <form action="/searchResults" id="searchForm" method="POST">
-                <input type="text" name="busquedaHome" placeholder="Busca tu vinilo...">
+                <input type="text" name="busquedaHome" placeholder="Busca tu vinilo..." class="header_search_field">
                 <!-- <a href="" class="submit"><i class="fa fa-search"></i></a>  -->
                 <button type="submit" class="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -26,18 +26,37 @@
     <div class="header_bottom_container">
         <div>
             <ul class="nav_bar">
-            <li><a href="/">Inicio</a></li> 
-            <li><a href="/ofertas">Ofertas</a></li> 
-            <li><a href="/productos">Productos</a></li>
-            <li><a href="/busquedaAvanzada">Búsqueda Avanzada</a></li>
-            <li><a href="/contacto">Contacto</a></li> 
-            
-            <% if (locals.session) { %>
-                <% if (locals.session == 'Admin') { %>
-                    <li><a href="/dashboard">Dashboard</a></li> 
-                <% }%>      
-             <% }%>   
-        </ul>
+                <li><a href="/">Inicio</a></li> 
+                <li><a href="/ofertas">Ofertas</a></li> 
+                <li><a href="/productos">Productos</a></li>
+                <li><a href="/busquedaAvanzada">Búsqueda Avanzada</a></li>
+                <li><a href="/contacto">Contacto</a></li> 
+                
+                <% if (locals.session) { %>
+                    <% if (locals.session == 'Admin') { %>
+                        <li><a href="/dashboard">Dashboard</a></li> 
+                    <% }%>      
+                <% }%>   
+            </ul>
         </div>
+    </div>
+    <div class="header_bottom_container">
+        <!-- Media Query -->
+         <div >
+            <ul class="nav_bar_ul_menu">
+                <li><a href="/">Inicio</a></li> 
+                <li><a href="/ofertas">Ofertas</a></li> 
+                <li><a href="/productos">Productos</a></li>
+                <li><a href="/busquedaAvanzada">Búsqueda Avanzada</a></li>
+                <li><a href="/contacto">Contacto</a></li> 
+                
+                <% if (locals.session) { %>
+                    <% if (locals.session == 'Admin') { %>
+                        <li><a href="/dashboard">Dashboard</a></li> 
+                    <% }%>      
+                <% }%>   
+            </ul>
+         </div>   
+        <!-- Media Query -->
     </div>
 </header>
