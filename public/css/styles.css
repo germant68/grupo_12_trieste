@@ -909,7 +909,6 @@ footer {
 
 .contacto_box .box-contacto1{
     display: flex;
-    flex-direction: column;
     padding: 20px;
     text-align: center;
 }
@@ -929,7 +928,10 @@ footer {
 
 .contacto-map {
     border: solid 2px black;
-    width: 120vh;
+    width: 90vh;
+    box-shadow: 0 0 0 10px #fff,
+                0 15px 50px;
+    text-align: center;
 }
 
 
