@@ -237,7 +237,7 @@ const controller = {
               'msje': msje,
               'errores': errores.array(),
               'listadoDiscos': productos });
-            //console.log(error);
+            
         }
 
       } else {
@@ -395,7 +395,6 @@ const controller = {
           // Renderizamos el formulario con el arreglo de errores para que los muestre y los valores
           // que ya traía, para que queden visualizados.
           //Seteamos codigo de error igual a 1
-          console.log('zarpado');
           msje = 'Error Validacion';
           errorCode = 1;
 
@@ -437,8 +436,6 @@ const controller = {
 
       //Vamos a dar de alta un usuario. 
       //Creamos primero el objeto con los valores del formulario.
-      console.log('ES ESTE BABY');
-      console.log(req.body);
 
       const {
         nombreArtista,
@@ -453,21 +450,11 @@ const controller = {
     
      //Traemos las validaciones del Formulario de Alta de Producto
      const errores = validationResult(req);
-     
-     //console.log(errores);
 
      if (errores.isEmpty()) { //Todo bien en el formulario, procedemos a crear el articulo.
 
-        console.log('mono');
-        console.log(sku);
-
         //ahora validamos que el producto (SKU) no exista.
-        const productoSku = modelProducts.findByField('sku', sku);
-       console.log('mono');
-        console.log(productoSku);
-        
-        console.log('ALIBABA');
-       
+        const productoSku = modelProducts.findByField('sku', sku);       
 
         if (productoSku) {
             //Producto Encontrado. Ya está dado de alta
@@ -515,11 +502,11 @@ const controller = {
 
       //Preguntamos por la sesion.
       userSession = req.session;  
-      console.log(userSession.nombre);
+      //console.log(userSession.nombre);
       
       if ( userSession && userSession.nombre == 'Admin') {
         
-        console.log('SORUYO');
+        //console.log('SORUYO');
         res.render(path.join(__dirname, '../views/products/altaGenero'), {
         'session': userSession.nombre
         });
@@ -539,14 +526,14 @@ const controller = {
 
       //Vamos a dar de alta un artista.
       const nuevoGenero = req.body.titulo;
-      console.log(nuevoGenero);
+      //console.log(nuevoGenero);
 
       //Traemos las validaciones del Formulario de Alta de Artista
       const errores = validationResult(req);
 
       if (errores.isEmpty()) { //Todo bien en el formulario, procedemos a crear el articulo.
       
-        console.log('todo bien gorila');
+        //console.log('todo bien gorila');
 
         try {
           
@@ -637,15 +624,11 @@ const controller = {
 
       //Vamos a dar de alta un artista.
       const nuevoArtista = req.body.nombreArtista;
-      // console.log(nuevoArtista);
-      // console.log('eioio');
       
       //Traemos las validaciones del Formulario de Alta de Artista
       const errores = validationResult(req);
      
       if (errores.isEmpty()) { //Todo bien en el formulario, procedemos a crear el articulo.
-       
-        console.log('todo bien vieja');
 
         try {
           
@@ -737,7 +720,6 @@ const controller = {
 
       }
 
-      //console.log(productoEncontrado);
       res.render(path.join(__dirname, '../views/products/productoDetalle'), {
         'session': userSession,
         'productoEncontrado': productoEncontrado });
@@ -767,7 +749,7 @@ const controller = {
         })
           .then(productos => {
             
-            console.log(productos);
+            //console.log(productos);
             res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
               'session': userSession,
               'alfabeto': alfabeto,
@@ -804,17 +786,13 @@ const controller = {
       })
         .then(productos => {
           
-          console.log(productos);
+          //console.log(productos);
 
           res.render(path.join(__dirname, '../views/ofertas'), {
             'session': userSession,
             'alfabeto': alfabeto,
             'listadoDiscos': productos });
         });
-/*
-      res.render(path.join(__dirname, '../views/ofertas'), {
-        'session': userSession,
-        'listadoDiscos': listadoDiscos });*/
 
     },
 
@@ -870,36 +848,27 @@ const controller = {
 
       //Preguntamos por la sesion.
       userSession = req.session.nombre;
-      //console.log(req.session);
 
       //Asignamos un array local para trabajar con el carrito a partir del carrito de sesion
       let carritoAux = req.session.carrito;
 
       //Por destructuring tomamos la cantidad si viene desde productoDetalle
       const { cantidad } = req.body;
-      // console.log(cantidad);
-      // console.log(carritoAux);
-
-      // console.log('imprimiendo carrito aux');
-      // console.log(cantidad);
-      // console.log(req.params.id);
-      // console.log(carritoAux);
 
       //Primero buscamos el elemento en el Arreglo para o sumarlo o restarlo.
       let disco = carritoAux.find(e => e.id == req.params.id);
-
+      console.log(carritoAux);
       if (disco) {
-        //console.log('ahora modificamos el objeto encontrado');
         
         if (cantidad) {
-          disco.cantidad += cantidad;     //--> Viene del formulario de productoDetalle.
+          disco.cantidad += parseInt(cantidad);     //--> Viene del formulario de productoDetalle.
           
         } else {
           disco.cantidad += 1;
         }
-
+        console.log(disco);
         if (disco.oferta > 0) {
-          disco.subtotal = (disco.cantidad * disco.precio) * (1 - disco.oferta) ;
+          disco.subtotal = (disco.cantidad * disco.precio) * (1 - disco.oferta/100)
         } else {
           disco.subtotal = disco.cantidad * disco.precio;
         }
@@ -928,14 +897,14 @@ const controller = {
 
         if (productoEncontrado) {
 
-            console.log('producto encontrado');
+            //console.log('producto encontrado');
           
             if (cantidad) {
-              productoEncontrado.cantidad = cantidad;  
+              productoEncontrado.cantidad = parseInt(cantidad);  
               
             } else { 
               productoEncontrado.cantidad = 1;
-              //productoEncontrado.subtotal = productoEncontrado.precio;
+              
             }
 
               if (productoEncontrado.oferta > 0) {
@@ -944,9 +913,7 @@ const controller = {
                   productoEncontrado.subtotal = (productoEncontrado.cantidad * productoEncontrado.precio);
               }
             
-            req.session.carrito.push(productoEncontrado);
-            //console.log(req.session.carrito);
-          
+            req.session.carrito.push(productoEncontrado);          
           
           } else {
               req.session.carrito = [];
@@ -988,8 +955,6 @@ const controller = {
 
       //Preguntamos por la sesion.
       userSession = req.session.nombre;
-
-      //console.log(req.body.busquedaHome);
 
       const { busquedaHome } = req.body;
       let productos = [];

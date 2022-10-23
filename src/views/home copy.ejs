@@ -89,21 +89,20 @@
         <h2 class="main-title">TOP 5 MAS VENDIDOS</h2>
         <section class="container-productos">
 
-            <% let listadoDiscosAux = listadoDiscos.sort((a,b) => b.ventas-a.ventas) %>
-            <% for (let i=0; i<listadoDiscosAux.length; i++) { %>
-             <!-- <% if (i <= 4 ) {%> -->
+            <% for (let i=0; i<listadoDiscos.length; i++) { %>
+             <% if (i <= 4 ) {%>
             
              <div class="producto-listado">
-                <a href="/productoDetalle/<%= listadoDiscosAux[i].id%>"><img src=<%= '/images/' + listadoDiscosAux[i].img %> alt="" class="producto__img"></a>
+                <a href="/productoDetalle/<%= listadoDiscos[i].id%>"><img src=<%= '/images/' + listadoDiscos[i].img %> alt="" class="producto__img"></a>
                 <div class="product__decription">
-                    <h3 class="product__title"><%= listadoDiscosAux[i].nombre_disco %> - <%= listadoDiscosAux[i].artista.nombre_artista %></h3>
-                    <span class="producto__price">Precio: $<%= listadoDiscosAux[i].precio %></span>
+                    <h3 class="product__title"><%= listadoDiscos[i].nombre_disco %> - <%= listadoDiscos[i].artista.nombre_artista %></h3>
+                    <span class="producto__price">Precio: $<%= listadoDiscos[i].precio %></span>
                     <p></p>
-                    <span class="producto__price">Género: <%= listadoDiscosAux[i].genero.titulo %></span>
+                    <span class="producto__price">Género: <%= listadoDiscos[i].genero.titulo %></span>
                     <p></p>
-                    <span class="producto__price">Stock: <%= listadoDiscosAux[i].stock %> u.</span>
+                    <span class="producto__price">Stock: <%= listadoDiscos[i].stock %> u.</span>
                     <p></p>
-                    <% if (listadoDiscosAux[i].recomendado) { %>
+                    <% if (listadoDiscos[i].recomendado) { %>
                         <span class="producto__fav"><i class="fa-solid fa-star"></i></span>
                     <% } %>
                     
@@ -111,15 +110,15 @@
             
                 <br>
                 <% if ( listadoDiscos[i].stock > 0 ) { %>
-                    <a href="/agregarACarrito/<%= listadoDiscosAux[i].id%>"><i class=" fa-solid fa-cart-arrow-down"></i></a>
+                    <a href="/agregarACarrito/<%= listadoDiscos[i].id%>"><i class=" fa-solid fa-cart-arrow-down"></i></a>
                 <% } %>
             </div>
-        <!-- <% } %> -->
+        <% } %>
         <% } %>
         </section>
         <br>
         <br>
-    
+
     </div>
     </main>
 
@@ -171,7 +170,6 @@ btnLeft.addEventListener('click', function(){
 setInterval(function(){
     Next();
 }, 5000); 
-
 </script>
 </body>
 </html>

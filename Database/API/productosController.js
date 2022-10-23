@@ -4,7 +4,7 @@ const path = require('path');
 const { url } = require('inspector');
 
 const imgUrl = path.join(__dirname + '../../../public/images/');
-console.log(imgUrl);
+//console.log(imgUrl);
 
 const Op = db.Sequelize.Op; // Para operadores del WHERE.
 

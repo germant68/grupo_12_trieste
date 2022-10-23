@@ -97,7 +97,6 @@ const controller = {
     //LOGOUT
     logout: (req, res) => {
         req.session.destroy();
-        //console.log(req.session);
         res.redirect('/');             
     },
         
@@ -130,8 +129,6 @@ const controller = {
                         req.session.carrito = [];
                         userSession = req.session.nombre; 
                         userCarrito = req.session.carrito;
-                        // console.log(userSession);
-                        // console.log(userCarrito);
 
                         try {
                             listadoDiscos = await db.Producto.findAll({
@@ -177,8 +174,7 @@ const controller = {
             }
         
         } else {
-            // console.log('entraoaoaocaca');
-            // console.log(errores.array());
+
             res.render(path.join(__dirname, '../views/users/login'), {
                 'errores': errores.array(),
                 'prev': req.body
@@ -275,7 +271,6 @@ const controller = {
         res.render(path.join(__dirname, '../views/contacto'), {
                 'session': userSession });
 
-        //        res.render(path.join(__dirname, '../views/contacto'));
     },
 
     //ALTA DE USUARIO - REGISTRO

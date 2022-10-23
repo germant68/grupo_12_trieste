@@ -42,22 +42,24 @@
       <div class="subtotal-carrito">
         <% if (locals.carrito) { %>
             <% let subtotal = 0 %>
+            <% let totalItems = 0 %>
             <% locals.carrito.forEach(e => {
               subtotal = subtotal + e.subtotal;
+              totalItems = totalItems + e.cantidad
               } )%>
-            <h3>Total Items en el Carrito: <%= locals.carrito.length%> </h3>
+            <h3>Total Items en el Carrito: <%= totalItems %> </h3>
             <h3>Subtotal de la compra: $ <%= subtotal %></h3>
             <% } else { %>
             <h3>Total Items en el Carrito: 0 </h3>
             <% let subtotal = 0 %>
-            <h3>Subtotal de la compra: $ <%= subtotal %></h3>
+            <h3>Subtotal de la compra: $ <%= subtotal.toFixed(2) %></h3>
         <% } %>
         
         
       </div>
       <div class="button-div-carrito">
         <button type="submit" class="button-carrito">Finalizar la Compra</button>
-        <button type="submit" class="button-carrito">Cancelar</button>
+        <button type="submit" class="button-carrito" onclick="location.href = '/productos'">Seguir Comprando</button>
       </div>
     </main>
 <br>

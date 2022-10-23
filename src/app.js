@@ -4,17 +4,16 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const bodyParser = require('body-parser');
-const busboyBodyParser = require('busboy-body-parser');
+//const bodyParser = require('body-parser');
+//const busboyBodyParser = require('busboy-body-parser');
 const cors = require('cors');
-
-
 
 //Seteamos el Sistema de Ruteo
 const routerMain = require('./routes/main');
 
 const app = express();    //Indicamos a la Aplicacion que puede usar los metodos de Express
 
+// Enable the express server to respond to preflight requests
 app.use(cors());
 
 //Seteamos el View Engine

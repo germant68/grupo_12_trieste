@@ -12,7 +12,8 @@
         </div>             
         <div class="header_top_right">
             <% if (locals.session) { %>
-                 <p><a href="/registro"><%= locals.session %></a></p>
+                 <!-- <p><a href="/registro"><%= locals.session %></a></p> -->
+                 <p><%= locals.session %></p>
                  <p><a href="/logout">LOGOUT</a>
             <% } else { %>
                 <p><a href="/registro">CREAR CUENTA</a></p>
