@@ -59,6 +59,7 @@ const controller = {
           
           res.render(path.join(__dirname, '../views/products/productos'), {
             'session': userSession,
+            'es_admin': req.session.is_admin,
             'listadoDiscos': productos });
         })
     },
@@ -95,6 +96,7 @@ const controller = {
             
             res.render(path.join(__dirname, '../views/products/productosEdit'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'listadoDiscos': productos });
           })
       },
@@ -132,6 +134,7 @@ const controller = {
                 
                 res.render(path.join(__dirname, '../views/products/productosEdit'), {
                   'session': userSession,
+                  'es_admin': req.session.is_admin,
                   'listadoDiscos': productos });
               })
 
@@ -226,6 +229,7 @@ const controller = {
                 'session': userSession,
                 'msje': msje,
                 'errores': errores.array(),
+                'es_admin': req.session.is_admin,
                 'listadoDiscos': productos });
             })
             
@@ -236,6 +240,7 @@ const controller = {
               'session': userSession,
               'msje': msje,
               'errores': errores.array(),
+              'es_admin': req.session.is_admin,
               'listadoDiscos': productos });
             
         }
@@ -259,6 +264,7 @@ const controller = {
             res.render(path.join(__dirname, '../views/products/productosEdit'), {
               'session': userSession,
               'errores': errores.array(),
+              'es_admin': req.session.is_admin,
               'listadoDiscos': productos });
             })
       }
@@ -274,6 +280,7 @@ const controller = {
       //Traemos algunos productos 
       res.render(path.join(__dirname, '../views/products/dashboard'), {
               'session': userSession.nombre,
+              'es_admin': req.session.is_admin,
               'listadoDiscos': listadoDiscos });
     },
 
@@ -304,6 +311,7 @@ const controller = {
               res.render(path.join(__dirname, '../views/products/altaProducto'), {
               'session': userSession.nombre,
               'artistas': artistas,
+              'es_admin': req.session.is_admin,
               'generos': generos });  
             })
         });
@@ -417,6 +425,7 @@ const controller = {
           //Finalmente renderizamos la página con todos los parámetros.
           res.render(path.join(__dirname, '../views/products/altaProducto'), {
             'session': userSession,
+            'es_admin': req.session.is_admin,
             'msje': msje, 
             'type': msjType,
             'errorCode': errorCode,
@@ -508,7 +517,8 @@ const controller = {
         
         //console.log('SORUYO');
         res.render(path.join(__dirname, '../views/products/altaGenero'), {
-        'session': userSession.nombre
+        'session': userSession.nombre,
+        'es_admin': req.session.is_admin
         });
 
       } else {
@@ -551,6 +561,7 @@ const controller = {
           
             res.render(path.join(__dirname, '../views/products/altaGenero'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'msje': msjeExito,
               'type': msjeType, 
               'errores': errores.array(),
@@ -564,6 +575,7 @@ const controller = {
           
             res.render(path.join(__dirname, '../views/products/altaGenero'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'msje': msjeError, 
               'type': msjeType,
               'errores': errores.array(),
@@ -579,6 +591,7 @@ const controller = {
 
           res.render(path.join(__dirname, '../views/products/altaGenero'), {
             'session': userSession,
+            'es_admin': req.session.is_admin,
             'msje': msjeError, 
             'type': msjeType,
             'errores': errores.array(),
@@ -607,7 +620,8 @@ const controller = {
       if ( userSession && userSession.nombre == 'Admin') {
           
         res.render(path.join(__dirname, '../views/products/altaArtista'), {
-        'session': userSession.nombre
+        'session': userSession.nombre,
+        'es_admin': req.session.is_admin
         });
 
       } else {
@@ -646,6 +660,7 @@ const controller = {
           
             res.render(path.join(__dirname, '../views/products/altaArtista'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'msje': msjeExito,
               'type': msjeType, 
               'errores': errores.array(),
@@ -659,6 +674,7 @@ const controller = {
           
             res.render(path.join(__dirname, '../views/products/altaArtista'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'msje': msjeError, 
               'type': msjeType,
               'errores': errores.array(),
@@ -674,6 +690,7 @@ const controller = {
 
           res.render(path.join(__dirname, '../views/products/altaArtista'), {
             'session': userSession,
+            'es_admin': req.session.is_admin,
             'msje': msjeError, 
             'type': msjeType,
             'errores': errores.array(),
@@ -722,6 +739,7 @@ const controller = {
 
       res.render(path.join(__dirname, '../views/products/productoDetalle'), {
         'session': userSession,
+        'es_admin': req.session.is_admin,
         'productoEncontrado': productoEncontrado });
 
     },
@@ -752,6 +770,7 @@ const controller = {
             //console.log(productos);
             res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
               'session': userSession,
+              'es_admin': req.session.is_admin,
               'alfabeto': alfabeto,
               'listadoDiscos': productos });
           });
@@ -760,6 +779,7 @@ const controller = {
 
         res.render(path.join(__dirname, '../views/products/busquedaAvanzada'), {
                 'session': userSession,
+                'es_admin': req.session.is_admin,
                 'alfabeto': alfabeto,
                 'listadoDiscos': listadoDiscos });
         }
@@ -790,6 +810,7 @@ const controller = {
 
           res.render(path.join(__dirname, '../views/ofertas'), {
             'session': userSession,
+            'es_admin': req.session.is_admin,
             'alfabeto': alfabeto,
             'listadoDiscos': productos });
         });
@@ -811,6 +832,7 @@ const controller = {
           .then(artistas => {
             res.render(path.join(__dirname, '../views/products/listadoArtistas'), {
               'session': userSession.nombre,
+              'es_admin': req.session.is_admin,
               'listadoArtistas': artistas });
           })
 
@@ -835,6 +857,7 @@ const controller = {
           .then(generos => {
             res.render(path.join(__dirname, '../views/products/listadoGeneros'), {
               'session': userSession.nombre,
+              'es_admin': req.session.is_admin,
               'listadoGeneros': generos });
         })
 
@@ -923,6 +946,7 @@ const controller = {
 
       res.render(path.join(__dirname, '../views/carrito'), {
         'session': userSession,
+        'es_admin': req.session.is_admin,
         'carrito': req.session.carrito 
       });
       
@@ -944,6 +968,7 @@ const controller = {
 
         res.render(path.join(__dirname, '../views/carrito'), {
           'session': userSession,
+          'es_admin': req.session.is_admin,
           'carrito': req.session.carrito 
         });
 
@@ -1007,6 +1032,7 @@ const controller = {
 
               res.render(path.join(__dirname, '../views/products/searchResults'), {
                 'session': userSession,
+                'es_admin': req.session.is_admin,
                 'listadoDiscos': productos });
             });
 
@@ -1016,6 +1042,7 @@ const controller = {
           
           res.render(path.join(__dirname, '../views/products/searchResults'), {
           'session': userSession,
+          'es_admin': req.session.is_admin,
           'listadoDiscos': productos });
       }
       

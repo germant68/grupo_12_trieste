@@ -5,12 +5,12 @@
 const express = require('express');
 const path = require('path');
 
-// Libreria de Multer
+// Libreria de Multer 
 const multer = require('multer');
 //const uploadFile = require('../middlewares/multerMiddleware');
 
-// Implementamos el Disk Sotrage
-const storage = multer.diskStorage({
+// Implementamos el Disk Sotrage para Img Producto
+const storageProducto = multer.diskStorage({
     destination: (req, file, cb) => {
         let folder = path.join(__dirname, '../../Public/images/');
         cb(null, folder);
@@ -23,7 +23,23 @@ const storage = multer.diskStorage({
     }
 })
 
-const uploadFile = multer({ storage: storage })
+const uploadFileProducto = multer({ storage: storageProducto })
+
+// Implementamos el Disk Sotrage para Img Usuario
+const storageUsers = multer.diskStorage({
+    destination: (req, file, cb) => {
+        let folder = path.join(__dirname, '../../Public/images/users');
+        cb(null, folder);
+    },
+
+    filename: (req, file, cb) => {
+        const newFilename = file.originalname;
+        cb (null, newFilename)
+
+    }
+})
+
+const uploadFileUsers = multer({ storage: storageUsers })
 
 // ----------- Fin de Multer -----------
 
@@ -107,6 +123,14 @@ const validateModifProd = [
         .isNumeric({no_symbols: true}).withMessage('El campo Stock debe ser un valor numérico y mayor o igual a 0'),
 ];
 
+
+// Validaciones Modif Usuario
+const validateModifUser = [
+    body('password_log')
+        .notEmpty().withMessage('Debe ingresar su password').bail()
+        .isLength({min: 3}).withMessage('La contraseña debe contener mínimo 3 caracteres')
+];
+
 //Validaciones Alta Artista
 const validateAltaArtista = [
     body('nombreArtista').notEmpty().withMessage('Debe ingresar nombre de Artista')
@@ -123,6 +147,8 @@ router.get('/', mainController.home);
 router.get('/login', mainController.login);
 
 router.get('/logout', mainController.logout);
+
+router.get('/userEdit', mainController.userEdit);
 
 router.get('/registro', mainController.registro);
 
@@ -166,12 +192,12 @@ router.get('/removeItemCarrito/:id', authCarritoMiddleware, productosController.
 
 // <----- RUTAS POST ----->
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
-router.post('/registro', validacionesRegistro, mainController.postRegistro); //con DB
+router.post('/registro', uploadFileUsers.single('imgAvatar'), validacionesRegistro, mainController.postRegistro); //con DB
 
 router.post('/login', validateLogin, mainController.loginPost);
 
 //router.post('/altaProducto', authMiddleware,  productosController.altaProductoPost); //con JSON
-router.post('/altaProducto', uploadFile.single('imagen'), authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
+router.post('/altaProducto', uploadFileProducto.single('imagen'), authMiddleware,  validateAltaProducto, productosController.altaProductoPost);
 
 router.post('/altaArtistaPost', validateAltaArtista, productosController.altaArtistaPost);
 
@@ -183,9 +209,11 @@ router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.a
 
 router.post('/searchResults', productosController.searchResults);
 
+router.post('/usuarioEditPost', validateModifUser, mainController.usuarioEditPost);
 
 
-// <----- RUTAS POST ----->
+
+// <----- RUTAS APIs ----->
 router.get('/api/productos', apiProductosController.productos);
 
 router.get('/api/producto/:id', apiProductosController.detalleProducto);

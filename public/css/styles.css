@@ -493,6 +493,7 @@ h2, section {
 .form_reg input[name=apellido_reg],
 .form_reg input[name=email_reg],
 .form_reg input[name=pwd_reg],
+.form_reg input[name=imgAvatar],
 .form_reg input[name=pwdrepeat] {
     padding: 12px 20px;
     border-radius: 8px;

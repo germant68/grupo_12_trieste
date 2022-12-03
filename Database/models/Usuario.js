@@ -5,6 +5,7 @@ module.exports = (sequelize, dataTypes) => {
 
     //Columnas
     let cols = {
+        
         id: { type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true },
@@ -30,6 +31,14 @@ module.exports = (sequelize, dataTypes) => {
         },
 
         newsletter: {type: dataTypes.BOOLEAN},
+
+        img: {type: dataTypes.STRING},
+
+        direccion: {type: dataTypes.STRING},
+
+        codpostal: {type: dataTypes.STRING},
+
+        es_admin: {type: dataTypes.STRING},
     };
     
     //Config

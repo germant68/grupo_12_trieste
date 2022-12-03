@@ -12,8 +12,8 @@
         </div>             
         <div class="header_top_right">
             <% if (locals.session) { %>
-                 <!-- <p><a href="/registro"><%= locals.session %></a></p> -->
-                 <p><%= locals.session %></p>
+                 <p><a href="/userEdit"><%= locals.session %></a></p>
+                 <!-- <p><%= locals.session %></p> -->
                  <p><a href="/logout">LOGOUT</a>
             <% } else { %>
                 <p><a href="/registro">CREAR CUENTA</a></p>
@@ -34,7 +34,7 @@
                 <li><a href="/contacto">Contacto</a></li> 
                 
                 <% if (locals.session) { %>
-                    <% if (locals.session == 'Admin') { %>
+                    <% if (locals.es_admin == 'X') { %>
                         <li><a href="/dashboard">Dashboard</a></li> 
                     <% }%>      
                 <% }%>   
@@ -52,7 +52,7 @@
                 <li><a href="/contacto">Contacto</a></li> 
                 
                 <% if (locals.session) { %>
-                    <% if (locals.session == 'Admin') { %>
+                    <% if (locals.es_admin == 'X') { %>
                         <li><a href="/dashboard">Dashboard</a></li> 
                     <% }%>      
                 <% }%>   

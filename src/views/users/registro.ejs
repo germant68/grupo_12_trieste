@@ -23,7 +23,7 @@
                 <% }%>
                 <br>
 
-                <form action="/registro" method="POST" class="form_reg" id="registroForm">
+                <form action="/registro" method="POST" enctype="multipart/form-data" class="form_reg" id="registroForm">
                     <!-- <label for="usuario_reg">Usuario*</label>
                     <input type="text" name="usuario_reg" value="<%= locals.prev && prev.usuario_reg ? prev.usuario_reg: '' %>" required>
                     <br>-->
@@ -41,6 +41,9 @@
                     <br>
                     <label for="pwdrepeat">Repita su Contraseña*</label>
                     <input type="password" name="pwdrepeat" id="pwdrepeat" > 
+                    <br>
+                    <label for="">Imagen de Perfil:</label>
+                    <p><input type="file" name="imgAvatar" id="imgAvatar" class="file-upload"></p>
                     <br>
                     <div>
                     <input type="checkbox" name="newsletter" value="<%= locals.prev && prev.newsletter ? prev.newsletter: '' %>"> <label> Suscribite a nuestra newsletter para recibir novedades</label>

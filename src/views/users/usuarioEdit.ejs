@@ -1,0 +1,78 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <div> 
+            <h2 class="main-title">Actualización datos de Usuario</h2>
+            
+            
+            <% if (locals.errores) { %>
+                <% errores.forEach( e => { %> 
+                    <p class="error_msg_form"><i class="fa-solid fa-triangle-exclamation"></i> - <%= e.msg %></p>
+                <% }) %>
+                
+            <% } %>
+            
+            <% if (locals.msje) { %>
+                <p class="notification_msg_form"><i class="fa-solid fa-bell"></i> - <%= locals.msje %></p>
+            <% }%>
+
+            <p style="text-align: center;">
+                <button class="backButton" onclick="history.go(-1)"> Volver </button>
+            </p>
+            <br>
+            <section class="container-modificacion"> 
+ 
+                    <form action="/usuarioEditPost" method="POST">   
+                    <div class="producto--listado">
+                        <% if (usuario.email) { %>
+                            <img alt="avatar" class="producto___img" src= <%= '/images/users/' + usuario.img %>>
+                        <% } else { %>
+                            <img alt="default" class="producto___img" src="/images/users/profile-avatar.png">
+                        <% } %>
+                        <div class="product__decription">
+                            <br>
+                            <label for="emailUsuario">Email de Usuario:</label>
+                            <h3 class="product___title"><input type="text" name="emailUsuario" value="<%= usuario.email %>" disabled="disabled"></h3>
+                            <label for="nombreUsuario"> Nombre:</label>
+                            <h3 class="product___title"><input type="text" name="nombreUsuario" value="<%= usuario.nombre %>"></h3>
+                            <label for="apellidoUsuario">Apellido:</label>
+                            <h3 class="product___title"><input type="text" name="apellidoUsuario" value="<%= usuario.apellido %>"></h3>
+                            <label for="pwdUsuario">Contraseña:</label>
+                            <h3 class="product___title"><input type="password" name="pwdUsuario" value="<%= usuario.password %>"></h3>
+                            <label for="pwdUsuarioNew">Nueva contraseña:</label>
+                            <h3 class="product___title"><input type="password" name="passwordNew" dis></h3>
+                            <label for="newsletter">Newsletter: </label><input type="checkbox" name="newsletterEdit">
+                            <br>
+                            <br>
+                            <label for="direccionUsuario">Dirección: </label>
+                            <h3 class="product___title"><input type="text" name="direccionUsuario" value="<%= usuario.direccion %>"></h3>
+                            <label for="cpUsuario">Código Postal</label>
+                            <h3 class="product___title"><input type="text" name="cpUsuario" value="<%= usuario.codpostal %>"></h3>
+                                                      
+                            <label for="">Imagen de Perfil:</label>
+                            <p><input type="file" name="imgAvatar" id="imgAvatar" class="file-upload" value="<%= usuario.img %>"></p>
+
+                        </div>
+                        <p></p>
+                        <div class="product__decription">
+                            <input type="submit" class="producto__price" value="Modificar">
+                           
+                        </div>
+                        
+                        <br>
+                    </div>
+                    </form>
+                    <br>
+                    <button class="backButton" onclick="history.go(-1)"> Volver </button>
+                    <br>
+            </section>
+        
+         </div> 
+        
+    </main>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>

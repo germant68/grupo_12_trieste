@@ -52,8 +52,7 @@ const controller = {
 
       if (req.session.carrito != undefined) {
             userCarrito = req.session.carrito;
-            console.log('Carritohome?');
-            console.log(userCarrito);
+            
         } else {
             userCarrito = [];
         }
@@ -74,6 +73,7 @@ const controller = {
           res.render(path.join(__dirname, '../views/home'), {
             'session': userSession,
             'carrito': userCarrito,
+            'es_admin': req.session.is_admin,
             'listadoDiscos': productos });
         })
     },
@@ -125,10 +125,15 @@ const controller = {
                     
                     if (pwd_ok) {
                         // creamos la sesion
+                        
                         req.session.nombre = userLogin.nombre;
+                        req.session.userId = userLogin.id;
                         req.session.carrito = [];
+                        req.session.is_admin = userLogin.es_admin;
                         userSession = req.session.nombre; 
                         userCarrito = req.session.carrito;
+                        console.log(userLogin);
+                        console.log(req.session);
 
                         try {
                             listadoDiscos = await db.Producto.findAll({
@@ -145,6 +150,7 @@ const controller = {
                             res.render(path.join(__dirname, '../views/home'), {
                                 'session': userSession, 
                                 'carrito': userCarrito,
+                                'es_admin': req.session.is_admin,
                                 'listadoDiscos': listadoDiscos });
 
                         } catch (error) {
@@ -269,7 +275,8 @@ const controller = {
 
         //Traemos algunos productos 
         res.render(path.join(__dirname, '../views/contacto'), {
-                'session': userSession });
+                'session': userSession,
+                'es_admin': req.session.is_admin });
 
     },
 
@@ -285,6 +292,8 @@ const controller = {
             email_reg,
             pwd_reg
         }=req.body;
+
+        const imgAvatar = req.file.filename //Uso el objeto file que viene en el Form de MULTER.
 
         //Traemos las validaciones del Formulario de Registro
         const errores = validationResult(req);
@@ -304,7 +313,7 @@ const controller = {
             try {
                 const userEmail = await db.Usuario.findOrCreate({ 
                     where: { email: email_reg }, 
-                    defaults: {nombre: nombre_reg, apellido: apellido_reg, password: password},
+                    defaults: {nombre: nombre_reg, apellido: apellido_reg, password: password, img: imgAvatar},
                     raw : true, nest: true});  
             
                     if (userEmail[1]) {             //True --> entonces se creo correctamente
@@ -417,7 +426,126 @@ const controller = {
                 console.log(users);
                 return res.render(path.join(__dirname, '../views/users/listadoUsuarios'), {users});
             })
+    },
+
+    userEdit: async (req, res) => {
+    
+           //Preguntamos por la sesion.
+           userSession = req.session.nombre;
+
+           let usuarioEncontrado = {};
+    
+           //Buscamos el producto por Id. en la Base de Datos
+           try {
+            const userId = req.session.userId;
+            
+            usuarioEncontrado = await db.Usuario.findByPk(userId, { 
+              raw : true, 
+              nest: true,
+              });
+
+
+         // Llamamos a Edit con los datos del usuario logueado.
+         res.render(path.join(__dirname, '../views//users/usuarioEdit'), {
+                 'session': userSession,
+                 'es_admin': req.session.is_admin,
+                 'usuario': usuarioEncontrado });
+
+        //      res.send(usuarioEncontrado)
+    
+          } catch (error) {
+            usuarioEncontrado = undefined;
+    
+          }
+
+          
+    
+    },
+
+    usuarioEditPost: async (req, res) => {
+
+       //Preguntamos por la sesion.
+       userSession = req.session.nombre;
+       const userId = req.session.userId;
+       console.log('Userid');
+       console.log(userId);
+
+        //Tomamos los datos del formulario.
+         const {
+            nombreUsuario,
+            apellidoUsuario,
+            passwordNew,
+            pwdUsuario,
+            newsletterEdit,
+            direccionUsuario,
+            cpUsuario,
+            imgAvatar,
+          }=req.body;
+
+          // Para el password primero preguntamos si
+          //1 - Hay password Nuevo, 
+          //2 - Si hay lo cambiamos, previo a hashearlo.
+
+          const nombre = nombreUsuario,
+            apellido = apellidoUsuario,
+            //passwordForm = pwdUsuario,
+            newsletter = newsletterEdit,
+            direccion = direccionUsuario,
+            codpostal = cpUsuario,
+            img = imgAvatar;
+
+          let password;
+
+          if (passwordNew !== '') {
+            password = bcryptjs.hashSync(passwordNew, 10);
+            
+          } else {
+                password = pwdUsuario;
+          }
+
+          //Actualizamos con los valores en la BD
+          try {
+          
+            await db.Usuario.update(
+                {
+                    nombre,
+                    apellido,
+                    password,
+                    newsletter,
+                    direccion,
+                    codpostal,
+                    img,
+                },
+                {
+                    where: {
+                        id: userId,
+                    }
+                }
+            );
+
+            let msje = 'Usuario Modificado con éxito';
+            
+            // Llamamos a Edit con los datos del usuario logueado.
+            db.Usuario.findByPk(userId, { 
+                raw : true, 
+                nest: true,
+           })
+
+            .then(usuarioEncontrado => {
+              
+                res.render(path.join(__dirname, '../views/users/usuarioEdit'), {
+                  'session': userSession,
+                  'msje': msje,
+                  'es_admin': req.session.is_admin,
+                  'usuario': usuarioEncontrado });
+              });
+
+            } catch (error) {
+                console.log('errorxxxx');                
+            }
+
     }
+
 
 };
 
