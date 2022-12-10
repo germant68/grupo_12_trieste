@@ -543,6 +543,9 @@ const controller = {
 
             .then(usuarioEncontrado => {
               
+                req.session.userImg = usuarioEncontrado.img;
+                userSession = usuarioEncontrado.nombre;
+                
                 res.render(path.join(__dirname, '../views/users/usuarioEdit'), {
                   'session': userSession,
                   'msje': msje,
