@@ -24,9 +24,9 @@
             <br>
             <section class="container-modificacion"> 
  
-                    <form action="/usuarioEditPost" method="POST">   
+                    <form action="/usuarioEditPost" method="POST" enctype="multipart/form-data">   
                     <div class="producto--listado">
-                        <% if (usuario.email) { %>
+                        <% if (usuario.img) { %>
                             <img alt="avatar" class="producto___img" src= <%= '/images/users/' + usuario.img %>>
                         <% } else { %>
                             <img alt="default" class="producto___img" src="/images/users/profile-avatar.png">
@@ -52,8 +52,13 @@
                             <h3 class="product___title"><input type="text" name="cpUsuario" value="<%= usuario.codpostal %>"></h3>
                                                       
                             <label for="">Imagen de Perfil:</label>
-                            <p><input type="file" name="imgAvatar" id="imgAvatar" class="file-upload" value="<%= usuario.img %>"></p>
-
+                            <p><input type="file" name="imgAvatar" id="imgAvatar" class="file-upload"></p>
+                            <label for="imgActual">Imagen Actual:</label>
+                            <% if (usuario.img) { %>
+                                <p><input type="text" name="imgActual" value="<%= usuario.img %>" readonly> </p>
+                            <% } else { %>
+                                <p><input type="text" name="imgActual" value=" " readonly></p>
+                            <% } %>
                         </div>
                         <p></p>
                         <div class="product__decription">

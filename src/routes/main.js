@@ -25,7 +25,7 @@ const storageProducto = multer.diskStorage({
 
 const uploadFileProducto = multer({ storage: storageProducto })
 
-// Implementamos el Disk Sotrage para Img Usuario
+// Implementamos el Disk Sotrage para Img de usuarios (Edit y Register)
 const storageUsers = multer.diskStorage({
     destination: (req, file, cb) => {
         let folder = path.join(__dirname, '../../Public/images/users');
@@ -39,7 +39,11 @@ const storageUsers = multer.diskStorage({
     }
 })
 
-const uploadFileUsers = multer({ storage: storageUsers })
+// Implementamos Muleter para Img Usuario al crear el usuario
+const uploadFileUsersRegister = multer({ storage: storageUsers })
+
+// Implementamos Muleter para Img Usuario al editar el usuario
+const uploadFileUsersEdit = multer({ storage: storageUsers })
 
 // ----------- Fin de Multer -----------
 
@@ -192,7 +196,7 @@ router.get('/removeItemCarrito/:id', authCarritoMiddleware, productosController.
 
 // <----- RUTAS POST ----->
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
-router.post('/registro', uploadFileUsers.single('imgAvatar'), validacionesRegistro, mainController.postRegistro); //con DB
+router.post('/registro', uploadFileUsersRegister.single('imgAvatar'), validacionesRegistro, mainController.postRegistro); //con DB
 
 router.post('/login', validateLogin, mainController.loginPost);
 
@@ -209,7 +213,7 @@ router.post('/agregarACarrito/:id', authCarritoMiddleware, productosController.a
 
 router.post('/searchResults', productosController.searchResults);
 
-router.post('/usuarioEditPost', validateModifUser, mainController.usuarioEditPost);
+router.post('/usuarioEditPost', uploadFileUsersEdit.single('imgAvatar'), authMiddleware, validateModifUser, mainController.usuarioEditPost);
 
 
 

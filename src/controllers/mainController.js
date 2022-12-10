@@ -450,16 +450,12 @@ const controller = {
                  'session': userSession,
                  'es_admin': req.session.is_admin,
                  'usuario': usuarioEncontrado });
-
-        //      res.send(usuarioEncontrado)
     
           } catch (error) {
             usuarioEncontrado = undefined;
     
           }
 
-          
-    
     },
 
     usuarioEditPost: async (req, res) => {
@@ -467,8 +463,6 @@ const controller = {
        //Preguntamos por la sesion.
        userSession = req.session.nombre;
        const userId = req.session.userId;
-       console.log('Userid');
-       console.log(userId);
 
         //Tomamos los datos del formulario.
          const {
@@ -480,6 +474,7 @@ const controller = {
             direccionUsuario,
             cpUsuario,
             imgAvatar,
+            imgActual
           }=req.body;
 
           // Para el password primero preguntamos si
@@ -491,9 +486,22 @@ const controller = {
             //passwordForm = pwdUsuario,
             newsletter = newsletterEdit,
             direccion = direccionUsuario,
-            codpostal = cpUsuario,
-            img = imgAvatar;
-
+            codpostal = cpUsuario;
+            
+            let img = "";
+            
+            console.log("Vamos lelo");
+            console.log(imgAvatar);
+            console.log(imgActual);
+            console.log("Vamos argentina");
+            console.log(req.file);
+            console.log(typeof(req.file));
+            if (typeof(req.file) != 'undefined') {
+                img = req.file.filename;    
+            } else {
+                img = imgActual;
+            }
+            
           let password;
 
           if (passwordNew !== '') {
