@@ -12,6 +12,7 @@
         </div>             
         <div class="header_top_right">
             <% if (locals.session) { %>
+                <img src=<%= '../images/users/' + locals.userAvatar %> alt="Avatar" class="avatar">  
                  <p><a href="/userEdit"><%= locals.session %></a></p>
                  <!-- <p><%= locals.session %></p> -->
                  <p><a href="/logout">LOGOUT</a>

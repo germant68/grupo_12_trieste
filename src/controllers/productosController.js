@@ -60,6 +60,7 @@ const controller = {
           res.render(path.join(__dirname, '../views/products/productos'), {
             'session': userSession,
             'es_admin': req.session.is_admin,
+            'userAvatar': req.session.userImg,
             'listadoDiscos': productos });
         })
     },
@@ -97,6 +98,7 @@ const controller = {
             res.render(path.join(__dirname, '../views/products/productosEdit'), {
               'session': userSession,
               'es_admin': req.session.is_admin,
+              'userAvatar': req.session.userImg,
               'listadoDiscos': productos });
           })
       },
@@ -135,6 +137,7 @@ const controller = {
                 res.render(path.join(__dirname, '../views/products/productosEdit'), {
                   'session': userSession,
                   'es_admin': req.session.is_admin,
+                  'userAvatar': req.session.userImg,
                   'listadoDiscos': productos });
               })
 
@@ -230,6 +233,7 @@ const controller = {
                 'msje': msje,
                 'errores': errores.array(),
                 'es_admin': req.session.is_admin,
+                'userAvatar': req.session.userImg,
                 'listadoDiscos': productos });
             })
             
@@ -281,6 +285,7 @@ const controller = {
       res.render(path.join(__dirname, '../views/products/dashboard'), {
               'session': userSession.nombre,
               'es_admin': req.session.is_admin,
+              'userAvatar': req.session.userImg,
               'listadoDiscos': listadoDiscos });
     },
 
@@ -312,6 +317,7 @@ const controller = {
               'session': userSession.nombre,
               'artistas': artistas,
               'es_admin': req.session.is_admin,
+              'userAvatar': req.session.userImg,
               'generos': generos });  
             })
         });
@@ -432,6 +438,7 @@ const controller = {
             'errores': errores.array(),
             'prev': req.body,
             'artistas': artistas,
+            'userAvatar': req.session.userImg,
             'generos': generos });  
           })
       });
@@ -518,6 +525,7 @@ const controller = {
         //console.log('SORUYO');
         res.render(path.join(__dirname, '../views/products/altaGenero'), {
         'session': userSession.nombre,
+        'userAvatar': req.session.userImg,
         'es_admin': req.session.is_admin
         });
 
@@ -565,6 +573,7 @@ const controller = {
               'msje': msjeExito,
               'type': msjeType, 
               'errores': errores.array(),
+              'userAvatar': req.session.userImg,
               'prev': req.body,
               });
           
@@ -579,6 +588,7 @@ const controller = {
               'msje': msjeError, 
               'type': msjeType,
               'errores': errores.array(),
+              'userAvatar': req.session.userImg,
               'prev': req.body,
               });
             
@@ -595,6 +605,7 @@ const controller = {
             'msje': msjeError, 
             'type': msjeType,
             'errores': errores.array(),
+            'userAvatar': req.session.userImg,
             'prev': req.body });  
 
         }
@@ -621,6 +632,7 @@ const controller = {
           
         res.render(path.join(__dirname, '../views/products/altaArtista'), {
         'session': userSession.nombre,
+        'userAvatar': req.session.userImg,
         'es_admin': req.session.is_admin
         });
 
@@ -663,6 +675,7 @@ const controller = {
               'es_admin': req.session.is_admin,
               'msje': msjeExito,
               'type': msjeType, 
+              'userAvatar': req.session.userImg,
               'errores': errores.array(),
               'prev': req.body,
                });
@@ -678,6 +691,7 @@ const controller = {
               'msje': msjeError, 
               'type': msjeType,
               'errores': errores.array(),
+              'userAvatar': req.session.userImg,
               'prev': req.body,
                });
             
@@ -694,6 +708,7 @@ const controller = {
             'msje': msjeError, 
             'type': msjeType,
             'errores': errores.array(),
+            'userAvatar': req.session.userImg,
             'prev': req.body });  
 
         }
@@ -740,6 +755,7 @@ const controller = {
       res.render(path.join(__dirname, '../views/products/productoDetalle'), {
         'session': userSession,
         'es_admin': req.session.is_admin,
+        'userAvatar': req.session.userImg,
         'productoEncontrado': productoEncontrado });
 
     },
@@ -772,6 +788,7 @@ const controller = {
               'session': userSession,
               'es_admin': req.session.is_admin,
               'alfabeto': alfabeto,
+              'userAvatar': req.session.userImg,
               'listadoDiscos': productos });
           });
 
@@ -781,6 +798,7 @@ const controller = {
                 'session': userSession,
                 'es_admin': req.session.is_admin,
                 'alfabeto': alfabeto,
+                'userAvatar': req.session.userImg,
                 'listadoDiscos': listadoDiscos });
         }
     },
@@ -812,6 +830,7 @@ const controller = {
             'session': userSession,
             'es_admin': req.session.is_admin,
             'alfabeto': alfabeto,
+            'userAvatar': req.session.userImg,
             'listadoDiscos': productos });
         });
 
@@ -833,6 +852,7 @@ const controller = {
             res.render(path.join(__dirname, '../views/products/listadoArtistas'), {
               'session': userSession.nombre,
               'es_admin': req.session.is_admin,
+              'userAvatar': req.session.userImg,
               'listadoArtistas': artistas });
           })
 
@@ -858,6 +878,7 @@ const controller = {
             res.render(path.join(__dirname, '../views/products/listadoGeneros'), {
               'session': userSession.nombre,
               'es_admin': req.session.is_admin,
+              'userAvatar': req.session.userImg,
               'listadoGeneros': generos });
         })
 
@@ -947,6 +968,7 @@ const controller = {
       res.render(path.join(__dirname, '../views/carrito'), {
         'session': userSession,
         'es_admin': req.session.is_admin,
+        'userAvatar': req.session.userImg,
         'carrito': req.session.carrito 
       });
       
@@ -969,6 +991,7 @@ const controller = {
         res.render(path.join(__dirname, '../views/carrito'), {
           'session': userSession,
           'es_admin': req.session.is_admin,
+          'userAvatar': req.session.userImg,
           'carrito': req.session.carrito 
         });
 
@@ -1033,6 +1056,7 @@ const controller = {
               res.render(path.join(__dirname, '../views/products/searchResults'), {
                 'session': userSession,
                 'es_admin': req.session.is_admin,
+                'userAvatar': req.session.userImg,
                 'listadoDiscos': productos });
             });
 
@@ -1043,6 +1067,7 @@ const controller = {
           res.render(path.join(__dirname, '../views/products/searchResults'), {
           'session': userSession,
           'es_admin': req.session.is_admin,
+          'userAvatar': req.session.userImg,
           'listadoDiscos': productos });
       }
       

@@ -74,6 +74,7 @@ const controller = {
             'session': userSession,
             'carrito': userCarrito,
             'es_admin': req.session.is_admin,
+            'userAvatar': req.session.userImg,
             'listadoDiscos': productos });
         })
     },
@@ -124,11 +125,12 @@ const controller = {
                     const pwd_ok = bcryptjs.compareSync(pwd_reg, userLogin.password);
                     
                     if (pwd_ok) {
+
                         // creamos la sesion
-                        
                         req.session.nombre = userLogin.nombre;
                         req.session.userId = userLogin.id;
                         req.session.carrito = [];
+                        req.session.userImg = userLogin.img;
                         req.session.is_admin = userLogin.es_admin;
                         userSession = req.session.nombre; 
                         userCarrito = req.session.carrito;
@@ -151,6 +153,7 @@ const controller = {
                                 'session': userSession, 
                                 'carrito': userCarrito,
                                 'es_admin': req.session.is_admin,
+                                'userAvatar': req.session.userImg,
                                 'listadoDiscos': listadoDiscos });
 
                         } catch (error) {
@@ -247,12 +250,14 @@ const controller = {
     carrito: (req, res) => {
 
         //Preguntamos por la sesion.
-        userSession = req.session.nombre;  
+        userSession = req.session.nombre;
+        //userImg = req.session.userImg;  
 
         //Traemos algunos productos 
         
         res.render(path.join(__dirname, '../views/carrito'), {
             'session': userSession,
+            'userAvatar': req.session.userImg,
             'carrito': req.session.carrito });
                 //'miCarrito': listadoDiscos });
 
@@ -264,6 +269,7 @@ const controller = {
         userSession = req.session;  
 
         res.render(path.join(__dirname, '../views/faq'), {
+            'userAvatar': req.session.userImg,
             'session': userSession.nombre});
     },
 
@@ -276,6 +282,7 @@ const controller = {
         //Traemos algunos productos 
         res.render(path.join(__dirname, '../views/contacto'), {
                 'session': userSession,
+                'userAvatar': req.session.userImg,
                 'es_admin': req.session.is_admin });
 
     },
@@ -449,6 +456,7 @@ const controller = {
          res.render(path.join(__dirname, '../views//users/usuarioEdit'), {
                  'session': userSession,
                  'es_admin': req.session.is_admin,
+                 'userAvatar': req.session.userImg,
                  'usuario': usuarioEncontrado });
     
           } catch (error) {
@@ -490,12 +498,6 @@ const controller = {
             
             let img = "";
             
-            console.log("Vamos lelo");
-            console.log(imgAvatar);
-            console.log(imgActual);
-            console.log("Vamos argentina");
-            console.log(req.file);
-            console.log(typeof(req.file));
             if (typeof(req.file) != 'undefined') {
                 img = req.file.filename;    
             } else {
@@ -545,6 +547,7 @@ const controller = {
                   'session': userSession,
                   'msje': msje,
                   'es_admin': req.session.is_admin,
+                  'userAvatar': req.session.userImg,
                   'usuario': usuarioEncontrado });
               });
 
