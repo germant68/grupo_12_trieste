@@ -472,6 +472,9 @@ const controller = {
        userSession = req.session.nombre;
        const userId = req.session.userId;
 
+       //Traemos las validaciones del Formulario de Registro
+       const errores = validationResult(req);
+
         //Tomamos los datos del formulario.
          const {
             nombreUsuario,
@@ -507,7 +510,39 @@ const controller = {
           let password;
 
           if (passwordNew !== '') {
-            password = bcryptjs.hashSync(passwordNew, 10);
+
+            //Validamos que posea las caracteristicas de un PWD
+            if (errores.isEmpty()){
+                password = bcryptjs.hashSync(passwordNew, 10);
+
+            } else {
+                //volvemos a renderizar con errores.
+                
+                let msje = errores.array();
+
+                // Llamamos a Edit con los datos del usuario logueado.
+                db.Usuario.findByPk(userId, { 
+                    raw : true, 
+                    nest: true,
+            })
+
+            .then(usuarioEncontrado => {
+              
+                req.session.userImg = usuarioEncontrado.img;
+                userSession = usuarioEncontrado.nombre;
+
+                res.render(path.join(__dirname, '../views/users/usuarioEdit'), {
+                  'session': userSession,
+                  'msje': msje[0].msg,
+                  'es_admin': req.session.is_admin,
+                  'userAvatar': req.session.userImg,
+                  'usuario': usuarioEncontrado });
+              });
+
+
+
+
+            }
             
           } else {
                 password = pwdUsuario;
@@ -545,7 +580,7 @@ const controller = {
               
                 req.session.userImg = usuarioEncontrado.img;
                 userSession = usuarioEncontrado.nombre;
-                
+
                 res.render(path.join(__dirname, '../views/users/usuarioEdit'), {
                   'session': userSession,
                   'msje': msje,

@@ -130,22 +130,23 @@ const validateModifProd = [
 
 // Validaciones Modif Usuario
 const validateModifUser = [
-    body('password_log')
-        .notEmpty().withMessage('Debe ingresar su password').bail()
-        .isLength({min: 3}).withMessage('La contraseña debe contener mínimo 3 caracteres')
+    body('passwordNew')
+        .isLength({min: 3}).withMessage('La nueva contraseña debe contener mínimo 3 caracteres')
 ];
 
-//Validaciones Alta Artista
+// Validaciones Alta Artista
 const validateAltaArtista = [
     body('nombreArtista').notEmpty().withMessage('Debe ingresar nombre de Artista')
 ];
 
-//Validaciones Alta Genero
+// Validaciones Alta Genero
 const validateAltaGenero= [
     body('titulo').notEmpty().withMessage('Debe ingresar título para el Género')
 ];
 
-// Rutas GET
+// Validaciones Modif
+
+// ----------------------- Rutas GET // -----------------------
 router.get('/', mainController.home);
 
 router.get('/login', mainController.login);
@@ -193,8 +194,7 @@ router.get('/agregarACarrito/:id', authCarritoMiddleware, productosController.ag
 router.get('/removeItemCarrito/:id', authCarritoMiddleware, productosController.removeItemCarrito);
 
 
-
-// <----- RUTAS POST ----->
+// ----------------------- Rutas POST // -----------------------
 //router.post('/registro', validacionesRegistro, mainController.postRegistro1); //con JSON
 router.post('/registro', uploadFileUsersRegister.single('imgAvatar'), validacionesRegistro, mainController.postRegistro); //con DB
 
