@@ -4,6 +4,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const dotenv = require("dotenv").config();
+
 //const bodyParser = require('body-parser');
 //const busboyBodyParser = require('busboy-body-parser');
 const cors = require('cors');

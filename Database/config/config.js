@@ -1,12 +1,13 @@
 module.exports = {
   "development": {
-    "username": "root",
+    "username": process.env.db_username,
     "password": null,
-    "database": "grupo12_trieste",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  
+    "database": process.env.db_database,
+    "host": process.env.db_host,
+    "dialect": process.env.db_dialect
+  }
+}  
+/*
   "test": {
     "username": "root",
     "password": null,
@@ -21,4 +22,4 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-}
+}*/
