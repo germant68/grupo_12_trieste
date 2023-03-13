@@ -51,7 +51,7 @@ app.use(routerMain);
 
 
 //Servidor escuchando
-app.listen(3001, () => {
-    console.log("Servidor escuchando en el puerto 3001");
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${process.env.PORT}`);
 });
 

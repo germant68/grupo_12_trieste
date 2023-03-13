@@ -19,7 +19,7 @@ const { getAllProductos } = require('../model/modelProducts');
 const producto = require('../model/modelProducts');
 const { listeners } = require('process');
 
-const jsonPath = path.join(__dirname,'../../database/InfoDiscos.json');
+const jsonPath = path.join(__dirname,'../../Database/InfoDiscos.json');
 
 const json = JSON.parse(fs.readFileSync(jsonPath,'utf-8'));
 

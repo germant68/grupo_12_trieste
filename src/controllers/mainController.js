@@ -19,7 +19,7 @@ const bcryptjs = require('bcryptjs');
 //Requerimos el Model User
 const modelUser = require('../model/modelUser');
 
-const jsonPath = path.join(__dirname,'../../database/InfoDiscos.json');
+const jsonPath = path.join(__dirname,'../../Database/InfoDiscos.json');
 
 // Abro y leo el archivo de Discos.
 const json = JSON.parse(fs.readFileSync(jsonPath,'utf-8'));
